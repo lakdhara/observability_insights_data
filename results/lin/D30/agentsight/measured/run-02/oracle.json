@@ -1,0 +1,57 @@
+{
+  "id": "D30",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978447.6457283,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 0.25,
+  "edge_recall": 0.333,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "CHG-2211|intended|drift": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Last night's change"
+  },
+  "action_matched": {
+    "nft (-a )?list": null,
+    "dport 443": "bash -c true # AGENT-ACTION[D30]: nft add rule inet filter forward ip saddr 192.168.10.0/24 oifname eth2 tcp dport 443 a",
+    "10\\.61\\.0\\.0/16": null,
+    "CHG2211-R6": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:3"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

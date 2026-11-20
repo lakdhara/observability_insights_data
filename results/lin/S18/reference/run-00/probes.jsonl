@@ -1,0 +1,2 @@
+{"ts": 1794925833.7631705, "node": "rc", "cmd": "nc -z -w3 203.0.113.2 443 && echo vpn-reachable-from-non-vendor || echo blocked", "rc": 0, "out": "blocked\n"}
+{"ts": 1794938995.2417312, "node": "rc", "cmd": "nc -z -w3 203.0.113.2 443 && echo vpn-reachable-from-non-vendor || echo blocked", "rc": 0, "out": "blocked\n"}

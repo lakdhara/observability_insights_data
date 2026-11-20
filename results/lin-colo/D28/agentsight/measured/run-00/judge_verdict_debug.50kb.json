@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.65,
+    "component": "none",
+    "root_cause": "portal-dns reports the resolver set; resolution was not shown, but nothing shows it failed."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "portal resolver 10.1.0.53",
+    "root_cause": "The verification `timeout 3 getent hosts portal.lab` exits 124 (timed out) after resolv.conf was pointed at 10.1.0.53: the resolver does not answer, so portal.lab does not resolve."
+  }
+}

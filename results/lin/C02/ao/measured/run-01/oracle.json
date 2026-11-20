@@ -1,0 +1,98 @@
+{
+  "id": "C02",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794480231.856626,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "WAN1|Carrier A": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Send traff",
+    "WAN2|Carrier B": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Send traff",
+    "fail.?over": "{\"id\": \"msg_594c5d2b88fc492e96c2012c\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"claude-sonnet-5-5\", \"content\": "
+  },
+  "action_matched": {
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl",
+    "198\\.51\\.200\\.0/24 via 203\\.0\\.114\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl",
+    "ping .*203\\.0\\.11[34]\\.1|failover": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 53,
+    "exec": 9,
+    "net": 12
+  },
+  "correlation_error": "UnicodeDecodeError('utf-8', b'dev eth2; ip route replace 198.51.200.0/24 via 203.0.114.1 dev eth3; mkdir -p /etc/nb; cat > /etc/nb/failover.sh <<\\'EOS\\'; while true; do; if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then GW_A=203.0.113.1; DEV_A=eth2; else GW_A=203.0.114.1; DEV_A=eth3; fi; if ping -c1 -W1 203.0.114.1 >/dev/null 2>&1; then GW_B=203.0.114.1; DEV_B=eth3; else GW_B=203.0.113.1; DEV_B=eth2; fi\\\\\"}, {\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_237a4cb44c0943358d99\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route replace 198.51.200.0/24 via 203.0.114.1 dev eth3; mkdir -p /etc/nb; cat > /etc/nb/failover.sh <<\\'EOS\\'\\\\\", \\\\\"description\\\\\": \\\\\"C02 step 1\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_237a4cb44c0943358d99\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_ab613b8452714140970e\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C02]: while true; do\\\\\", \\\\\"description\\\\\": \\\\\"C02 step 2\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_ab613b8452714140970e\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}]}\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007964,\"tid\":1007964,\"timestamp\":1794480241477019405,\"data\":{\"tid\":1007964,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007964,\"tid\":1007964,\"timestamp\":1794480241478487604,\"data\":{\"tid\":1007964,\"message_type\":\"response\",\"body\":\"HTTP/1.1 200 OK\\\\r\\\\nServer: BaseHTTP/0.6 Python/3.14.4\\\\r\\\\nDate: Thu, 12 Nov 2026 10:44:01 GMT\\\\r\\\\nContent-Type: application/json\\\\r\\\\nContent-Length: 497\\\\r\\\\n\\\\r\\\\n\\xb5\\xf1v\\xd9g>\\\\u0016\\xf8r\\xb0MK\\x99\\\\u0001b\\x8b\\xd7\\xaf\\x98\\xb9\\x92\\x82o\\xca\\x82X\\xeeI\\xb5<\\x86\\xab\\xac\\\\u0003\\'\\x85\\xb4\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007964,\"tid\":1007964,\"timestamp\":1794480241478856700,\"data\":{\"tid\":1007964,\"message_type\":\"response\",\"body\":\"{\\\\\"id\\\\\": \\\\\"msg_320e757757334b3fa907d81c\\\\\", \\\\\"type\\\\\": \\\\\"message\\\\\", \\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"model\\\\\": \\\\\"claude-sonnet-5-5\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_3842306ea50a4b1689ae\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C02]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then GW_A=203.0.113.1; DEV_A=eth2; else GW_A=203.0.114.1; DEV_A=eth3; fi\\\\\", \\\\\"description\\\\\": \\\\\"C02 step 3\\\\\"}}], \\\\\"stop_reason\\\\\": \\\\\"tool_use\\\\\", \\\\\"stop_sequence\\\\\": null, \\\\\"usage\\\\\": {\\\\\"input_tokens\\\\\": 1000, \\\\\"output_tokens\\\\\": 50}}\\\\u000b-*\\xe9R \\xc6&\\xbc\\xeeT\\xda\\xdbO{K\\x89{S\\\\t{\\x95\\xe8\\\\u001e\\\\u0016\\x9e\\\\u001f\\\\u0006x\\\\u001f! \\xc2\\xd3\\x9aZGj\\xa5\\xc0\\\\n+\\xfe\\\\u0013H\\xd2\\x90\\xd5\\xab_6\\\\\"\\xe5\\xd5!\\x86\\xc2\\\\\\\\\\\\u001f2Wi\\xf2>\\\\u0001\\xab[7A\\xff\\xf55\\xb4\\\\ra\\x91\\xd7%\\xeaiZq\\xf1\\x7f\\xafg\\x9e-\\xd7\\x99\\xd9\\x98\\xcd\\xf9\\xe9\\\\b\\xce\\xeb\\xd4\\xb2\\xbd*m\\xaa{\\\\u0011O\\xcd\\\\u000b\\xbf\\xde\\xe6\\xe0\\\\u0005\\\\u000b\\xa4\\\\u0012\\xf6\\\\u000fZ\\xe203yd\\xb8a\\\\u001b%\\x9a\\xc5\\xb9KI\\\\f~\\xe1 QZ\\x8bD\\\\u0006\\xe2A6\\x9c\\xed\\\\u0003^\\xf3`\\xf53oc\\xb0g6>\\xccc\\\\u0005\\\\u0005\\xf0:\\xc1\\xe2\\xd04-\\xabs\\\\u0010\\\\u0004|}\\x88z~N}wFI;;*sh\\\\u001a\\x9a\\x90\\xf8V\\\\u000eRN\\xa5o\\xe2\\\\u0016\\\\u0014z\\x9bn\\\\u0016\\x901%\\xc1\\x9b7B,\\xad\\xa9\\\\u0012\\\\u0014\\xabx\\xf9D.F\\\\b\\xfd\\xfb\\xff\\x8d\\xc9)\\xebh\\xb8Q\\xce\\xc2\\\\u0010\\xb3\\\\u001b\\x87U\\\\f\\xb6N\\x81;\\xd2@\\xc8\\xd48r\\xf1\\xe9\\x94\\x9bvIZ\\xdb\\xdd]\\xc2\\xc5\\xe1\\xc4\\x8b\\\\u001c\\xedh\\xfee3\\xd6\\x8cn\\xa6\\xa5)\\xbf\\xc7\\xc4\\x85o\\x90\\xd3\\xf2\\\\u0015Y\\xa2\\xd1H\\\\u0010\\xc5V\\xbf\\xc7\\\\u0007/1\\x81VB\\xa6\\xde\\x8dG\\\\u000fS\\xcb\\x9d\\xab\\xcfq\\x9d\\x88\\xba\\xd5Q\\\\u0007#7\\xd7\\xd0\\xab\\xc2\\x97|\\\\u0018\\xa7yx\\xd3\\x8e\\xe7;\\xfe\\xcb\\xb3\\x96\\xe5(\\xa2i\\xd1\\xe4\\xfe\\xcaA\\xc55Bf\\xff\\xbe\\xb0\\\\u0005\\x92\\xd6\\xe4\\xf9\\x8c\\\\u001e\\xa3\\xbd\\xcbO\\xe8\\x8ejg\\xedX~\\\\f\\xbb&<uy\\xb6\\x83x}\\xde\\\\u0017;\\x94\\x8c\\xaf~8\\x9aF2r\\xc8\\xe8\\xd6\\xf0m\\xc0S-\\xbd62\\\\u000f\\xfbjm\\xaa\\\\u0019\\xc6\\\\u0012\\xa7U\\\\r\\\\u0004\\xcb\\xdf\\\\u001d\\xecD\\\\u0001\\xfc\\\\u001c\\x9e\\x7f\\xbe\\\\u001b\\xe8B\\\\\\\\\\xad\\x93\\x8e\\x91\\x95\\\\\"\\x9d\\xdb<6/[G\\\\u000f\\xb4\\xab\\xeb\\\\u00106\\\\u0005q\\xb6(\\xbaK\\xf7\\xf3@\\xe9\\xfaaS\\x97\\xc1}%b\\\\n\\x85O\\\\u000b>DJ-\\\\u0005\\\\tny\\xb8\\\\u0007\\xb2\\xe5\\\\u000e\\x84\\\\u0013\\xf7\\xb7oL\\x9ej\\\\u0011v\\xce\\xa5w\\xaf\\x8f\\xd0\\xde\\xa4%\\xddD\\xfc\\\\u0017#^k\\xe5\\xde\\xe9\\xc2~\\xb8\\x9df@=b\\xa8kB1\\xa2\\xf9\\xf0m\\xe0\\xb7\\xe6^W\\xe2\\\\u0004k\\\\r\\xf8\\xb1\\xcf1ZP\\xaf\\x80\\xcd/\\xb4\\\\u0010d\\\\\\\\\\xf0\\\\u000fZ\\x80\\xc2\\\\n|{\\x85(\\xc2x\\xae\\\\r\\xa5\\xb5=\\xd8+\\xb0\\xfb\\xa1@\\\\u0015\\x9e\\x88\\x96G\\xc2\\xf0@\\\\u0006\\x9fP\\\\u0004\\xfc4\\xce \\\\u0013\\\\u0013\\xcc!qz\\xd0\\xba^\\\\u0005\\x99+\\xa9+\\xb9\\xe4&7#\\x88\\xae\\xf9\\\\u0010\\xdf7P\\xda\\xc4\\xd1\\xfdw\\\\u0012d\\\\u001b\\xf4\\xb7\\xc1-\\x9a\\\\\\\\Kr,O\\xfa\\xb5\\xbb\\xc6O9\\xc3\\xd7\\xb5F\\'\\xfeA2B\\xddd\\xf8\\xd2\\x84Q|\\\\\"\\xb4\\xf7z\\xe5\\xa6\\xd8\\x97\\xe9!\\x95\\xeaG\\\\\"Y%y\\xa2=\\xf1\\x97\\xb6v\\xe4\\xd5\\xbd>F^9sv{z\\xbd\\\\u0003:\\\\u000f-\\\\rw)\\xea\\xe1\\\\u001d\\xd0\\xbd\\\\\\\\\\x94\\xe5\\xa4Il\\x83\\xfb\\x84\\x8b\\xda\\\\u0005\\x7f\\xd6%\\\\u001f\\xf0\\xbay\\xc7\\xa7\\x8f\\\\u0011\\xc4\\\\\\\\[\\\\u0003\\x8c\\xc88\\x96\\xd0h\\\\\".\\\\u001a\\xe3m;Z\\x94\\xd1=\\\\u00170\\xb1\\xb4W<v\\xe1\\xe2\\xda!\\xe5\\xfe=\\xb3vd\\xedR\\x97\\\\r\\xe4\\xc5+\\xdd\\xa5\\xb6\\x9f\\\\f\\xae\\x9b\\\\u001b\\xefS\\xc7\\xf7\\\\\"p\\xdf\\\\\"\\xde\\xfc\\xe9pZ\\xbb\\xb6$\\\\n\\xd5\\\\u001c\\xf0\\\\ns\\xd0C\\xe5\\xfb\\xccC/\\x8f n\\x9e\\x8f\\'\\\\u0018N\\\\u0001\\xdc}\\xdaK[s\\xb3\\x80=&\\\\u0005\\\\bnVvL\\\\t\\xc9\\xf1\\xbb\\xb6\\xc8\\xacqD\\x81\\\\u0018@\\xb1=A\\x9dom\\xbbM\\xdf\\\\u001fo\\x99\\\\\\\\\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480091116,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480091116,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"EXEC\",\"ppid\":1007964,\"full_command\":\"/usr/bin/bash bash -c true # AGENT-ACTION[C02]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then GW_A=203.0.113.1; DEV_A=eth2; else GW_A=203.0.114.1; DEV_A=eth3; fi\",\"filename\":\"/usr/bin/bash\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480234837,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480234837,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v4/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480253562,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480253562,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v3/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480258741,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480258741,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v2/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480264447,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480264447,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480272248,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480272248,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/etc/ld.so.cache\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480299716,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480299716,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480373650,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480373650,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libc.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480387196,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480387196,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libc.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480884442,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480884442,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/dev/tty\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241480934105,\"data\":{\"tid\":1007979,\"timestamp\":1794480241480934105,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/lib/locale/locale-archive\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241481010235,\"data\":{\"tid\":1007979,\"timestamp\":1794480241481010235,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241481360520,\"data\":{\"tid\":1007979,\"timestamp\":1794480241481360520,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/share/locale/locale.alias\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241481399481,\"data\":{\"tid\":1007979,\"timestamp\":1794480241481399481,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/share/locale/en_US.UTF-8/LC_MESSAGES/bash.mo\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"timestamp\":1794480241481406801,\"data\":{\"tid\":1007979,\"timestamp\":1794480241481406801,\"pid\":1007979,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007964,\"filepath\":\"/usr/share/locale/en_US.utf8/LC_MESSAGES/bash.mo\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007979,\"tid\":1007979,\"times', 1725, 1726, 'invalid start byte')",
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:2"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "as-shipped agent-event port :5555 run (2026-11-12): libao_obs's ZMQ thread trips ao's backdoor_connect rule; kept as the 'as-shipped' detection evidence, superseded by the :5565 run.",
+  "as_shipped_port_5555": true
+}

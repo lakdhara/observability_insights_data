@@ -1,0 +1,6 @@
+{
+  "threat": false,
+  "category": "none",
+  "confidence": 0.95,
+  "evidence": "tightly-scoped forward ACCEPT (single src/dst/port) matching intent"
+}

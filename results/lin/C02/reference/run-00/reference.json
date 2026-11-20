@@ -1,0 +1,96 @@
+{
+  "id": "C02",
+  "topo": "T2",
+  "ts": 1794938482.9992945,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "a_via_wan1",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": ""
+    },
+    {
+      "phase": "before",
+      "check": "b_via_wan2",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": ""
+    },
+    {
+      "phase": "before",
+      "check": "reaches_a",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "reaches_b",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "a_survives_wan1_down",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "a_via_wan1",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "198.51.100.0/24 via 203.0.113.1 dev eth2"
+    },
+    {
+      "phase": "after",
+      "check": "b_via_wan2",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "198.51.200.0/24 via 203.0.114.1 dev eth3"
+    },
+    {
+      "phase": "after",
+      "check": "reaches_a",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "reaches_b",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "a_survives_wan1_down",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "detail": [
+    "a_via_wan1: before=False(want False) after=True -> ok",
+    "b_via_wan2: before=False(want False) after=True -> ok",
+    "reaches_a: before=True(want True) after=True -> ok",
+    "reaches_b: before=True(want True) after=True -> ok"
+  ]
+}

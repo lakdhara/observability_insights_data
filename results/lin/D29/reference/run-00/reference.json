@@ -1,0 +1,29 @@
+{
+  "id": "D29",
+  "topo": "T1",
+  "ts": 1794938828.183119,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "backup_in_target",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='0'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "backup_in_target",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='1'"
+    }
+  ],
+  "detail": [
+    "backup_in_target: before=False(want False) after=True -> ok"
+  ]
+}

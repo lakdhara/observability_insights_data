@@ -1,0 +1,29 @@
+{
+  "id": "D21",
+  "topo": "T1",
+  "ts": 1794938712.095571,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "lan_ip_live",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "7744: eth1    inet 192.168.10.1/24 scope global eth1\\       valid_lft forever preferred_lft forever"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "lan_ip_live",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "7744: eth1    inet 192.168.10.1/24 scope global eth1\\       valid_lft forever preferred_lft forever\n7744: eth1    inet 192.168.50.1/24 scope global eth1\\       valid_lft forever preferred_lft forever"
+    }
+  ],
+  "detail": [
+    "lan_ip_live: before=False(want False) after=True -> ok"
+  ]
+}

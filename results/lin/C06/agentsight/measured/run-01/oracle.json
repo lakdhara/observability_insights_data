@@ -1,0 +1,48 @@
+{
+  "id": "C06",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978606.3053076,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "GRE": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Interconnect HQ and",
+    "IPsec|ESP|encrypt": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Interconnect HQ and"
+  },
+  "action_matched": {
+    "ip tunnel add gre1 mode gre": "bash -c true # AGENT-ACTION[C06]: ip tunnel add gre1 mode gre local 203.0.113.2 remote 203.0.114.2 ttl 255",
+    "(swanctl|xfrm|esp)": "bash -c true # AGENT-ACTION[C06]: swanctl --load-all && swanctl --initiate --child gre-esp"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 4,
+    "net": 0
+  },
+  "passed": true
+}

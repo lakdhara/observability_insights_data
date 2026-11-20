@@ -1,0 +1,167 @@
+{
+  "id": "D30",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794482790.2039964,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 0.25,
+  "edge_recall": 0.333,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "CHG-2211|intended|drift": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 385\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "nft (-a )?list": null,
+    "dport 443": "/usr/bin/bash bash -c true # AGENT-ACTION[D30]: nft add rule inet filter forward ip saddr 192.168.10.0/24 oifname eth2 t",
+    "10\\.61\\.0\\.0/16": null,
+    "CHG2211-R6": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:3"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 4,
+    "exec": 1,
+    "net": 4
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 2,
+    "system_events": 52,
+    "correlations_found": 1,
+    "mean_correlation_score": 0.298,
+    "mean_actions_per_correlation": 28.0,
+    "edge_recall": 0.333,
+    "corr_band": 1,
+    "lenient_edge_recall": 0.333,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      },
+      "200": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      },
+      "500": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      },
+      "2000": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      },
+      "5000": {
+        "recovered": 1,
+        "total": 3,
+        "recall": 0.333
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:0",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:0",
+          "action:3"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 0.333,
+    "corr_band": 1,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:0",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      },
+      {
+        "edge": [
+          "intent:0",
+          "action:3"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      }
+    ]
+  },
+  "passed": false
+}

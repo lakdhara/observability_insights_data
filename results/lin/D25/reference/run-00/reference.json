@@ -1,0 +1,29 @@
+{
+  "id": "D25",
+  "topo": "T1",
+  "ts": 1794938770.3911364,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "guest_wifi",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "config wifi"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "guest_wifi",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "config wifi\nguest_enabled=1\nguest_maxrate=10 | config wifi\nguest_enabled=1\nguest_maxrate=10"
+    }
+  ],
+  "detail": [
+    "guest_wifi: before=False(want False) after=True -> ok"
+  ]
+}

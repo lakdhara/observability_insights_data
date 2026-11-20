@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.7,
+    "component": "none",
+    "root_cause": "dot-config reports the upstream configured and says it verifies reachability; nothing contradicts it."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "dot-config reachability probe",
+    "root_cause": "bash connects to 198.51.100.10:853 and the probe `timeout 3 bash -c exec 3<>/dev/tcp/198.51.100.10/853` exits 1 (bash=1, timeout=1): the DoT upstream is unreachable, yet the tool reported success."
+  }
+}

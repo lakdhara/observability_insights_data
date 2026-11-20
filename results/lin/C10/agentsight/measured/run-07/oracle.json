@@ -1,0 +1,121 @@
+{
+  "id": "C10",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794913442.6456454,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 4,
+    "tool_calls": 3
+  },
+  "agent_pid": 405331,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "portal": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us",
+    "RADIUS": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us",
+    "10\\.1\\.0\\.60": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us"
+  },
+  "action_matched": {
+    "r4dsec": "bash -c true # AGENT-ACTION[C10]: nohup /lab/bin/nb-portal --listen 192.168.10.1:8080 --radius 10.1.0.60 --secret r4dsec",
+    "10\\.1\\.0\\.60": "bash -c true # AGENT-ACTION[C10]: nohup /lab/bin/nb-portal --listen 192.168.10.1:8080 --radius 10.1.0.60 --secret r4dsec",
+    "chilli|radclient|portal": "bash -c true # AGENT-ACTION[C10]: nft add set inet filter portal_staff '{ type ipv4_addr; }'; nft add set inet filter po"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 16,
+    "exec": 3,
+    "net": 0
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ms",
+    "temporal_window_units": 500,
+    "llm_interactions": 8,
+    "system_events": 53,
+    "correlations_found": 8,
+    "mean_correlation_score": 0.277,
+    "mean_actions_per_correlation": 6.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:1",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "passed": true
+}

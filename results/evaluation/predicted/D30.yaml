@@ -1,0 +1,39 @@
+id: D30
+family: debug
+title: Silent partial-apply / config drift reconciliation
+correlation_difficulty: Hard
+topology: T1
+observability_oracle: Correlate the agent's diff/compare reads with each corrective write; many small
+  actions -> one reconciliation intent (correlation stress).
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 1
+    note: ring-buffer drop risk under high event volume
+  ao:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 1
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios)
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 1
+    note: label propagation gives exact intent->resource provenance edges; labels tie the agent's writes
+      to the fault but do not diagnose root cause by themselves
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 0
+    diagnose: 2
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector
+      is a production high-throughput collector -> best resistance to event loss; strong on event-volume
+      debug faults (its collector is built for throughput)

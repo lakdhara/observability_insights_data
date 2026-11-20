@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.7,
+    "component": "none",
+    "root_cause": "dot-config reports the upstream configured and says it verifies reachability; nothing contradicts it."
+  },
+  "B": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "dot-config writes dot.conf and runs a 3 s probe to :853; its outcome is not attributed, so nothing contradicts success."
+  }
+}

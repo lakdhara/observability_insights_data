@@ -1,0 +1,41 @@
+{
+  "id": "D23",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795115082.3998704,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-colo/D23/agentsight/measured/run-01/trace.jsonl",
+  "execution": "colo",
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 608,
+  "edges": [],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false,
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.6,
+      "component": "none",
+      "root_cause": "MTU set and a request succeeded; the large-upload test swallows its result (>/dev/null; echo verified), so it proves nothing, but nothing shows a failure."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.65,
+      "component": "none",
+      "root_cause": "The large upload's curl reads /tmp/p and talks to 198.51.100.10:80; nothing in the telemetry shows it stalled or failed."
+    }
+  }
+}

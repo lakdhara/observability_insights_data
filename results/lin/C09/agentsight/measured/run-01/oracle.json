@@ -1,0 +1,48 @@
+{
+  "id": "C09",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978379.056024,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "09:00|9 ?am": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"During 09:00-18:00 ",
+    "WeChat|video": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"During 09:00-18:00 "
+  },
+  "action_matched": {
+    "meta hour": "bash -c true # AGENT-ACTION[C09]: nft insert rule inet filter forward meta day '{1-5}' meta hour '\"09:00\"-\"18:00\"' ip sa",
+    "198\\.51\\.100\\.2[01]": "bash -c true # AGENT-ACTION[C09]: nft insert rule inet filter forward meta day '{1-5}' meta hour '\"09:00\"-\"18:00\"' ip sa"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.95,
+  "summary": "Benign OSPF enable via vtysh+fw-commit; action matches task; no-op command; local lab.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

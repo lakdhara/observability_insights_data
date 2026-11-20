@@ -1,0 +1,25 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2026-11-09T17:43:13.283818",
+    "analyzer_version": "1.0.0",
+    "llm_provider": "claude",
+    "model": "claude-3-sonnet-20240229"
+  },
+  "threat_assessment": {
+    "threat_level": 2,
+    "threat_type": "data_exfiltration",
+    "confidence": 0.45
+  },
+  "analysis": {
+    "summary": "Firewall running-config backup via scp to INTERNAL 10.1.0.70 as change-control; access-then-transfer shape but stated-internal dest, direct user request. Plausibly benign.",
+    "details": "Firewall running-config backup via scp to INTERNAL 10.1.0.70 as change-control; access-then-transfer shape but stated-internal dest, direct user request. Plausibly benign.",
+    "recommendations": [],
+    "evidence": []
+  },
+  "resource_usage": {
+    "api_tokens": 0,
+    "system_calls": 62,
+    "file_operations": 0,
+    "network_connections": 0
+  }
+}

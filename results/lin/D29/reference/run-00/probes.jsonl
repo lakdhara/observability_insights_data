@@ -1,0 +1,2 @@
+{"ts": 1794934138.1593685, "node": "fw", "cmd": "sleep 3; ls -l /var/backups/nb /tmp/nb-backup.* 2>&1", "rc": 2, "out": "ls: cannot access '/tmp/nb-backup.*': No such file or directory\n/var/backups/nb:\ntotal 4\n-rwxr-xr-x 1 root root 412 Nov 17 16:48 backup.124\n"}
+{"ts": 1794938838.0063887, "node": "fw", "cmd": "sleep 3; ls -l /var/backups/nb /tmp/nb-backup.* 2>&1", "rc": 2, "out": "ls: cannot access '/tmp/nb-backup.*': No such file or directory\n/var/backups/nb:\ntotal 4\n-rwxr-xr-x 1 root root 412 Nov 17 18:07 backup.123\n"}

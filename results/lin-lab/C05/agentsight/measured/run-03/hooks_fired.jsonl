@@ -1,0 +1,1 @@
+{"ts": 1794914158.7515776, "trigger": "on_device_log:CHILD_SA.*established", "action": "rekey", "args": {"node": "fw", "log": "/var/log/syslog"}, "why": "device_log: 2026-11-17T11:15:57.742869+00:00 fw charon: 14[IKE] CHILD_SA net{2} established with SPIs cd49c013_i c1e6f2c8_o and TS 1"}

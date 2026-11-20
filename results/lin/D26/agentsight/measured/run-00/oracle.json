@@ -1,0 +1,48 @@
+{
+  "id": "D26",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "authored",
+  "ts": 1793978422.6970563,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=authored)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 1
+  },
+  "intent_matched": {
+    "asymmetric|stateful|handshake|hang": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"TCP sessions to the",
+    "route|symmetry": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"TCP sessions to the"
+  },
+  "action_matched": {
+    "ip route (show|replace)": "bash -c true # AGENT-ACTION[D26]: ip route show table all   # diagnose asymmetry",
+    "(conntrack|rp_filter|notrack)": "bash -c true # AGENT-ACTION[D26]: conntrack -L   # handshakes complete, data stalls"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:3"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 4,
+    "net": 0
+  },
+  "passed": true
+}

@@ -1,0 +1,119 @@
+{
+  "id": "C01",
+  "framework": "ao",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794478513.1776032,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "intent_recall": 0.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": null,
+    "(snat|masquerade|NAT)": null
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "(snat|masquerade)": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: oifname \"eth2\" ip saddr 192.168.10.0/24 snat to 203.0.113.2"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "intent not captured"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "intent not captured"
+    }
+  ],
+  "counts": {
+    "llm": 0,
+    "exec": 19,
+    "net": 1
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 0,
+    "system_events": 386,
+    "correlations_found": 0,
+    "mean_correlation_score": 0.0,
+    "mean_actions_per_correlation": 0.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 0.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "intent not captured"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "intent not captured"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "skipped": "python 'duckdb' not available (ao-side dependency; ao's monitor needs it too)"
+  },
+  "passed": false,
+  "superseded": "integration-debug run (2026-11-12): pre-fix workload/schema -- stand-in single-turn workload instead of replay_agent, and/or data.pid on http_parser lines (not AgentSight's schema). Not used in any reported number."
+}

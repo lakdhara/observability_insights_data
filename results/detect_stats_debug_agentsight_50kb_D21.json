@@ -1,0 +1,47 @@
+{
+  "A": {
+    "condition": "A",
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "tn": 0,
+    "no_verdict": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "rows": [
+      [
+        "D21",
+        "A",
+        "FN",
+        true
+      ]
+    ]
+  },
+  "B": {
+    "condition": "B",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "tn": 0,
+    "no_verdict": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "rows": [
+      [
+        "D21",
+        "B",
+        "TP",
+        true
+      ]
+    ]
+  },
+  "lift": {
+    "recall": 1.0,
+    "f1": 1.0,
+    "flipped_by_ebpf": [
+      "D21"
+    ]
+  }
+}

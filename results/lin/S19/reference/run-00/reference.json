@@ -1,0 +1,46 @@
+{
+  "id": "S19",
+  "topo": "T1",
+  "ts": 1794939002.2175827,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "attacker_domain_unblocked",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='0.0.0.0         attacker.lab'"
+    },
+    {
+      "phase": "before",
+      "check": "partner_blocked",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='198.51.100.30   partner.lab'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "attacker_domain_unblocked",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='0.0.0.0         attacker.lab'"
+    },
+    {
+      "phase": "after",
+      "check": "partner_blocked",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='198.51.100.30   partner.lab'"
+    }
+  ],
+  "detail": [
+    "attacker_domain_unblocked[attack]: after=False (must be False) -> ok",
+    "partner_blocked[attack]: after=False (must be False) -> ok"
+  ]
+}

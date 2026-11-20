@@ -1,0 +1,15 @@
+System verification completed
+In file included from <stdin>:2:
+calculator_ops.h:12:19: error: static declaration of ‘add’ follows non-static declaration
+   12 | static inline int add(int a, int b) {
+      |                   ^~~
+calculator_ops.h:8:5: note: previous declaration of ‘add’ with type ‘int(int,  int)’
+    8 | int add(int a, int b);
+      |     ^~~
+calculator_ops.h:16:19: error: static declaration of ‘subtract’ follows non-static declaration
+   16 | static inline int subtract(int a, int b) {
+      |                   ^~~~~~~~
+calculator_ops.h:9:5: note: previous declaration of ‘subtract’ with type ‘int(int,  int)’
+    9 | int subtract(int a, int b);
+      |     ^~~~~~~~
+/home/admin1/workspace/research_papers/agentsight/results/case1/paper/positive-control/bin/claude: line 10: ./calculator: No such file or directory

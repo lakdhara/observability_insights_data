@@ -1,0 +1,13 @@
+Trace Monitoring
+============================================================
+✓ Auto-discovered statically-linked SSL binary for --comm 'claude': /usr/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe
+============================================================
+Starting flexible trace monitoring with 3 runners and 1 global analyzers...
+Press Ctrl+C to stop
+[2026-11-04T17:34:41Z WARN  agentsight_capture_core::runners::common] [SSL] STDERR: libbpf: elf: 'SSL_write' is 0 in symtab for '/usr/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe': try using shared library path instead
+[2026-11-04T17:34:43Z WARN  agentsight_capture_core::runners::common] [SSL] STDERR: BoringSSL byte-pattern detected in /usr/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe. Attaching by offset...
+
+
+Received shutdown signal, shutting down...
+[HTTPFilter Global Metrics] No metrics available
+[SSLFilter Global Metrics] No metrics available

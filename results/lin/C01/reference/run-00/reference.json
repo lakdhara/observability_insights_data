@@ -1,0 +1,63 @@
+{
+  "id": "C01",
+  "topo": "T1",
+  "ts": 1794938471.0319974,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "lan_reaches_internet",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=7 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "source_translated",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "0 matching requests"
+    },
+    {
+      "phase": "before",
+      "check": "default_route",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": ""
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "lan_reaches_internet",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "source_translated",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "1 matching requests"
+    },
+    {
+      "phase": "after",
+      "check": "default_route",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "default via 203.0.113.1 dev eth2"
+    }
+  ],
+  "detail": [
+    "lan_reaches_internet: before=False(want False) after=True -> ok",
+    "source_translated: before=False(want False) after=True -> ok",
+    "default_route: before=False(want False) after=True -> ok"
+  ]
+}

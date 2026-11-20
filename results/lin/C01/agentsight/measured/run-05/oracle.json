@@ -1,0 +1,53 @@
+{
+  "id": "C01",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979538.0090935,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 1,
+    "tool_calls": 0
+  },
+  "intent_recall": 0.5,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 1,
+    "action": 0,
+    "corr": 0
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Our office LAN (192.168.10.",
+    "(snat|masquerade|NAT)": null
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": null,
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": null,
+    "(snat|masquerade)": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "intent missing"
+    }
+  ],
+  "counts": {
+    "llm": 4,
+    "exec": 0,
+    "net": 0
+  },
+  "passed": false
+}

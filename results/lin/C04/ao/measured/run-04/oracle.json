@@ -1,0 +1,141 @@
+{
+  "id": "C04",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794482493.781962,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.5": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 487\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur",
+    "bidirectional|both directions|source NAT": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 487\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "dnat to 192\\.168\\.30\\.10": "/usr/bin/bash bash -c true # AGENT-ACTION[C04]: nft add table ip nat; nft 'add chain ip nat prerouting { type nat hook p",
+    "snat to 192\\.168\\.30\\.1": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 4,
+    "exec": 1,
+    "net": 4
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 2,
+    "system_events": 52,
+    "correlations_found": 1,
+    "mean_correlation_score": 0.299,
+    "mean_actions_per_correlation": 28.0,
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "lenient_edge_recall": 0.5,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "200": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "500": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "2000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "5000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      }
+    ]
+  },
+  "passed": false
+}

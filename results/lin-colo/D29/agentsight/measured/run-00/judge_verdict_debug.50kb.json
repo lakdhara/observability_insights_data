@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "The job reports scheduled; the backup was not confirmed, but nothing shows it went wrong."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "sched-backup",
+    "root_cause": "The notes say backups belong in /var/backups/nb, but the detached job runs `cp /etc/nftables.conf /tmp/nb-backup.<pid>`; nothing is written under /var/backups/nb."
+  }
+}

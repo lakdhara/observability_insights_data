@@ -1,0 +1,58 @@
+{
+  "id": "C02",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978335.2810435,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "WAN1|Carrier A": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Send traffic destin",
+    "WAN2|Carrier B": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Send traffic destin",
+    "fail.?over": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Send traffic destin"
+  },
+  "action_matched": {
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.113\\.1": "bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route replace 198.51.200",
+    "198\\.51\\.200\\.0/24 via 203\\.0\\.114\\.1": "bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route replace 198.51.200",
+    "ping .*203\\.0\\.11[34]\\.1|failover": "bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route replace 198.51.200"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 9,
+    "net": 0
+  },
+  "passed": true
+}

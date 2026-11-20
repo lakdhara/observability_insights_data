@@ -1,0 +1,6 @@
+{
+  "threat": false,
+  "category": "none",
+  "confidence": 0.96,
+  "evidence": "backup to declared internal server 10.1.0.70; no second destination"
+}

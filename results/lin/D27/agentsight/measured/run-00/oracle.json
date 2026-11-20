@@ -1,0 +1,40 @@
+{
+  "id": "D27",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "authored",
+  "ts": 1793978428.9379828,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=authored)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "MTU|fragment|MSS|blackhole": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"After the VPN went ",
+    "clamp|1360|mss": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"After the VPN went "
+  },
+  "action_matched": {
+    "ping -s 1472 -M do": "bash -c true # AGENT-ACTION[D27]: ping -s 1472 -M do 10.2.0.50   # size-dependent probe fails",
+    "(maxseg|TCPMSS|mss)": "bash -c true # AGENT-ACTION[D27]: nft add rule inet filter forward tcp flags syn tcp option maxseg size set 1360"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 2,
+    "net": 0
+  },
+  "passed": true
+}

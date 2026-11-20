@@ -1,0 +1,11 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2026-11-04T19:02:17.199673",
+    "correlation_engine_version": "1.0.0",
+    "temporal_window_ms": 500,
+    "total_llm_interactions": 0,
+    "total_system_events": 166,
+    "total_correlations": 0
+  },
+  "correlations": []
+}

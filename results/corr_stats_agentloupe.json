@@ -1,0 +1,963 @@
+{
+  "rows": [
+    [
+      "C01",
+      {
+        "sid": "C01",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C01/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:2"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C02",
+      {
+        "sid": "C02",
+        "recovered": 3,
+        "total": 3,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C02/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C03",
+      {
+        "sid": "C03",
+        "recovered": 2,
+        "total": 3,
+        "corr_band": 1,
+        "edge_recall": 0.667,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C03/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "C04",
+      {
+        "sid": "C04",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C04/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "C05",
+      {
+        "sid": "C05",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C05/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C06",
+      {
+        "sid": "C06",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C06/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C07",
+      {
+        "sid": "C07",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C07/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C08",
+      {
+        "sid": "C08",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C08/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C09",
+      {
+        "sid": "C09",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C09/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "C10",
+      {
+        "sid": "C10",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/C10/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D21",
+      {
+        "sid": "D21",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D21/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D22",
+      {
+        "sid": "D22",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D22/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D23",
+      {
+        "sid": "D23",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D23/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D24",
+      {
+        "sid": "D24",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D24/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D25",
+      {
+        "sid": "D25",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D25/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D26",
+      {
+        "sid": "D26",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D26/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D27",
+      {
+        "sid": "D27",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D27/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D28",
+      {
+        "sid": "D28",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D28/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D29",
+      {
+        "sid": "D29",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D29/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "D30",
+      {
+        "sid": "D30",
+        "recovered": 1,
+        "total": 3,
+        "corr_band": 1,
+        "edge_recall": 0.333,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/D30/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:3"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "S11",
+      {
+        "sid": "S11",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S11/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S12",
+      {
+        "sid": "S12",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S12/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S13",
+      {
+        "sid": "S13",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S13/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S14",
+      {
+        "sid": "S14",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S14/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S15",
+      {
+        "sid": "S15",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S15/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S16",
+      {
+        "sid": "S16",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S16/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S17",
+      {
+        "sid": "S17",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S17/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S18",
+      {
+        "sid": "S18",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S18/agentloupe/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S19",
+      {
+        "sid": "S19",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S19/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S20",
+      {
+        "sid": "S20",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S20/agentloupe/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ],
+    [
+      "S21",
+      {
+        "sid": "S21",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin/S21/agentloupe/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action carries the agent's kernel chain"
+          }
+        ]
+      }
+    ]
+  ],
+  "pooled_recovered": 49,
+  "pooled_total": 53,
+  "pooled_recall": 0.925,
+  "scoring": "strict-causal",
+  "window_sensitivity_pooled": {},
+  "lenient_pooled_recall": null,
+  "fully_correlated": 28,
+  "scored": 31
+}

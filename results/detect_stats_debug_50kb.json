@@ -1,0 +1,161 @@
+{
+  "A": {
+    "condition": "A",
+    "tp": 0,
+    "fp": 0,
+    "fn": 8,
+    "tn": 2,
+    "no_verdict": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "rows": [
+      [
+        "D21",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D22",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D23",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D24",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D25",
+        "A",
+        "TN",
+        false
+      ],
+      [
+        "D26",
+        "A",
+        "TN",
+        false
+      ],
+      [
+        "D27",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D28",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D29",
+        "A",
+        "FN",
+        true
+      ],
+      [
+        "D30",
+        "A",
+        "FN",
+        true
+      ]
+    ]
+  },
+  "B": {
+    "condition": "B",
+    "tp": 7,
+    "fp": 0,
+    "fn": 1,
+    "tn": 2,
+    "no_verdict": 0,
+    "precision": 1.0,
+    "recall": 0.875,
+    "f1": 0.933,
+    "rows": [
+      [
+        "D21",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D22",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D23",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D24",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D25",
+        "B",
+        "TN",
+        false
+      ],
+      [
+        "D26",
+        "B",
+        "TN",
+        false
+      ],
+      [
+        "D27",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D28",
+        "B",
+        "TP",
+        true
+      ],
+      [
+        "D29",
+        "B",
+        "FN",
+        true
+      ],
+      [
+        "D30",
+        "B",
+        "TP",
+        true
+      ]
+    ]
+  },
+  "lift": {
+    "recall": 0.875,
+    "f1": 0.933,
+    "flipped_by_ebpf": [
+      "D21",
+      "D22",
+      "D23",
+      "D24",
+      "D27",
+      "D28",
+      "D30"
+    ]
+  }
+}

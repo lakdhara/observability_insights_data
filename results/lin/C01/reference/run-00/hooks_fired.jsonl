@@ -1,0 +1,3 @@
+{"ts": 1793906774.6301763, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "h1", "cmd": "curl -s -m4 http://198.51.100.10/"}, "why": "agent_exit"}
+{"ts": 1794852052.0648804, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "h1", "cmd": "curl -s -m4 http://198.51.100.10/"}, "why": "agent_exit"}
+{"ts": 1794938475.7947633, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "h1", "cmd": "curl -s -m4 http://198.51.100.10/"}, "why": "agent_exit"}

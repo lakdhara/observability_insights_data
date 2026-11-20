@@ -1,0 +1,354 @@
+{
+  "per_scenario": {
+    "C01": {
+      "bare": {
+        "wall_s": 4.113649292399896,
+        "agent_cpu_s": 0.09903660000000106,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.4680000000000746,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 4.11930532840006,
+        "agent_cpu_s": 0.10255080000000018,
+        "tool_cpu_s": 0.04799999999999997,
+        "host_cpu_s": 0.4680000000000291,
+        "tool_rss_mb": 56.0765625
+      },
+      "agentloupe": {
+        "wall_s": 4.1148647916003025,
+        "agent_cpu_s": 0.10013980000000028,
+        "tool_cpu_s": 0.033999999999999996,
+        "host_cpu_s": 0.42800000000011096,
+        "tool_rss_mb": 56.10703125
+      },
+      "ao": {
+        "wall_s": 4.118811255999844,
+        "agent_cpu_s": 0.10749459999999923,
+        "tool_cpu_s": 0.3267204,
+        "host_cpu_s": 0.87199999999998,
+        "tool_rss_mb": 104.58984375
+      }
+    },
+    "C05": {
+      "bare": {
+        "wall_s": 5.130050914399908,
+        "agent_cpu_s": 0.11019340000000055,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.5460000000000946,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 5.128878535799868,
+        "agent_cpu_s": 0.1090113999999999,
+        "tool_cpu_s": 0.051999999999999984,
+        "host_cpu_s": 0.4100000000000364,
+        "tool_rss_mb": 56.23515625
+      },
+      "agentloupe": {
+        "wall_s": 5.124450554600026,
+        "agent_cpu_s": 0.10544340000000081,
+        "tool_cpu_s": 0.04799999999999999,
+        "host_cpu_s": 0.3919999999999163,
+        "tool_rss_mb": 56.0078125
+      },
+      "ao": {
+        "wall_s": 5.128318079400197,
+        "agent_cpu_s": 0.11498339999999967,
+        "tool_cpu_s": 0.40303580000000017,
+        "host_cpu_s": 0.8800000000000182,
+        "tool_rss_mb": 104.91015625
+      }
+    },
+    "C08": {
+      "bare": {
+        "wall_s": 6.136728014999972,
+        "agent_cpu_s": 0.11372640000000053,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.4239999999999327,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 6.135321226800261,
+        "agent_cpu_s": 0.11268039999999942,
+        "tool_cpu_s": 0.04799999999999998,
+        "host_cpu_s": 0.5300000000000182,
+        "tool_rss_mb": 56.09921875
+      },
+      "agentloupe": {
+        "wall_s": 6.132873340800143,
+        "agent_cpu_s": 0.1117892000000003,
+        "tool_cpu_s": 0.04399999999999997,
+        "host_cpu_s": 0.5660000000000309,
+        "tool_rss_mb": 56.17734375
+      },
+      "ao": {
+        "wall_s": 6.1399005148001375,
+        "agent_cpu_s": 0.12199800000000034,
+        "tool_cpu_s": 0.4664478000000002,
+        "host_cpu_s": 0.9540000000000418,
+        "tool_rss_mb": 104.20390625
+      }
+    },
+    "S11": {
+      "bare": {
+        "wall_s": 3.107807619599771,
+        "agent_cpu_s": 0.09546760000000129,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.30999999999994543,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 3.105640698999923,
+        "agent_cpu_s": 0.091973,
+        "tool_cpu_s": 0.026000000000000002,
+        "host_cpu_s": 0.32600000000002183,
+        "tool_rss_mb": 56.1953125
+      },
+      "agentloupe": {
+        "wall_s": 3.106623953600047,
+        "agent_cpu_s": 0.0937750000000003,
+        "tool_cpu_s": 0.03599999999999998,
+        "host_cpu_s": 0.43400000000001454,
+        "tool_rss_mb": 56.1
+      },
+      "ao": {
+        "wall_s": 3.104378875399925,
+        "agent_cpu_s": 0.09670139999999941,
+        "tool_cpu_s": 0.25345340000000016,
+        "host_cpu_s": 0.5600000000000364,
+        "tool_rss_mb": 103.3796875
+      }
+    },
+    "S13": {
+      "bare": {
+        "wall_s": 8.194929368000157,
+        "agent_cpu_s": 0.16487940000000023,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.5619999999999891,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 8.196610720399894,
+        "agent_cpu_s": 0.16632900000000078,
+        "tool_cpu_s": 0.08199999999999999,
+        "host_cpu_s": 0.6299999999999727,
+        "tool_rss_mb": 56.1921875
+      },
+      "agentloupe": {
+        "wall_s": 8.192708651399972,
+        "agent_cpu_s": 0.16576639999999934,
+        "tool_cpu_s": 0.08399999999999999,
+        "host_cpu_s": 1.7599999999999454,
+        "tool_rss_mb": 56.1328125
+      },
+      "ao": {
+        "wall_s": 8.18743912480004,
+        "agent_cpu_s": 0.16297100000000123,
+        "tool_cpu_s": 0.6593120000000001,
+        "host_cpu_s": 1.2699999999998908,
+        "tool_rss_mb": 106.484375
+      }
+    },
+    "S16": {
+      "bare": {
+        "wall_s": 4.112056830000256,
+        "agent_cpu_s": 0.09703200000000126,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.49200000000000726,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 4.112197150399879,
+        "agent_cpu_s": 0.09871320000000008,
+        "tool_cpu_s": 0.027999999999999997,
+        "host_cpu_s": 0.4380000000000564,
+        "tool_rss_mb": 56.1546875
+      },
+      "agentloupe": {
+        "wall_s": 4.115236173000085,
+        "agent_cpu_s": 0.09877379999999887,
+        "tool_cpu_s": 0.041999999999999996,
+        "host_cpu_s": 0.39400000000000546,
+        "tool_rss_mb": 56.1140625
+      },
+      "ao": {
+        "wall_s": 4.119759369400072,
+        "agent_cpu_s": 0.10856159999999937,
+        "tool_cpu_s": 0.3268551999999998,
+        "host_cpu_s": 0.6660000000000309,
+        "tool_rss_mb": 104.06484375
+      }
+    },
+    "S20": {
+      "bare": {
+        "wall_s": 5.1395518037999866,
+        "agent_cpu_s": 0.11968960000000077,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.533999999999969,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 5.133443920199715,
+        "agent_cpu_s": 0.11560840000000079,
+        "tool_cpu_s": 0.05399999999999998,
+        "host_cpu_s": 0.4839999999999236,
+        "tool_rss_mb": 56.08203125
+      },
+      "agentloupe": {
+        "wall_s": 5.141851387599854,
+        "agent_cpu_s": 0.12142359999999926,
+        "tool_cpu_s": 0.06199999999999998,
+        "host_cpu_s": 0.43000000000006366,
+        "tool_rss_mb": 56.1375
+      },
+      "ao": {
+        "wall_s": 5.177378023599976,
+        "agent_cpu_s": 0.1238841999999992,
+        "tool_cpu_s": 0.40718739999999987,
+        "host_cpu_s": 0.8539999999999963,
+        "tool_rss_mb": 104.81171875
+      }
+    },
+    "D22": {
+      "bare": {
+        "wall_s": 8.18660238879993,
+        "agent_cpu_s": 0.1573049999999993,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.6399999999999636,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 8.18913603359997,
+        "agent_cpu_s": 0.16040740000000184,
+        "tool_cpu_s": 0.07799999999999999,
+        "host_cpu_s": 0.7019999999999527,
+        "tool_rss_mb": 56.20078125
+      },
+      "agentloupe": {
+        "wall_s": 8.188504956399811,
+        "agent_cpu_s": 0.15876440000000108,
+        "tool_cpu_s": 0.092,
+        "host_cpu_s": 0.7539999999999509,
+        "tool_rss_mb": 56.13984375
+      },
+      "ao": {
+        "wall_s": 8.186935320400153,
+        "agent_cpu_s": 0.1635625999999993,
+        "tool_cpu_s": 0.6361585999999999,
+        "host_cpu_s": 1.3079999999999927,
+        "tool_rss_mb": 106.00078125
+      }
+    },
+    "D23": {
+      "bare": {
+        "wall_s": 7.167919265000274,
+        "agent_cpu_s": 0.1420819999999985,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.5579999999999927,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 7.168031888799851,
+        "agent_cpu_s": 0.14378760000000038,
+        "tool_cpu_s": 0.07199999999999998,
+        "host_cpu_s": 0.50600000000004,
+        "tool_rss_mb": 56.03671875
+      },
+      "agentloupe": {
+        "wall_s": 7.172273036599836,
+        "agent_cpu_s": 0.14486660000000073,
+        "tool_cpu_s": 0.06999999999999999,
+        "host_cpu_s": 0.5440000000000055,
+        "tool_rss_mb": 56.19609375
+      },
+      "ao": {
+        "wall_s": 7.1623381460000015,
+        "agent_cpu_s": 0.14302060000000177,
+        "tool_cpu_s": 0.5588232,
+        "host_cpu_s": 1.094000000000051,
+        "tool_rss_mb": 106.1078125
+      }
+    },
+    "D30": {
+      "bare": {
+        "wall_s": 7.169383744199695,
+        "agent_cpu_s": 0.14365200000000033,
+        "tool_cpu_s": 0.0,
+        "host_cpu_s": 0.5799999999999728,
+        "tool_rss_mb": 0.0
+      },
+      "agentsight": {
+        "wall_s": 7.171585000000232,
+        "agent_cpu_s": 0.1469436000000007,
+        "tool_cpu_s": 0.07999999999999999,
+        "host_cpu_s": 1.4280000000000654,
+        "tool_rss_mb": 56.21171875
+      },
+      "agentloupe": {
+        "wall_s": 7.172209415399811,
+        "agent_cpu_s": 0.1468245999999999,
+        "tool_cpu_s": 0.07799999999999999,
+        "host_cpu_s": 0.7079999999999927,
+        "tool_rss_mb": 56.115625
+      },
+      "ao": {
+        "wall_s": 7.1681939208001495,
+        "agent_cpu_s": 0.14776760000000005,
+        "tool_cpu_s": 0.5571639999999999,
+        "host_cpu_s": 1.0359999999999672,
+        "tool_rss_mb": 105.7296875
+      }
+    }
+  },
+  "overall": {
+    "bare": {
+      "wall_s": 5.846,
+      "agent_cpu_s": 0.124,
+      "tool_cpu_s": 0.0,
+      "host_cpu_s": 0.511,
+      "tool_rss_mb": 0.0,
+      "wall_overhead_pct": 0.0,
+      "agent_cpu_overhead_pct": 0.0,
+      "host_cpu_overhead_pct": 0.0,
+      "total_cpu_overhead_pct": 0.0,
+      "wall_sd_s": 1.723
+    },
+    "agentsight": {
+      "wall_s": 5.846,
+      "agent_cpu_s": 0.125,
+      "tool_cpu_s": 0.057,
+      "host_cpu_s": 0.592,
+      "tool_rss_mb": 56.148,
+      "wall_overhead_pct": -0.0,
+      "agent_cpu_overhead_pct": 0.2,
+      "host_cpu_overhead_pct": 14.4,
+      "total_cpu_overhead_pct": 44.7,
+      "wall_sd_s": 1.724
+    },
+    "agentloupe": {
+      "wall_s": 5.846,
+      "agent_cpu_s": 0.125,
+      "tool_cpu_s": 0.059,
+      "host_cpu_s": 0.641,
+      "tool_rss_mb": 56.123,
+      "wall_overhead_pct": 0.0,
+      "agent_cpu_overhead_pct": 0.2,
+      "host_cpu_overhead_pct": 24.8,
+      "total_cpu_overhead_pct": 46.4,
+      "wall_sd_s": 1.723
+    },
+    "ao": {
+      "wall_s": 5.849,
+      "agent_cpu_s": 0.129,
+      "tool_cpu_s": 0.46,
+      "host_cpu_s": 0.949,
+      "tool_rss_mb": 105.028,
+      "wall_overhead_pct": 0.1,
+      "agent_cpu_overhead_pct": 4.3,
+      "host_cpu_overhead_pct": 85.3,
+      "total_cpu_overhead_pct": 367.7,
+      "wall_sd_s": 1.72
+    }
+  }
+}

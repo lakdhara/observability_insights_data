@@ -1,0 +1,34 @@
+{
+  "id": "D24",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794330818.6799614,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin/D24/agentsight/measured/run-05/trace.jsonl",
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 2
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 11,
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "action carries the agent's kernel chain"
+    }
+  ],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false
+}

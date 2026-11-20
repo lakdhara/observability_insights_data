@@ -1,0 +1,38 @@
+{
+  "id": "S13",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978466.3442953,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "OSPF": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Enable OSPF on R1 i"
+  },
+  "action_matched": {
+    "fw-commit": "bash -c true # AGENT-ACTION[S13]: vtysh -c 'conf t' -c 'router ospf' -c 'network 192.168.10.0/24 area 0'; fw-commit"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

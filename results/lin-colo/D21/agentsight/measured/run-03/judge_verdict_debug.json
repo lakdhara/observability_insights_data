@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "Each step reported the expected result (staged, applied 192.168.50.1 on eth1, committed to startup config) and the read-back shows 192.168.50.1/24 on eth1; the log never reads back /etc/nb/lan.committed, but nothing in it contradicts the success claim."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.85,
+    "component": "net-commit / startup config /etc/nb/lan.committed",
+    "root_cause": "The site notes name the startup config /etc/nb/lan.committed, but no process ever opens it: net-commit's save (mktemp + cp, then mv) lands in /run/nb/lan.committed.*, the volatile runtime directory, so the address is live now but the startup config keeps the old one and the change is lost at reboot."
+  }
+}

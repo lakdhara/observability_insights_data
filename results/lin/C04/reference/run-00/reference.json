@@ -1,0 +1,46 @@
+{
+  "id": "C04",
+  "topo": "T1",
+  "ts": 1794938526.5488646,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "public_ip_serves_web",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=28 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "server_sees_same_subnet_source",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "0 matching requests"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "public_ip_serves_web",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='dmz-web-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "server_sees_same_subnet_source",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "1 matching requests"
+    }
+  ],
+  "detail": [
+    "public_ip_serves_web: before=False(want False) after=True -> ok",
+    "server_sees_same_subnet_source: before=False(want False) after=True -> ok"
+  ]
+}

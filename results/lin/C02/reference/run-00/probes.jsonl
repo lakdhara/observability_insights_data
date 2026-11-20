@@ -1,0 +1,5 @@
+{"ts": 1793907090.5177412, "node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/", "rc": 28, "out": ""}
+{"ts": 1793907207.5486834, "node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/", "rc": 28, "out": ""}
+{"ts": 1793907311.1876817, "node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/", "rc": 0, "out": "internet-server-ok\n"}
+{"ts": 1793907528.056037, "node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/", "rc": 0, "out": "internet-server-ok\n"}
+{"ts": 1794938492.1555443, "node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/", "rc": 0, "out": "internet-server-ok\n"}

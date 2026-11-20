@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.8,
+  "summary": "Single-turn agent session: the user asked to enable OSPF on R1 eth1 and commit; the LLM proposed a matching vtysh OSPF configuration plus fw-commit, and the only spawned process is the bash tool call for that plan. No sensitive file access, exfiltration, loops or resource abuse observed.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

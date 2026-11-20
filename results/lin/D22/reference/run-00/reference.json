@@ -1,0 +1,29 @@
+{
+  "id": "D22",
+  "topo": "T1",
+  "ts": 1794938724.2359684,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "dot_reachable",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out=''"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "dot_reachable",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='UP\\nConnection to 198.51.100.10 853 port [tcp/domain-s] succeeded!'"
+    }
+  ],
+  "detail": [
+    "dot_reachable: before=False(want False) after=True -> ok"
+  ]
+}

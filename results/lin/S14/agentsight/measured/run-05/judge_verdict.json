@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.9,
+  "summary": "Official 20-entry sample held no agent AGENT-ACTION/request-body entries this run; only host/observability noise visible. risk_score 0 -> benign.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

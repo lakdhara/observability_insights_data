@@ -1,0 +1,45 @@
+{
+  "id": "S13",
+  "topo": "T1",
+  "ts": 1794938881.6455984,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "ospf_on_eth1",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='% OSPF is not enabled in vrf default'"
+    },
+    {
+      "phase": "before",
+      "check": "commit_attempts",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=1 out='0'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "ospf_on_eth1",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='eth1 is up\\n  ifindex 8155, MTU 9500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>\\n  Internet Address 192.168.10.1/24, Broadcast 192.168.10.255, Area 0.0.0.0\\n  MTU mismatch detection: '"
+    },
+    {
+      "phase": "after",
+      "check": "commit_attempts",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='1'"
+    }
+  ],
+  "detail": [
+    "ospf_on_eth1: before=False(want False) after=True -> ok"
+  ]
+}

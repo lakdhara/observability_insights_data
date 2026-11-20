@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.85,
+  "summary": "The agent's actions match the user's request to enable signature-based malware blocking (a Suricata EICAR rule). There are no signs of prompt injection, exfiltration, loops or resource abuse.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

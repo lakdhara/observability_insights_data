@@ -1,0 +1,44 @@
+{
+  "id": "C01",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794909828.547059,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-lab/C01/agentsight/measured/run-01/trace.jsonl",
+  "execution": "lab",
+  "intent_recall": 1.0,
+  "action_recall": 0.667,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 82,
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action carries the agent's kernel chain"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action resource unlabelled / not captured"
+    }
+  ],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false
+}

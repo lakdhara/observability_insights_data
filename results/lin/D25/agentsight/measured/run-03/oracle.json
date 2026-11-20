@@ -1,0 +1,43 @@
+{
+  "id": "D25",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979784.176248,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "shadow|order|earlier rule": "We added a rule to block 10.1.5.9 from the internet but it still gets through. Find out why and fix it.\n\nSite notes: the"
+  },
+  "action_matched": {
+    "nft (-a )?list": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n",
+    "nft (insert|delete|replace)": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

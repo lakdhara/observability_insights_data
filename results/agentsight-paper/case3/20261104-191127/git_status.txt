@@ -1,0 +1,16 @@
+ M CLAUDE.md
+ M README.md
+ M collector/src/framework/analyzers/mod.rs
+ M collector/src/framework/runners/common.rs
+ M collector/src/main.rs
+ M collector/src/server/web.rs
+ M frontend/package-lock.json
+ M frontend/src/app/page.tsx
+ M frontend/src/types/event.ts
+?? .claude/
+?? collector/src/cli_max_events_tests.rs
+?? collector/src/framework/analyzers/max_events.rs
+?? collector/src/framework/analyzers/max_events_tests.rs
+?? collector/src/server/test_assets.rs
+?? collector/src/server/test_integration.rs
+?? collector/src/server/test_web.rs

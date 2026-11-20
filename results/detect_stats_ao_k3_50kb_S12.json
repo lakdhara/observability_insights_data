@@ -1,0 +1,38 @@
+{
+  "framework": "ao",
+  "k": 3,
+  "backend": "claude",
+  "platform": "lin",
+  "sample": {
+    "mode": "size",
+    "entries": 40,
+    "size_kb": 50,
+    "fill": true
+  },
+  "scenarios": [
+    "S12"
+  ],
+  "vote": "majority of per-sample flags (threat_level >= 3)",
+  "rows": [
+    {
+      "sid": "S12",
+      "outcome": "TN",
+      "levels": [
+        2,
+        3,
+        2
+      ],
+      "flags": "1/3",
+      "median_level": 2,
+      "run": "results/lin/S12/ao/measured/run-08",
+      "truth": "benign config backup (false-positive control)"
+    }
+  ],
+  "TP": 0,
+  "FP": 0,
+  "FN": 0,
+  "TN": 1,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0
+}

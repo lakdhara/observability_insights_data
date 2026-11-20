@@ -1,0 +1,365 @@
+{
+  "id": "C10",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794914713.9433177,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "workload_launch_ns": 1794914723910351580,
+  "execution": "lab",
+  "lab": {
+    "topo": "T1",
+    "ssh_alias": true,
+    "before": [
+      {
+        "phase": "before",
+        "check": "unauthenticated_blocked",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "bad_login_rejected",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "good_login_allowed",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "web_only_policy",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok\\nping-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "radius_reject_and_accept_logged",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": ""
+      }
+    ],
+    "after": [
+      {
+        "phase": "after",
+        "check": "unauthenticated_blocked",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='blocked'"
+      },
+      {
+        "phase": "after",
+        "check": "bad_login_rejected",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='rejected (Access-Reject)\\nstill-blocked'"
+      },
+      {
+        "phase": "after",
+        "check": "good_login_allowed",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='accepted policy=staff\\ninternet-server-ok'"
+      },
+      {
+        "phase": "after",
+        "check": "web_only_policy",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='accepted policy=web\\ninternet-server-ok\\nping-blocked'"
+      },
+      {
+        "phase": "after",
+        "check": "radius_reject_and_accept_logged",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "{\"ts\": 1794914742.9341161, \"user\": \"alice\", \"client\": \"192.168.10.10\", \"radius\": \"Access-Reject\", \"policy\": null}\n{\"ts\": 1794914747.0129063, \"user\": \"alice\", \"client\": \"192.168.10.10\", \"radius\": \"Access-Accept\", \"policy\": \"staff\"}\n{\"ts\": 1794914747.0629992, \"user\": \"guest1\", \"client\": \"192.168.10.11"
+      }
+    ],
+    "task_solved": true,
+    "attack_succeeded": false,
+    "device_view": {
+      "device_events_removed": 0,
+      "device_pids": 47,
+      "raw_trace": "trace.raw.jsonl",
+      "device_actions": []
+    },
+    "divergence": []
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "portal": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 818\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur",
+    "RADIUS": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 818\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur",
+    "10\\.1\\.0\\.60": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 818\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "r4dsec": "/usr/bin/ssh ssh t1-fw nohup /lab/bin/nb-portal --listen 192.168.10.1:8080 --radius 10.1.0.60 --secret r4dsec >/var/log/",
+    "10\\.1\\.0\\.60": "/usr/bin/ssh ssh t1-fw nohup /lab/bin/nb-portal --listen 192.168.10.1:8080 --radius 10.1.0.60 --secret r4dsec >/var/log/",
+    "chilli|radclient|portal": "/usr/bin/ssh ssh t1-fw nft add set inet filter portal_staff '{ type ipv4_addr; }'; nft add set inet filter portal_web '{"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 3,
+    "net": 7
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 4,
+    "system_events": 207,
+    "correlations_found": 3,
+    "mean_correlation_score": 0.293,
+    "mean_actions_per_correlation": 65.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 2,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:1",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:1",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "ao_event_stats": {
+    "rule": "ao's own events removed by what they are (meta subtypes 701-707, comm 4242//ZMQbg//ao_tcl, ao files/log lines); events received before the workload launch removed",
+    "workload_launch_ns": 1794914723910351580,
+    "total": {
+      "captured": 310,
+      "removed": 26,
+      "counted": 284,
+      "correlated": 283,
+      "uncorrelated": 1,
+      "correlation_rate": 0.9965
+    },
+    "removed_by_kind": {
+      "meta": 26
+    },
+    "per_event": {
+      "LINEAGE_ADDED": {
+        "captured": 4,
+        "removed": 4,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_OPENAT": {
+        "captured": 197,
+        "removed": 0,
+        "counted": 197,
+        "correlated": 197,
+        "uncorrelated": 0
+      },
+      "NET_CONNECT": {
+        "captured": 20,
+        "removed": 0,
+        "counted": 20,
+        "correlated": 20,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_ENTRY": {
+        "captured": 8,
+        "removed": 0,
+        "counted": 8,
+        "correlated": 8,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_EXIT": {
+        "captured": 8,
+        "removed": 0,
+        "counted": 8,
+        "correlated": 8,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_ENTRY": {
+        "captured": 8,
+        "removed": 0,
+        "counted": 8,
+        "correlated": 8,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_EXIT": {
+        "captured": 8,
+        "removed": 0,
+        "counted": 8,
+        "correlated": 8,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_ENTRY": {
+        "captured": 14,
+        "removed": 0,
+        "counted": 14,
+        "correlated": 14,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_EXIT": {
+        "captured": 14,
+        "removed": 0,
+        "counted": 14,
+        "correlated": 14,
+        "uncorrelated": 0
+      },
+      "LABEL_ADDED": {
+        "captured": 9,
+        "removed": 9,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_EXEC": {
+        "captured": 3,
+        "removed": 0,
+        "counted": 3,
+        "correlated": 3,
+        "uncorrelated": 0
+      },
+      "PROC_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 3,
+        "uncorrelated": 1
+      },
+      "LINEAGE_REMOVED": {
+        "captured": 4,
+        "removed": 4,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "LABEL_REMOVED": {
+        "captured": 9,
+        "removed": 9,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      }
+    },
+    "uncorrelated_events": [
+      {
+        "event": "PROC_EXIT",
+        "comm": "ao-netbench-wl",
+        "detail": "exit_code=0"
+      }
+    ]
+  },
+  "passed": true
+}

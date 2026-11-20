@@ -1,0 +1,23 @@
+Loading trace data from: /home/admin1/workspace/research_papers/agentsight/results/case1/paper/allowlist-20261104-185849/trace.log
+Loaded 0 LLM interactions
+Loaded 166 system events
+Built process tree with 50 processes
+Starting correlation with 0 LLM interactions
+Found 0 correlations
+
+================================================================================
+MULTI-SIGNAL CAUSAL CORRELATION RESULTS
+================================================================================
+Total LLM Interactions: 0
+Total System Events: 166
+Total Correlations Found: 0
+Temporal Window: 500ms
+
+Correlation Types:
+
+Top 5 Correlations by Score:
+Score    Type                 LLM Summary                                        Actions   
+------------------------------------------------------------------------------------------
+Correlations exported to: /home/admin1/workspace/research_papers/agentsight/results/case1/paper/allowlist-20261104-185849/correlations.json
+
+Correlation analysis complete!

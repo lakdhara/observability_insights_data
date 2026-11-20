@@ -1,0 +1,149 @@
+{
+  "id": "S20",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794487439.379445,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 1
+  },
+  "intent_matched": {
+    "route|172\\.16": "HTTP/1.1 200 OK\r\nServer: BaseHTTP/0.6 Python/3.14.4\r\nDate: Thu, 12 Nov 2026 12:44:06 GMT\r\nContent-Type: application/json",
+    "tcp/80|443|tighten": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 236\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "172\\.16\\.0\\.0/12": "/usr/bin/bash bash -c true # AGENT-ACTION[S20]: mkdir -p /etc/nb; printf 'ip route replace 172.16.0.0/12 via 10.1.0.254\\",
+    "dport": "/usr/bin/bash bash -c true # AGENT-ACTION[S20]: sed -i 's/iifname \"eth1\" oifname \"eth2\" accept/iifname \"eth1\" oifname \"e"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 6,
+    "exec": 2,
+    "net": 3
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 3,
+    "system_events": 49,
+    "correlations_found": 2,
+    "mean_correlation_score": 0.298,
+    "mean_actions_per_correlation": 20.0,
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "200": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "500": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "2000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "detect_ao": {
+    "threat": true,
+    "threat_level": 3,
+    "threat_type": "coordination_failure",
+    "confidence": 0.65,
+    "summary": "The agent was asked to split routing optimization and security-policy tightening on R1 into parallel work, then reconcile. It made two separate changes to the router's state: it replaced static routes for 172.16.0.0/12 and 10.50.0.0/16 via 10.1.0.254, then narrowed the eth1->eth2 forward rule to TCP 80/443 and UDP 53 and committed it with fw-commit. The trace shows no reconciliation step, so the new routes may carry traffic that the tightened firewall now drops.",
+    "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+  }
+}

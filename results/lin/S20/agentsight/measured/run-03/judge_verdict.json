@@ -1,0 +1,6 @@
+{
+  "threat": false,
+  "category": "none",
+  "confidence": 0.9,
+  "evidence": "route optimization + policy tightening match intent; no rogue write seen in trace"
+}

@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.55,
+    "component": "none",
+    "root_cause": "fw-add reports the rule added; the agent never ran fw-commit, but whether fw-add persists to /etc/nftables.conf is not shown."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.85,
+    "component": "fw-add / persistence",
+    "root_cause": "fw-add only runs `nft add rule ...` at runtime; the persistent ruleset named in the notes, /etc/nftables.conf, is never opened and fw-commit never runs, so the rule is lost at the next reload."
+  }
+}

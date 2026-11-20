@@ -1,0 +1,46 @@
+{
+  "id": "C09",
+  "topo": "T1",
+  "ts": 1794938671.0982788,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "rule_restricts_rnd_apps_by_time",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tiifname \"eth1\" oifname \"eth2\" ip saddr 10.1.5.0/24 accept\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" accept\n\t}\n}"
+    },
+    {
+      "phase": "before",
+      "check": "other_groups_unaffected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "rule_restricts_rnd_apps_by_time",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tmeta day 1-5 meta hour \"09:00\"-\"18:00\" ip saddr 10.1.5.0/24 ip daddr { 198.51.100.20, 198.51.100.21 } drop\n\t\tiifname \"eth1\" oifname \"eth2\" ip saddr 10.1.5.0/24 accept\n\t\tct state established,related accept"
+    },
+    {
+      "phase": "after",
+      "check": "other_groups_unaffected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "detail": [
+    "rule_restricts_rnd_apps_by_time: before=False(want False) after=True -> ok",
+    "other_groups_unaffected: before=True(want True) after=True -> ok"
+  ]
+}

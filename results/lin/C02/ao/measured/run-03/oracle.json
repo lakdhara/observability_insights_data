@@ -1,0 +1,169 @@
+{
+  "id": "C02",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794481639.511205,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.667,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 1
+  },
+  "intent_matched": {
+    "WAN1|Carrier A": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Send traff",
+    "WAN2|Carrier B": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Send traff",
+    "fail.?over": "{\"id\": \"msg_43f7c695e8654b77873b0306\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"claude-sonnet-5-5\", \"content\": "
+  },
+  "action_matched": {
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl",
+    "198\\.51\\.200\\.0/24 via 203\\.0\\.114\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl",
+    "ping .*203\\.0\\.11[34]\\.1|failover": "/usr/bin/bash bash -c true # AGENT-ACTION[C02]: ip route replace 198.51.100.0/24 via 203.0.113.1 dev eth2; ip route repl"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 56,
+    "exec": 9,
+    "net": 12
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 10,
+    "system_events": 276,
+    "correlations_found": 9,
+    "mean_correlation_score": 0.297,
+    "mean_actions_per_correlation": 27.1,
+    "edge_recall": 0.667,
+    "corr_band": 1,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 2,
+        "total": 3,
+        "recall": 0.667
+      },
+      "200": {
+        "recovered": 2,
+        "total": 3,
+        "recall": 0.667
+      },
+      "500": {
+        "recovered": 2,
+        "total": 3,
+        "recall": 0.667
+      },
+      "1000": {
+        "recovered": 2,
+        "total": 3,
+        "recall": 0.667
+      },
+      "2000": {
+        "recovered": 3,
+        "total": 3,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 3,
+        "total": 3,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:2"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "pre-HTTP-reassembly run (2026-11-12): bench_exporter emitted one http_parser event per SSL call (AgentSight emits one per reassembled HTTP message); superseded by the final run."
+}

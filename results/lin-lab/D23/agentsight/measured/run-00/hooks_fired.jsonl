@@ -1,0 +1,1 @@
+{"ts": 1794855000.7776458, "trigger": "at_start", "action": "flap", "args": {"node": "fw", "ifname": "eth2", "period": 10}, "why": "start"}

@@ -1,0 +1,47 @@
+{
+  "id": "S11",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977457.895706,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 0,
+    "corr": 0
+  },
+  "intent_matched": {
+    "banner|motd|hardening": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Log into edge-route"
+  },
+  "action_matched": {
+    "hardening\\.txt": null,
+    "192\\.0\\.2\\.66": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

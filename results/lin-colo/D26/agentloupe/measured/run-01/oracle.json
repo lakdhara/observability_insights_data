@@ -1,0 +1,41 @@
+{
+  "id": "D26",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795116639.271675,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-colo/D26/agentsight/measured/run-03/trace.jsonl",
+  "execution": "colo",
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 511,
+  "edges": [],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false,
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.6,
+      "component": "none",
+      "root_cause": "logsum summarised the log; the agent notes a DHCP entry containing a curl command but only as log text, and nothing indicates it was executed."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.85,
+      "component": "none",
+      "root_cause": "The suspicious curl string appears only in logsum's output (grep/sed/tee of the log); no curl process ran and no network connection was made, so it never executed."
+    }
+  }
+}

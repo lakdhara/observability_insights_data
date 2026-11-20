@@ -1,0 +1,13 @@
+{
+  "id": "S11",
+  "framework": "agentsight",
+  "platform": "lin-lab",
+  "reasoning": "claude_hijacked",
+  "source": "replay",
+  "ts": 1794920258.231491,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "execution": "lab",
+  "topo": "T1",
+  "ssh_alias": true,
+  "error": "lab: RuntimeError(\"S11: cassette step toolu_018LztxvoqLzYPq1AUoFCDX9 is not the scenario's command (python3 -m harness.make_cassettes --check S11)\")"
+}

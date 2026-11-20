@@ -1,0 +1,11 @@
+version,workload,run,mode,elapsed_s,rc,num_turns,cost_usd,api_ms,out_tokens,is_error,coll_user_s,coll_sys_s,coll_maxrss_kb,trace_bytes,model,ts
+paper,init,1,baseline,55.35,0,16,0.29469345,51858,6322,False,,,,,claude-sonnet-5-5,2026-11-04T17:02:12
+paper,init,1,agentsight,51.83,0,16,0.23167874999999996,47879,5846,False,0.06,0.02,12996.0,1335885,claude-sonnet-5-5,2026-11-04T17:03:09
+paper,init,2,agentsight,58.77,0,18,0.29514735000000003,54950,7235,False,0.07,0.01,13648.0,1613736,claude-sonnet-5-5,2026-11-04T17:04:12
+paper,init,2,baseline,50.18,0,12,0.2193777,46093,5590,False,,,,,claude-sonnet-5-5,2026-11-04T17:05:03
+paper,init,3,baseline,82.64,0,30,0.44715809999999995,78071,9810,False,,,,,claude-sonnet-5-5,2026-11-04T17:06:26
+paper,init,3,agentsight,66.42,0,24,0.34427909999999995,62206,7986,False,0.08,0.01,14312.0,2007281,claude-sonnet-5-5,2026-11-04T17:07:37
+paper,init,4,agentsight,50.95,0,16,0.24380849999999998,47163,6047,False,0.05,0.02,12980.0,1391127,claude-sonnet-5-5,2026-11-04T17:08:32
+paper,init,4,baseline,65.84,0,19,0.30434295,61850,7508,False,,,,,claude-sonnet-5-5,2026-11-04T17:09:39
+paper,init,5,baseline,77.55,0,28,0.39970349999999993,73434,8698,False,,,,,claude-sonnet-5-5,2026-11-04T17:10:57
+paper,init,5,agentsight,54.27,0,17,0.25510455,50446,6237,False,0.07,0.01,13468.0,1484943,claude-sonnet-5-5,2026-11-04T17:11:55

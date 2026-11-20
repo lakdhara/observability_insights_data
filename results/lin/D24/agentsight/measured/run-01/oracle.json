@@ -1,0 +1,39 @@
+{
+  "id": "D24",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "authored",
+  "ts": 1793978410.236657,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=authored)",
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 2
+  },
+  "intent_matched": {
+    "port|exhaust|pool": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Some users can't op"
+  },
+  "action_matched": {
+    "conntrack": null,
+    "snat to 203\\.0\\.113\\.2": "bash -c true # AGENT-ACTION[D24]: sed -i 's#meta l4proto tcp snat to 203.0.113.2:40000-40019#snat to 203.0.113.2#' /etc/"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

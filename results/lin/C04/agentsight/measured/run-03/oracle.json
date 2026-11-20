@@ -1,0 +1,52 @@
+{
+  "id": "C04",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979720.314667,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.5": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Publish internal web server",
+    "bidirectional|both directions|source NAT": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Publish internal web server"
+  },
+  "action_matched": {
+    "dnat to 192\\.168\\.30\\.10": "bash -c true # AGENT-ACTION[C04]: nft add table ip nat; nft 'add chain ip nat prerouting { type nat hook prerouting prio",
+    "snat to 192\\.168\\.30\\.1": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

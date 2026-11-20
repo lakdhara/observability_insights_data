@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.9,
+  "summary": "The trace shows routine operating-system and browser background activity with no indicators of malicious or anomalous agent behavior. All 270 system actions are benign FILE_OPEN events from standard system and desktop processes, and the heuristic analysis reports a risk score of 0.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

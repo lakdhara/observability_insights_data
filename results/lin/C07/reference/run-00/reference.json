@@ -1,0 +1,63 @@
+{
+  "id": "C07",
+  "topo": "T4",
+  "ts": 1794938594.0701673,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "login_gets_pool_ip",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "reaches_intranet",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "bad_login_rejected",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out='POST https://203.0.113.2/\\nFailed to connect to 203.0.113.2:443: Connection refused\\nFailed to connect to host 203.0.113.2\\nFailed to open HTTPS connection to 203.0.113.2\\nFailed to complete authenticatio'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "login_gets_pool_ip",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='6: tun0    inet 10.9.9.68/32 scope global tun0\\\\       valid_lft forever preferred_lft forever'"
+    },
+    {
+      "phase": "after",
+      "check": "reaches_intranet",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='intranet-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "bad_login_rejected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=1 out='POST https://203.0.113.2/\\nConnected to 203.0.113.2:443\\nSSL negotiation with 203.0.113.2\\nConnected to HTTPS on 203.0.113.2 with ciphersuite (TLS1.2)-(ECDHE-SECP256R1)-(RSA-SHA256)-(AES-256-GCM)\\nXML POS'"
+    }
+  ],
+  "detail": [
+    "login_gets_pool_ip: before=False(want False) after=True -> ok",
+    "reaches_intranet: before=False(want False) after=True -> ok",
+    "bad_login_rejected: before=False(want False) after=True -> ok"
+  ]
+}

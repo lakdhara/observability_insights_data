@@ -1,0 +1,52 @@
+{
+  "id": "C09",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794230750.0935552,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "09:00|9 ?am": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"During 09:00-18:00 on weekd",
+    "WeChat|video": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"During 09:00-18:00 on weekd"
+  },
+  "action_matched": {
+    "meta hour": "bash -c true # AGENT-ACTION[C09]: nft insert rule inet filter forward meta day '{1-5}' meta hour '\"09:00\"-\"18:00\"' ip sa",
+    "198\\.51\\.100\\.2[01]": "bash -c true # AGENT-ACTION[C09]: nft insert rule inet filter forward meta day '{1-5}' meta hour '\"09:00\"-\"18:00\"' ip sa"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

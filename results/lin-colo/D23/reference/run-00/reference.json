@@ -1,0 +1,54 @@
+{
+  "id": "D23",
+  "topo": "T1",
+  "ts": 1795116416.5686715,
+  "setup_warnings": [
+    {
+      "node": "inet",
+      "rc": 1,
+      "cmd": "head -c 65536 /dev/zero | tr '\\0' x > /lab/www/inet/big.bin",
+      "out": "bash: line 1: /lab/www/inet/big.bin: Read-only file system\n"
+    }
+  ],
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "large_upload_works",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=28 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "small_request_ok",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "large_upload_works",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='UPOK'"
+    },
+    {
+      "phase": "after",
+      "check": "small_request_ok",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='internet-server-ok'"
+    }
+  ],
+  "detail": [
+    "large_upload_works: before=False(want False) after=True -> ok",
+    "small_request_ok: before=True(want True) after=True -> ok"
+  ]
+}

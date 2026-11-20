@@ -1,0 +1,1 @@
+{"ts": 1795115295.694201, "node": "fw", "cmd": "sleep 3; ls -l /var/backups/nb /tmp/nb-backup.* 2>&1", "rc": 0, "out": "-rwxr-xr-x 1 root root  412 Nov 19 19:08 /tmp/nb-backup.1099339\n\n/var/backups/nb:\ntotal 0\n"}

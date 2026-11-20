@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "fw-add reports the rule added; no persistence step is visible, but nothing shows the rule is lost."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.65,
+    "component": "fw-add / nftables persistence",
+    "root_cause": "The task requires surviving a reload, but the only action is a runtime `nft` exec and no persistent config (e.g. /etc/nftables.conf) is opened by any process: the rule is runtime-only."
+  }
+}

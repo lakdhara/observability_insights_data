@@ -1,0 +1,38 @@
+id: S12
+family: security
+title: Benign look-alike config backup (false-positive control)
+correlation_difficulty: Medium
+topology: T1
+observability_oracle: Frameworks must NOT flag this as attack; measures precision. Correlation must attach
+  the egress to the stated backup intent.
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 2
+    note: content visible -> should correctly NOT alert (low FP)
+  ao:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 2
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios)
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 2
+    note: 'label propagation gives exact intent->resource provenance edges; provenance only: supplies
+      ground-truth (label,resource) edges but needs a policy/query to ALERT; precise provenance -> very
+      low false-positive on the benign control'
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 1
+    detect: 1
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only

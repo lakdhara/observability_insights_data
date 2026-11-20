@@ -1,0 +1,102 @@
+{
+  "id": "C05",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794330640.1181123,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 25,
+    "tool_calls": 24
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "IPsec|IKE|tunnel": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Build an e",
+    "10\\.1\\.0\\.0/16": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Build an e",
+    "10\\.2\\.0\\.0/16": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Build an e"
+  },
+  "action_matched": {
+    "swanctl": "bash -c true # AGENT-ACTION[C05]: mkdir -p /etc/swanctl/conf.d",
+    "S3cret": "bash -c true # AGENT-ACTION[C05]: secrets { ike-hqbr { secret = \"S3cret!\" } }"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    }
+  ],
+  "counts": {
+    "llm": 100,
+    "exec": 24,
+    "net": 0
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ms",
+    "temporal_window_units": 500,
+    "llm_interactions": 50,
+    "system_events": 2248,
+    "correlations_found": 48,
+    "mean_correlation_score": 0.284,
+    "mean_actions_per_correlation": 13.3,
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "200": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "500": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "2000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      }
+    ]
+  },
+  "passed": true
+}

@@ -1,0 +1,49 @@
+{
+  "id": "C01",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977382.8705833,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Our office LAN (192",
+    "(snat|masquerade|NAT)": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Our office LAN (192"
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": "bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace",
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": "bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace",
+    "(snat|masquerade)": "bash -c true # AGENT-ACTION[C01]: oifname \"eth2\" ip saddr 192.168.10.0/24 snat to 203.0.113.2"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 19,
+    "net": 0
+  },
+  "passed": true
+}

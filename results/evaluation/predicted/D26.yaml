@@ -1,0 +1,39 @@
+id: D26
+family: debug
+title: Asymmetric routing breaking stateful inspection
+correlation_difficulty: Hard
+topology: T5
+observability_oracle: Correlate multi-point reads (routes on 2 devices + state table) into one causal
+  explanation; hard cross-source correlation.
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 1
+    note: 'on OWv/real router (separate kernel) action drops to 1: sees ssh client only'
+  ao:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 1
+    note: 'explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router'
+  agentloupe:
+    intent: 2
+    action: 1
+    corr: 2
+    diagnose: 1
+    note: label propagation gives exact intent->resource provenance edges; on OWv/real router propagation
+      stops at the ssh client (action drops to 1); labels tie the agent's writes to the fault but do not
+      diagnose root cause by themselves
+  alibaba_oss:
+    intent: 2
+    action: 1
+    corr: 0
+    diagnose: 1
+    note: 'OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel
+      device: audit sees only ssh client; OTel sees only the agent''s own tool call'

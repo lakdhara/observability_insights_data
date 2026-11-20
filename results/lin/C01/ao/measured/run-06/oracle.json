@@ -1,0 +1,80 @@
+{
+  "id": "C01",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794480197.6821187,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Our office",
+    "(snat|masquerade|NAT)": "{\"id\": \"msg_c42f4c50db894bbf9d5f899c\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"claude-sonnet-5-5\", \"content\": "
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "(snat|masquerade)": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: oifname \"eth2\" ip saddr 192.168.10.0/24 snat to 203.0.113.2"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 105,
+    "exec": 19,
+    "net": 22
+  },
+  "correlation_error": "UnicodeDecodeError('utf-8', b' (not configured yet).\\\\\\\\nPlan: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace default via 203.0.113.1; cat > /etc/nftables.conf <<\\'NFT\\'; flush ruleset; table inet filter {\\\\\"}, {\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_9fe60d99588741f2a84d\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace default via 203.0.113.1\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 1\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_9fe60d99588741f2a84d\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_152f6815188b4ca0b0cb\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: cat > /etc/nftables.conf <<\\'NFT\\'\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 2\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_152f6815188b4ca0b0cb\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_9ebaec1b87414bed9f20\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: flush ruleset\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 3\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_9ebaec1b87414bed9f20\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_0b89a2850eba46f99929\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: table inet filter {\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 4\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_0b89a2850eba46f99929\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_d83031a4a3354be58523\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: chain input { type filter hook input priority 0; policy accept; }\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 5\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_d83031a4a3354be58523\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_fe2c4147f71a478b86de\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: chain forward {\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 6\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_fe2c4147f71a478b86de\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_dcf82edb56c24dc880a6\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: type filter hook forward priority 0; policy drop;\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 7\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_dcf82edb56c24dc880a6\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}]}\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007427,\"tid\":1007427,\"timestamp\":1794480212640851247,\"data\":{\"tid\":1007427,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007427,\"tid\":1007427,\"timestamp\":1794480212641028976,\"data\":{\"tid\":1007427,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007427,\"tid\":1007427,\"timestamp\":1794480212642429445,\"data\":{\"tid\":1007427,\"message_type\":\"response\",\"body\":\"HTTP/1.1 200 OK\\\\r\\\\nServer: BaseHTTP/0.6 Python/3.14.4\\\\r\\\\nDate: Thu, 12 Nov 2026 10:43:32 GMT\\\\r\\\\nContent-Type: application/json\\\\r\\\\nContent-Length: 415\\\\r\\\\n\\\\r\\\\nm\\xf7\\\\u0010KR\\xc2v\\x80hZ,\\\\u0016\\xd1V\\\\u0019\\xf7\\\\u0003?U\\xee\\xf8\\xcc\\x90!\\\\u0013\\\\u0007*C\\\\u0004\\xaf9G$\\\\r\\xce$\\xe9\\x9d\\xd35s\\xae9\\x80%\\xf6\\xaf2\\\\u000enF\\xac\\xf8&\\xb9\\x7f\\xb8\\\\r\\xecTR\\xa8\\xa0\\xcf\\xb5\\xf626\\x84\\xb7\\x82\\\\u000e$\\xafj\\\\u0005\\x9c\\x83\\x99\\\\u0003\\xc5d\\\\u0007\\xc6dgo\\\\u0013\\xb4\\xe1\\xf3i\\\\u0011T\\xcc\\xa7\\\\u0001EA\\xedp^\\xacL\\xf0\\x94\\xa4\\xe2/h\\x7f=\\xb3iI\\x86\\xd2\\xfc\\\\u0003\\xc5\\xa7\\xa80\\\\u0011#\\xd5\\\\\\\\\\\\u0011\\\\u0001=\\xc4\\xa1(\\xa9\\xec\\xef\\xc11\\xf0\\\\u001e+}V\\xc2\\xc9\\x859\\xbf]\\\\u0007~\\xfe9\\x85w8\\x99\\\\u001b\\\\u0006\\x8a\\xc3\\x8c\\x90\\\\nr\\xa1\\xab[\\'\\\\n\\x8c\\xdd\\x99\\x80>\\\\u0017\\xda\\xa9\\\\u0003B\\x88\\xf3\\xcd;\\x8c\\\\t\\xbbQ\\xff/\\x92\\\\u0013b\\xb3\\xc0\\xbe\\xafc]\\xa1\\xd3\\xf7\\\\u0006\\x90X\\xaad\\xe7\\x8c\\xdf%\\x80,\\x99/i\\xa8-\\xec\\xa2x]nG\\xa7\\xc4\\xd5^8\\xe7\\\\u0004\\x84\\xbc\\x98i\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1007427,\"tid\":1007427,\"timestamp\":1794480212642824861,\"data\":{\"tid\":1007427,\"message_type\":\"response\",\"body\":\"{\\\\\"id\\\\\": \\\\\"msg_58d5e43ad84f4aa888567e77\\\\\", \\\\\"type\\\\\": \\\\\"message\\\\\", \\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"model\\\\\": \\\\\"claude-sonnet-5-5\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_6c72778643a64854b6eb\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: ct state established,related accept\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 8\\\\\"}}], \\\\\"stop_reason\\\\\": \\\\\"tool_use\\\\\", \\\\\"stop_sequence\\\\\": null, \\\\\"usage\\\\\": {\\\\\"input_tokens\\\\\": 1000, \\\\\"output_tokens\\\\\": 50}}\\\\u0012\\xe2]\\x83>\\\\u0011d\\xe8\\xc2\\xa7\\\\u0013\\xf7\\xfa\\x87\\xaaW\\xae\\xce{\\x9e \\\\r\\xa9\\\\u0019\\xfe\\'\\x9b\\\\u000b\\\\u0004\\xd4\\x97@\\xa5Bd\\\\u001dd\\xdc\\xde\\xbc\\xb3\\x8bf@\\xe4X\\xb3\\\\u001d\\xa0a`Z|\\x9e\\xd9\\xf2pG\\xfc\\\\u001eE%%\\xc1im\\xacS\\xbcAA\\xbf\\xd9>\\x91?\\xdf\\xe4\\x81\\x98\\xbd\\x9clmY\\xa0\\xff_\\x9d\\xe1\\x8c\\xcb\\xdcF\\x94\\xea\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644682830,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644682830,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"EXEC\",\"ppid\":1007427,\"full_command\":\"/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ct state established,related accept\",\"filename\":\"/usr/bin/bash\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644907301,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644907301,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v4/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644931155,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644931155,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v3/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644937098,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644937098,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v2/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644942791,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644942791,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212644953224,\"data\":{\"tid\":1007464,\"timestamp\":1794480212644953224,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/etc/ld.so.cache\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212645000465,\"data\":{\"tid\":1007464,\"timestamp\":1794480212645000465,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212645113638,\"data\":{\"tid\":1007464,\"timestamp\":1794480212645113638,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libc.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212645131651,\"data\":{\"tid\":1007464,\"timestamp\":1794480212645131651,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libc.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212645973143,\"data\":{\"tid\":1007464,\"timestamp\":1794480212645973143,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/dev/tty\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212646044538,\"data\":{\"tid\":1007464,\"timestamp\":1794480212646044538,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/usr/lib/locale/locale-archive\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1007464,\"tid\":1007464,\"timestamp\":1794480212646156007,\"data\":{\"tid\":1007464,\"timestamp\":1794480212646156007,\"pid\":1007464,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1007427,\"filepath\":\"/usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache\"}}\\n{\"s', 3626, 3627, 'invalid start byte')",
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:2"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "as-shipped agent-event port :5555 run (2026-11-12): libao_obs's ZMQ thread trips ao's backdoor_connect rule; kept as the 'as-shipped' detection evidence, superseded by the :5565 run.",
+  "as_shipped_port_5555": true
+}

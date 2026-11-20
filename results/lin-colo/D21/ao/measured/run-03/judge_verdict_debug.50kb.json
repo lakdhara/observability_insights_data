@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "Every step reported its expected result and the read-back shows 192.168.50.1 on eth1; nothing contradicts the success claim."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "net-commit / startup config",
+    "root_cause": "The notes name /etc/nb/lan.committed, but net-commit's save (mktemp, cp, mv) lands in /run/nb/lan.committed, the volatile runtime dir; the startup config is never opened, so the change is lost at reboot."
+  }
+}

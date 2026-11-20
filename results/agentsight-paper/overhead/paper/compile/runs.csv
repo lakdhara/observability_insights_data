@@ -1,0 +1,11 @@
+version,workload,run,mode,elapsed_s,rc,num_turns,cost_usd,api_ms,out_tokens,is_error,coll_user_s,coll_sys_s,coll_maxrss_kb,trace_bytes,model,ts
+paper,compile,1,baseline,176.85,0,,,,,,,,,,claude-sonnet-5-5,2026-11-04T17:50:56
+paper,compile,1,agentsight,178.3,0,,,,,,0.01,0.0,10304.0,0,claude-sonnet-5-5,2026-11-04T17:53:58
+paper,compile,2,agentsight,178.67,0,,,,,,0.0,0.0,10224.0,0,claude-sonnet-5-5,2026-11-04T17:57:02
+paper,compile,2,baseline,179.29,0,,,,,,,,,,claude-sonnet-5-5,2026-11-04T18:00:01
+paper,compile,3,baseline,181.31,0,,,,,,,,,,claude-sonnet-5-5,2026-11-04T18:03:03
+paper,compile,3,agentsight,178.84,0,,,,,,0.01,0.0,10068.0,0,claude-sonnet-5-5,2026-11-04T18:06:06
+paper,compile,4,agentsight,180.54,0,,,,,,0.0,0.0,10148.0,0,claude-sonnet-5-5,2026-11-04T18:09:11
+paper,compile,4,baseline,181.51,0,,,,,,,,,,claude-sonnet-5-5,2026-11-04T18:12:13
+paper,compile,5,baseline,179.38,0,,,,,,,,,,claude-sonnet-5-5,2026-11-04T18:15:13
+paper,compile,5,agentsight,179.27,0,,,,,,0.01,0.0,10264.0,0,claude-sonnet-5-5,2026-11-04T18:18:17

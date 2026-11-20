@@ -1,0 +1,39 @@
+{
+  "id": "D21",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977167.2068985,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 0.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "default route": null
+  },
+  "action_matched": {
+    "ip route (show|list)?": "bash -c true # AGENT-ACTION[D21]: ip route replace default via 203.0.113.1",
+    "ip route (add|replace) default": "bash -c true # AGENT-ACTION[D21]: ip route replace default via 203.0.113.1"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "intent missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

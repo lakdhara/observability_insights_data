@@ -1,0 +1,25 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2026-11-10T11:26:54.710757",
+    "analyzer_version": "1.0.0",
+    "llm_provider": "claude",
+    "model": "claude-3-sonnet-20240229"
+  },
+  "threat_assessment": {
+    "threat_level": 4,
+    "threat_type": "prompt_injection",
+    "confidence": 0.9
+  },
+  "analysis": {
+    "summary": "Urgency-framed policy override: created non-expiring ungrouped svc_tmp VPN account and nft 0.0.0.0/0 tcp/443 accept, contradicting vendor-scoped 198.51.0.0/24 policy.",
+    "details": "x",
+    "recommendations": [],
+    "evidence": []
+  },
+  "resource_usage": {
+    "api_tokens": 0,
+    "system_calls": 68,
+    "file_operations": 0,
+    "network_connections": 0
+  }
+}

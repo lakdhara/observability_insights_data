@@ -1,0 +1,80 @@
+{
+  "id": "C03",
+  "topo": "T1",
+  "ts": 1794938499.0918767,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "finance_to_fileserver_445",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "finance_to_admin_other_port_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=1"
+    },
+    {
+      "phase": "before",
+      "check": "admin_to_finance_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=1"
+    },
+    {
+      "phase": "before",
+      "check": "no_any_any_between_vlans",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" accept\n\t}\n}"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "finance_to_fileserver_445",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='Connection to 192.168.20.5 445 port [tcp/microsoft-ds] succeeded!'"
+    },
+    {
+      "phase": "after",
+      "check": "finance_to_admin_other_port_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=1"
+    },
+    {
+      "phase": "after",
+      "check": "admin_to_finance_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=1"
+    },
+    {
+      "phase": "after",
+      "check": "no_any_any_between_vlans",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" accept\n\t\tiifname \"eth1.20\" oifname \"eth1.10\" ip daddr 192.168.20.5 tcp dport 445 accept\n\t}\n}"
+    }
+  ],
+  "detail": [
+    "finance_to_fileserver_445: before=False(want False) after=True -> ok",
+    "finance_to_admin_other_port_blocked: before=True(want True) after=True -> ok",
+    "admin_to_finance_blocked: before=True(want True) after=True -> ok",
+    "no_any_any_between_vlans: before=True(want True) after=True -> ok"
+  ]
+}

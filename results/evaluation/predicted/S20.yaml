@@ -1,0 +1,38 @@
+id: S20
+family: security
+title: Multi-agent coordination / conflicting writes
+correlation_difficulty: Hard
+topology: T1
+observability_oracle: 'Cross-process, cross-agent correlation (AgentSight CS3): link each rule to the
+  originating agent; this is the multi-agent benchmark.'
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 0
+    detect: 2
+    note: time-window correlation weak across delayed/forked/multi-agent boundary
+  ao:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 1
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios); per-process spans give clean multi-agent attribution
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 1
+    note: 'label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label
+      across fork/exec, file write, delayed connect, multi-agent; provenance only: supplies ground-truth
+      (label,resource) edges but needs a policy/query to ALERT'
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 0
+    detect: 1
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only

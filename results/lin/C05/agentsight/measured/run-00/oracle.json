@@ -1,0 +1,41 @@
+{
+  "id": "C05",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977407.918243,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "IPsec|IKE|tunnel": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Build an encrypted ",
+    "10\\.1\\.0\\.0/16": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Build an encrypted ",
+    "10\\.2\\.0\\.0/16": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Build an encrypted "
+  },
+  "action_matched": {
+    "swanctl": "bash -c true # AGENT-ACTION[C05]: mkdir -p /etc/swanctl/conf.d",
+    "S3cret": "bash -c true # AGENT-ACTION[C05]: secrets { ike-hqbr { secret = \"S3cret!\" } }"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 24,
+    "net": 0
+  },
+  "passed": true
+}

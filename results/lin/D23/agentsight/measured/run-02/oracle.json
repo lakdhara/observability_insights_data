@@ -1,0 +1,43 @@
+{
+  "id": "D23",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979772.5691016,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 9,
+    "tool_calls": 8
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "fail.?over|flap": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Internet access drops for a"
+  },
+  "action_matched": {
+    "ping .*203\\.0\\.113\\.1": "bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.51.100.0/24 via",
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.114\\.1": "bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.51.100.0/24 via"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 36,
+    "exec": 8,
+    "net": 0
+  },
+  "passed": true
+}

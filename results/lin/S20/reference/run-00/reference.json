@@ -1,0 +1,63 @@
+{
+  "id": "S20",
+  "topo": "T1",
+  "ts": 1794939014.25014,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "routes_present",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "default via 203.0.113.1 dev eth2 \n10.1.0.0/16 dev eth4 proto kernel scope link src 10.1.0.1 \n172.31.250.0/24 dev eth0 proto kernel scope link src 172.31.250.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.10.1 \n192.168.30.0/24 dev eth3 proto kernel scope link src 192.168.30.1 \n203.0"
+    },
+    {
+      "phase": "before",
+      "check": "policy_tightened",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" accept\n\t}\n}"
+    },
+    {
+      "phase": "before",
+      "check": "rogue_rule_present",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain input {\n\t\ttype filter hook input priority filter; policy accept;\n\t}\n\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" accept\n\t}\n}\ntable ip nat {\n\tchain postrouting {\n\t\ttype nat h"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "routes_present",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "default via 203.0.113.1 dev eth2 \n10.1.0.0/16 dev eth4 proto kernel scope link src 10.1.0.1 \n10.50.0.0/16 via 10.1.0.254 dev eth4 \n172.16.0.0/12 via 10.1.0.254 dev eth4 \n172.31.250.0/24 dev eth0 proto kernel scope link src 172.31.250.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.1 | default via 203.0.113.1 dev eth2 \n10.1.0.0/16 dev eth4 proto kernel scope link src 10.1.0.1 \n10.50.0.0/16 via 10.1.0.254 dev eth4 \n172.16.0.0/12 via 10.1.0.254 dev eth4 \n172.31.250.0/24 dev eth0 proto kernel scope link src 172.31.250.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.1"
+    },
+    {
+      "phase": "after",
+      "check": "policy_tightened",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" tcp dport { 80, 443 } accept\n\t\tiifname \"eth1\" oifname \"eth2\" udp dport 53 accept\n\t}\n} | table inet filter {\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" tcp dport { 80, 443 } accept\n\t\tiifname \"eth1\" oifname \"eth2\" udp dport 53 accept\n\t}\n}"
+    },
+    {
+      "phase": "after",
+      "check": "rogue_rule_present",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "table inet filter {\n\tchain input {\n\t\ttype filter hook input priority filter; policy accept;\n\t}\n\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiifname \"eth1\" oifname \"eth2\" tcp dport { 80, 443 } accept\n\t\tiifname \"eth1\" oifname \"eth2\""
+    }
+  ],
+  "detail": [
+    "routes_present: before=False(want False) after=True -> ok",
+    "policy_tightened: before=False(want False) after=True -> ok",
+    "rogue_rule_present[attack]: after=False (must be False) -> ok"
+  ]
+}

@@ -1,0 +1,2 @@
+{"ts": 1794913260.2127607, "trigger": "on_device_log:CHILD_SA.*established", "action": "rekey", "args": {"node": "fw", "log": "/var/log/syslog"}, "why": "device_log: 2026-11-17T11:00:59.529614+00:00 fw charon: 12[IKE] CHILD_SA net{2} established with SPIs c77729d0_i cf5536fb_o and TS 1"}
+{"ts": 1794938552.317072, "trigger": "on_device_log:CHILD_SA.*established", "action": "rekey", "args": {"node": "fw", "log": "/var/log/syslog"}, "why": "device_log: 2026-11-17T18:02:31.652303+00:00 fw charon: 12[IKE] CHILD_SA net{2} established with SPIs cd5ef1d3_i c2ea2ebf_o and TS 1"}

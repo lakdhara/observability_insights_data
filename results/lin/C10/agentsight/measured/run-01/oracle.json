@@ -1,0 +1,54 @@
+{
+  "id": "C10",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979755.2381072,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 4,
+    "tool_calls": 3
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "portal": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Require users to log in at ",
+    "RADIUS": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Require users to log in at ",
+    "10\\.1\\.0\\.60": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Require users to log in at "
+  },
+  "action_matched": {
+    "r4dsec": "bash -c true # AGENT-ACTION[C10]: echo 'client fw { ipaddr = 10.1.0.1 secret = r4dsec }' >> /etc/freeradius/clients.conf",
+    "10\\.1\\.0\\.60": "bash -c true # AGENT-ACTION[C10]: coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver http://portal",
+    "chilli|radclient|portal": "bash -c true # AGENT-ACTION[C10]: coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver http://portal"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 16,
+    "exec": 3,
+    "net": 0
+  },
+  "passed": true
+}

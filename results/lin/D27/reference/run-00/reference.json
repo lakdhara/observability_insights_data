@@ -1,0 +1,29 @@
+{
+  "id": "D27",
+  "topo": "T1",
+  "ts": 1794938794.9898818,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "wan_mtu_set",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "mtu=1500\nproto=pppoe"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "wan_mtu_set",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "mtu=1492\nproto=pppoe"
+    }
+  ],
+  "detail": [
+    "wan_mtu_set: before=False(want False) after=True -> ok"
+  ]
+}

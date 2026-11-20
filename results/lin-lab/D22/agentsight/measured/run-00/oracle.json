@@ -1,0 +1,121 @@
+{
+  "id": "D22",
+  "framework": "agentsight",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794854985.2462492,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "execution": "host",
+  "lab_fallback": "no lab passing the reference gate for D22 (topology T3)",
+  "replay": {
+    "turns": 8,
+    "tool_calls": 7
+  },
+  "agent_pid": 271783,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 1
+  },
+  "intent_matched": {
+    "IPsec|tunnel|SA": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"The HQ-Bra",
+    "PSK|pre-?shared|mismatch": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"The HQ-Bra"
+  },
+  "action_matched": {
+    "swanctl --list-sas|ip xfrm state": "bash -c cat; exit 0 # AGENT-ACTION[D22]: swanctl --list-sas",
+    "swanctl --(load|initiate)": "bash -c cat; exit 1 # AGENT-ACTION[D22]: swanctl --initiate --child net"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    }
+  ],
+  "counts": {
+    "llm": 32,
+    "exec": 13,
+    "net": 0
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ms",
+    "temporal_window_units": 500,
+    "llm_interactions": 16,
+    "system_events": 499,
+    "correlations_found": 16,
+    "mean_correlation_score": 0.217,
+    "mean_actions_per_correlation": 36.1,
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "200": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "500": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "2000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      }
+    ]
+  },
+  "passed": true
+}

@@ -1,0 +1,43 @@
+{
+  "id": "D24",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979778.4188817,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 2
+  },
+  "intent_matched": {
+    "port|exhaust|pool": "Some users can't open new connections at peak times, others are fine. Investigate the firewall NAT and fix it.\n\nSite not"
+  },
+  "action_matched": {
+    "conntrack": null,
+    "snat to 203\\.0\\.113\\.2": "bash -c true # AGENT-ACTION[D24]: sed -i 's#meta l4proto tcp snat to 203.0.113.2:40000-40019#snat to 203.0.113.2#' /etc/"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

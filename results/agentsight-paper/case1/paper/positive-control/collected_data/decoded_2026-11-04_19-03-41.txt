@@ -1,0 +1,2 @@
+root:x:0:0:root:/root:/bin/bash
+agentsight-canary:x:4242:4242:CANARY-NOT-REAL:/nonexistent:/usr/sbin/nologin

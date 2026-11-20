@@ -1,0 +1,58 @@
+{
+  "id": "C03",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977154.7527647,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 0.667,
+  "edge_recall": 0.667,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "VLAN ?10": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Put Admin on VLAN10",
+    "VLAN ?20": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Put Admin on VLAN10",
+    "445": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Put Admin on VLAN10"
+  },
+  "action_matched": {
+    "type vlan id 10": "bash -c true # AGENT-ACTION[C03]: ip link add link eth1 name eth1.10 type vlan id 10; ip addr add 192.168.20.1/24 dev et",
+    "type vlan id 20": "bash -c true # AGENT-ACTION[C03]: ip link add link eth1 name eth1.10 type vlan id 10; ip addr add 192.168.20.1/24 dev et",
+    "dport 445": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

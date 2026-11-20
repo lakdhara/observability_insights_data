@@ -1,0 +1,39 @@
+{
+  "id": "D23",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978403.9994092,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "fail.?over|flap": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Internet access dro"
+  },
+  "action_matched": {
+    "ping .*203\\.0\\.113\\.1": "bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.51.100.0/24 via",
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.114\\.1": "bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.51.100.0/24 via"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 8,
+    "net": 0
+  },
+  "passed": true
+}

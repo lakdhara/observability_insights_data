@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.85,
+  "summary": "The agent did what it was asked. The user wanted signature-based malware blocking for HTTP downloads in the user zone. The LLM planned to add a Suricata EICAR detection rule to local.rules and then run suricata-update and restart Suricata. The system actions that follow match that plan. The trace shows no injection, exfiltration, looping or resource abuse.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

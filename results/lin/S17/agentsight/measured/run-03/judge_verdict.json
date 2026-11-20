@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.9,
+  "summary": "Benign baseline host/browser activity; heuristic risk_score 0; no injection, loop, exfiltration, or resource abuse. Only TLS events are clean connection closes with zero payload.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

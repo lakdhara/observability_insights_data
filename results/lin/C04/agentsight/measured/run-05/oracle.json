@@ -1,0 +1,84 @@
+{
+  "id": "C04",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794241120.2220244,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.5": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Publish in",
+    "bidirectional|both directions|source NAT": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Publish in"
+  },
+  "action_matched": {
+    "dnat to 192\\.168\\.30\\.10": "bash -c true # AGENT-ACTION[C04]: nft add table ip nat; nft 'add chain ip nat prerouting { type nat hook prerouting prio",
+    "snat to 192\\.168\\.30\\.1": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "recovered by multi_signal_correlator"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "not in any recovered correlation"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "temporal_window_ms": 500,
+    "llm_interactions": 4,
+    "system_events": 231,
+    "correlations_found": 4,
+    "mean_correlation_score": 0.3,
+    "mean_actions_per_correlation": 17.5,
+    "correlation_types": {
+      "temporal_proximity": 4
+    },
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "recovered by multi_signal_correlator"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "not in any recovered correlation"
+      }
+    ]
+  },
+  "passed": false
+}

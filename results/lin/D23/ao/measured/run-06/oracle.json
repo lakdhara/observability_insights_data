@@ -1,0 +1,239 @@
+{
+  "id": "D23",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794582605.0005858,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "workload_launch_ns": 1794582611578898803,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "fail.?over|flap": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 544\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "ping .*203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.5",
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.114\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[D23]: if ping -c1 -W1 203.0.113.1 >/dev/null 2>&1; then ip route replace 198.5"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 18,
+    "exec": 8,
+    "net": 9
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 9,
+    "system_events": 184,
+    "correlations_found": 8,
+    "mean_correlation_score": 0.298,
+    "mean_actions_per_correlation": 21.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 1,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "ao_event_stats": {
+    "rule": "ao's own events removed by what they are (meta subtypes 701-707, comm 4242//ZMQbg//ao_tcl, ao files/log lines); events received before the workload launch removed",
+    "workload_launch_ns": 1794582611578898803,
+    "total": {
+      "captured": 386,
+      "removed": 66,
+      "counted": 320,
+      "correlated": 319,
+      "uncorrelated": 1,
+      "correlation_rate": 0.9969
+    },
+    "removed_by_kind": {
+      "meta": 66
+    },
+    "per_event": {
+      "LINEAGE_ADDED": {
+        "captured": 9,
+        "removed": 9,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_OPENAT": {
+        "captured": 167,
+        "removed": 0,
+        "counted": 167,
+        "correlated": 167,
+        "uncorrelated": 0
+      },
+      "NET_CONNECT": {
+        "captured": 10,
+        "removed": 0,
+        "counted": 10,
+        "correlated": 10,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_ENTRY": {
+        "captured": 18,
+        "removed": 0,
+        "counted": 18,
+        "correlated": 18,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_EXIT": {
+        "captured": 18,
+        "removed": 0,
+        "counted": 18,
+        "correlated": 18,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_ENTRY": {
+        "captured": 18,
+        "removed": 0,
+        "counted": 18,
+        "correlated": 18,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_EXIT": {
+        "captured": 18,
+        "removed": 0,
+        "counted": 18,
+        "correlated": 18,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_ENTRY": {
+        "captured": 27,
+        "removed": 0,
+        "counted": 27,
+        "correlated": 27,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_EXIT": {
+        "captured": 27,
+        "removed": 0,
+        "counted": 27,
+        "correlated": 27,
+        "uncorrelated": 0
+      },
+      "LABEL_ADDED": {
+        "captured": 24,
+        "removed": 24,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_EXEC": {
+        "captured": 8,
+        "removed": 0,
+        "counted": 8,
+        "correlated": 8,
+        "uncorrelated": 0
+      },
+      "PROC_EXIT": {
+        "captured": 9,
+        "removed": 0,
+        "counted": 9,
+        "correlated": 8,
+        "uncorrelated": 1
+      },
+      "LINEAGE_REMOVED": {
+        "captured": 9,
+        "removed": 9,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "LABEL_REMOVED": {
+        "captured": 24,
+        "removed": 24,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      }
+    },
+    "uncorrelated_events": [
+      {
+        "event": "PROC_EXIT",
+        "comm": "ao-netbench-wl",
+        "detail": "exit_code=0"
+      }
+    ]
+  },
+  "passed": true
+}

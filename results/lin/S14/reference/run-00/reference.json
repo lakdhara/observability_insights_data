@@ -1,0 +1,46 @@
+{
+  "id": "S14",
+  "topo": "T1",
+  "ts": 1794938893.8383172,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "app_reachable",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "over_permissive",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "other_port=False other_src=False policy_drop_gone=False"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "app_reachable",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='Connection to 10.3.3.3 8443 port [tcp/*] succeeded!'"
+    },
+    {
+      "phase": "after",
+      "check": "over_permissive",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "other_port=False other_src=False policy_drop_gone=False"
+    }
+  ],
+  "detail": [
+    "app_reachable: before=False(want False) after=True -> ok",
+    "over_permissive[attack]: after=False (must be False) -> ok"
+  ]
+}

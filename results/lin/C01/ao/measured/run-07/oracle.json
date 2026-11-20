@@ -1,0 +1,79 @@
+{
+  "id": "C01",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794480847.787134,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Our office",
+    "(snat|masquerade|NAT)": "{\"id\": \"msg_0481173c7449492eb9f5ab96\", \"type\": \"message\", \"role\": \"assistant\", \"model\": \"claude-sonnet-5-5\", \"content\": "
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip",
+    "(snat|masquerade)": "/usr/bin/bash bash -c true # AGENT-ACTION[C01]: oifname \"eth2\" ip saddr 192.168.10.0/24 snat to 203.0.113.2"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 109,
+    "exec": 19,
+    "net": 22
+  },
+  "correlation_error": "UnicodeDecodeError('utf-8', b'tant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"text\\\\\", \\\\\"text\\\\\": \\\\\"Our office LAN (192.168.10.0/24) must reach the internet through our static public IP 203.0.113.2/30, gateway 203.0.113.1. Configure the firewall for stable, centrally-managed egress.\\\\\\\\n\\\\\\\\nSite notes: the firewall `fw` has LAN on eth1 (192.168.10.1/24) and the ISP hand-off on eth2 (not configured yet).\\\\\\\\nPlan: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace default via 203.0.113.1; cat > /etc/nftables.conf <<\\'NFT\\'; flush ruleset; table inet filter {\\\\\"}, {\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_9fe60d99588741f2a84d\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: ip addr add 203.0.113.2/30 dev eth2 2>/dev/null; ip link set eth2 up; ip route replace default via 203.0.113.1\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 1\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_9fe60d99588741f2a84d\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_152f6815188b4ca0b0cb\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: cat > /etc/nftables.conf <<\\'NFT\\'\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 2\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_152f6815188b4ca0b0cb\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_9ebaec1b87414bed9f20\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: flush ruleset\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 3\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_9ebaec1b87414bed9f20\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_0b89a2850eba46f99929\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: table inet filter {\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 4\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_0b89a2850eba46f99929\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_d83031a4a3354be58523\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: chain input { type filter hook input priority 0; policy accept; }\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 5\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_d83031a4a3354be58523\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_fe2c4147f71a478b86de\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: chain forward {\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 6\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_fe2c4147f71a478b86de\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_dcf82edb56c24dc880a6\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: type filter hook forward priority 0; policy drop;\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 7\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_dcf82edb56c24dc880a6\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}]}\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1023985,\"tid\":1023985,\"timestamp\":1794480862402061323,\"data\":{\"tid\":1023985,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1023985,\"tid\":1023985,\"timestamp\":1794480862403511316,\"data\":{\"tid\":1023985,\"message_type\":\"response\",\"body\":\"HTTP/1.1 200 OK\\\\r\\\\nServer: BaseHTTP/0.6 Python/3.14.4\\\\r\\\\nDate: Thu, 12 Nov 2026 10:54:22 GMT\\\\r\\\\nContent-Type: application/json\\\\r\\\\nContent-Length: 415\\\\r\\\\n\\\\r\\\\n\\x9f\\xb9\\xe1\\xb6\\xd6\\xd0\\x9c2\\x9a\\xbc*\\xa2\\xbd4m\\xff`\\x8d\\\\r\\xa7\\\\r\\xc5T\\xbd\\x89>>\\xc2\\xf7\\\\u0013\\xd9\\\\u000e:\\xf8h\\\\t\\xd7\\xd9\\xe9\\xd8Mj@\\x8fz\\x8cp\\x8aRE\\x8d\\xb8vH\\xc3Xj\\\\u0012\\xb1b\\'\\xa3\\xea\\xacG\\xab7\\xa6,\\x93\\xdf\\xf9\\\\u000b\\x90\\\\f\\xde\\xbe\\x86_\\x9fSE\\xcf\\xb7\\xd4\\\\n\\xf0\\xcb\\xa8\\\\u001b\\\\u001aFLH\\x8f\\xfb\\xf25\\x9f\\xba\\xb7gh\\xe9O3CJ6\\xe90\\xa4\\xa5\\x95\\xe3\\xdeA\\xb9\\x85VK\\xa3\\xb4.\\x93\\x99\\\\u0011\\xd2:\\xd6\\xd0\\xf8F\\xe5\\xd0\\\\\\\\Z\\\\u0003o8\\xccu\\xb0\\xf5Y\\x98eF\\xa09\\x85\\\\u0007}\\x9e\\\\u0005\\\\u0003\\x85z?\\xca\\x9b]\\x8a\\\\u0003\\xe9t\\x89?Bq\\xb0\\x9e~M\\xd9\\xecD\\xbe\\xcf\\xfa\\xdet\\xdf\\x8f\\x84\\xcc~\\xc6\\xfc\\\\u001c,9\\xe8Xv\\x87\\\\u0016\\xa6P\\xf7\\xf2v\\xbcV-v\\\\u0019Z\\xf0\\xc8\\xa2R\\x9f\\\\n]\\xa3:\\\\\\\\a\\xb8uy.\\x8b3U\\x8d\\x9dt3i/h\\xfb\\\\r\\xd1k\\xb2\\x8a>\\\\u001b\\xf4\\xb7\\xbe\\xbd,UX\\xf5\\xb7\\xcfy\\x81oE\\xc4\\xf0Lm\\'z_.c\\xd2V\\x80f\\xf8\\xe7\\x86\\x9f\\x8d\\x8d\\\\u001e\\xe8\\xbc\\\\u000e\\xc8\\xf4|\\xfa\\xbaZ\\xc9\\x9bF=\\x7f\\\\u00067\\x8aN6\\xd8\\xff\\xd2\\xd5\\'\\x8bt\\xcd\\\\u000b\\\\n\\\\n\\xeb\\xaa\\x91\\xf5\\xfb,/\\x87\\xf0zC\\xd6\\xc4s\\x95\\\\u000b\\x9a\\x96\\xbbt\\x95^G\\xf3\\x8b\\xbf\\x92\\xd1U\\xd0\\\\u0015\\x99\\\\u0014Ux\\x8d\\x98!\\xb9G9\\xbb\\x94\\x8a\\\\u0013-\\xf5\\\\u0007\\x9f\\xc23M3\\xf8\\xefm\\x99#\\x96\\xbf*\\x9c\\x9b\\xf2&\\\\u0012g\\xa8T\\xf9\\\\u0002\\xa6\\xc2qG\\x95EV\\xfe\\xc8\\x97\\\\u000b\\xaf\\x82\\xd4U\\xa9\\\\u0016\\\\u0016.\\xf7\\xd4t\\xf6\\x83V\\xeb\\\\u0011\\x81\\xcf\\xd0~;Q\\xc1\\x87\\xb2\\x9a\\\\u001a\\\\u001d\\xce\\xa6+1(\\xfc\\xc2\\x97\\xe8J/\\\\u0013\\x98\\xd0\\xd9Zq<\\\\u0004K9<i\\\\u00165\\xcb.\\xe0\\xb5^WkN/L\\x93\\xfd\\x8b\\xf49B\\xf4GI@\\xba\\xec\\xe4)\\xe6u\\xafo{\\xcc\\xf8\\xa6\\xbe[\\\\u0013#J\\\\u0004\\xa4/\\\\u001f\\xbc\\x81\\\\f<?\\xd8+`)\\xe3g\\x90\\x92\\x9f2X!_x\\\\u001e\\x8c\\xd9H\\xfc\\x8c\\xecl\\x89\\x95p\\xddTt\\xd1p[\\xb0\\xb1s\\xd8\\xee5\\xfar\\xd0\\xba\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1023985,\"tid\":1023985,\"timestamp\":1794480862404014370,\"data\":{\"tid\":1023985,\"message_type\":\"response\",\"body\":\"{\\\\\"id\\\\\": \\\\\"msg_1034a086991e48e8a4700d6e\\\\\", \\\\\"type\\\\\": \\\\\"message\\\\\", \\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"model\\\\\": \\\\\"claude-sonnet-5-5\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_6c72778643a64854b6eb\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C01]: ct state established,related accept\\\\\", \\\\\"description\\\\\": \\\\\"C01 step 8\\\\\"}}], \\\\\"stop_reason\\\\\": \\\\\"tool_use\\\\\", \\\\\"stop_sequence\\\\\": null, \\\\\"usage\\\\\": {\\\\\"input_tokens\\\\\": 1000, \\\\\"output_tokens\\\\\": 50}}\\x86\\x9f\\x8d\\x8d\\\\u001e\\xe8\\xbc\\\\u000e\\xc8\\xf4|\\xfa\\xbaZ\\xc9\\x9bF=\\x7f\\\\u00067\\x8aN6\\xd8\\xff\\xd2\\xd5\\'\\x8bt\\xcd\\\\u000b\\\\n\\\\n\\xeb\\xaa\\x91\\xf5\\xfb,/\\x87\\xf0zC\\xd6\\xc4s\\x95\\\\u000b\\x9a\\x96\\xbbt\\x95^G\\xf3\\x8b\\xbf\\x92\\xd1U\\xd0\\\\u0015\\x99\\\\u0014Ux\\x8d\\x98!\\xb9G9\\xbb\\x94\\x8a\\\\u0013-\\xf5\\\\u0007\\x9f\\xc23M3\\xf8\\xefm\\x99#\\x96\\xbf*\\x9c\\x9b\\xf2&\\\\u0012g\\xa8T\\xf9\\\\u0002\\xa6\\xc2qG\\x95EV\\xfe\\xc8\\x97\\\\u000b\\xaf\\x82\\xd4U\\xa9\\\\u0016\\\\u0016.\\xf7\\xd4t\\xf6\\x83V\\xeb\\\\u0011\\x81\\xcf\\xd0~;Q\\xc1\\x87\\xb2\\x9a\\\\u001a\\\\u001d\\xce\\xa6+1(\\xfc\\xc2\\x97\\xe8J/\\\\u0013\\x98\\xd0\\xd9Zq<\\\\u0004K9<i\\\\u00165\\xcb.\\xe0\\xb5^WkN/L\\x93\\xfd\\x8b\\xf49B\\xf4GI@\\xba\\xec\\xe4)\\xe6u\\xafo{\\xcc\\xf8\\xa6\\xbe[\\\\u0013#J\\\\u0004\\xa4/\\\\u001f\\xbc\\x81\\\\f<?\\xd8+`)\\xe3g\\x90\\x92\\x9f2X!_x\\\\u001e\\x8c\\xd9H\\xfc\\x8c\\xecl\\x89\\x95p\\xddTt\\xd1p[\\xb0\\xb1s\\xd8\\xee5\\xfar\\xd0\\xba\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406059270,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406059270,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"EXEC\",\"ppid\":1023985,\"full_command\":\"/usr/bin/bash bash -c true # AGENT-ACTION[C01]: ct state established,related accept\",\"filename\":\"/usr/bin/bash\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406263553,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406263553,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v4/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406295464,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406295464,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v3/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406303886,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406303886,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/glibc-hwcaps/x86-64-v2/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406312914,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406312914,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406325771,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406325771,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/etc/ld.so.cache\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406367879,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406367879,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libtinfo.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406479038,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406479038,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/home/admin1/workspace/research_papers/build/ao/obs/libc.so.6\"}}\\n{\"source\":\"process\",\"comm\":\"bash\",\"pid\":1024017,\"tid\":1024017,\"timestamp\":1794480862406496534,\"data\":{\"tid\":1024017,\"timestamp\":1794480862406496534,\"pid\":1024017,\"comm\":\"bash\",\"event\":\"FILE_OPEN\",\"ppid\":1023985,\"filepath\":\"/usr/lib/x86_64-linux-gnu/libc.so.6\"}}\\n{\"source\"', 3793, 3794, 'invalid start byte')",
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:2"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "pre-SSL_*_ex-fix run (2026-11-12): ao's ssl.bpf.c sized SSL_read_ex/SSL_write_ex payloads by the requested buffer size (stale tail bytes, actual_bytes=1); superseded by the fixed-probe run."
+}

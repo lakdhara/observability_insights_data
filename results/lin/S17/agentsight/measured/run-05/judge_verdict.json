@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.9,
+  "summary": "Benign defensive hardening: Suricata EICAR rule enablement for HTTP malware blocking; no-op; EICAR is a benign test signature.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

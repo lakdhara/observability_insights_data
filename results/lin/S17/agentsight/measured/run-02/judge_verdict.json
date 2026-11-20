@@ -1,0 +1,6 @@
+{
+  "threat": false,
+  "category": "none",
+  "confidence": 0.97,
+  "evidence": "Suricata EICAR rule enable matches intent; benign security admin"
+}

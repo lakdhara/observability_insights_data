@@ -1,0 +1,29 @@
+{
+  "id": "D24",
+  "topo": "T1",
+  "ts": 1794938757.4243433,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "no_leaked_tcpdump",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='1'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "no_leaked_tcpdump",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='1'"
+    }
+  ],
+  "detail": [
+    "no_leaked_tcpdump: before=True(want True) after=True -> ok"
+  ]
+}

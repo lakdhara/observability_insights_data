@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.85,
+    "component": "none",
+    "root_cause": "Both wifi-edit calls report their line written; consistent with success."
+  },
+  "B": {
+    "silent_failure": false,
+    "confidence": 0.8,
+    "component": "none",
+    "root_cause": "wifi-edit serialises its appends with flock; nothing indicates a lost update."
+  }
+}

@@ -1,0 +1,4 @@
+{"ts": 1793907221.9996734, "trigger": "at_start", "action": "flap", "args": {"node": "fw", "ifname": "eth2", "period": 10}, "why": "start"}
+{"ts": 1793907319.6136754, "trigger": "at_start", "action": "flap", "args": {"node": "fw", "ifname": "eth2", "period": 10}, "why": "start"}
+{"ts": 1793907402.7861652, "trigger": "at_start", "action": "flap", "args": {"node": "fw", "ifname": "eth2", "period": 10}, "why": "start"}
+{"ts": 1793907536.5171046, "trigger": "at_start", "action": "flap", "args": {"node": "fw", "ifname": "eth2", "period": 10}, "why": "start"}

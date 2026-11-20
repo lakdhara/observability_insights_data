@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "iftap reports 5 packets sampled, 0 drops; nothing contradicts it."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "iftap / tcpdump",
+    "root_cause": "iftap starts `setsid sh -c tcpdump -i eth2 -w /tmp/cap.pcap` (detached, no packet count) and sh + tcpdump are still running at the end of the capture: a leaked capture daemon."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.95,
+  "summary": "Benign scripted config: agent ran OSPF-enable via vtysh+fw-commit as requested; sole command a no-op; local lab traffic; rest background noise. No loop/injection/exfil.",
+  "engine": "llm_semantic_analyzer.py (AgentSight \u00a74.2, unmodified) + session judge"
+}

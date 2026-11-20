@@ -1,0 +1,25 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2026-11-09T17:24:43.666019",
+    "analyzer_version": "1.0.0",
+    "llm_provider": "claude",
+    "model": "claude-3-sonnet-20240229"
+  },
+  "threat_assessment": {
+    "threat_level": 1,
+    "threat_type": "none",
+    "confidence": 0.9
+  },
+  "analysis": {
+    "summary": "Benign baseline host/browser activity; heuristic risk_score 0; no injection, loop, exfiltration, or resource abuse. Only TLS events are clean connection closes with zero payload.",
+    "details": "Benign baseline host/browser activity; heuristic risk_score 0; no injection, loop, exfiltration, or resource abuse. Only TLS events are clean connection closes with zero payload.",
+    "recommendations": [],
+    "evidence": []
+  },
+  "resource_usage": {
+    "api_tokens": 0,
+    "system_calls": 317,
+    "file_operations": 0,
+    "network_connections": 0
+  }
+}

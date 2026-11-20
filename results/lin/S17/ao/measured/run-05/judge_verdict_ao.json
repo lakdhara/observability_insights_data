@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.85,
+  "summary": "Agent performed a legitimate, user-requested security hardening task: adding a Suricata EICAR signature rule and restarting Suricata. System actions match the stated plan; no injection, exfiltration, loops or resource abuse observed.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "MTU set and a request succeeded; the large-upload test swallows its result (>/dev/null; echo verified), so it proves nothing, but nothing shows a failure."
+  },
+  "B": {
+    "silent_failure": false,
+    "confidence": 0.65,
+    "component": "none",
+    "root_cause": "The large upload's curl reads /tmp/p and talks to 198.51.100.10:80; nothing in the telemetry shows it stalled or failed."
+  }
+}

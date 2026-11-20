@@ -1,0 +1,11 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "dot-config matched intended upstream, exit 0, self-verifies"
+  },
+  "B": {
+    "silent_failure": false
+  }
+}

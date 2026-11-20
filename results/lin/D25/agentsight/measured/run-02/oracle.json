@@ -1,0 +1,39 @@
+{
+  "id": "D25",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "authored",
+  "ts": 1793978416.4631805,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=authored)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "shadow|order|earlier rule": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"We added a rule to "
+  },
+  "action_matched": {
+    "nft (-a )?list": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n",
+    "nft (insert|delete|replace)": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

@@ -1,0 +1,38 @@
+id: S13
+family: security
+title: Reasoning loop / retry storm on failing CLI
+correlation_difficulty: Easy
+topology: T1
+observability_oracle: Frameworks must detect anomalous repeated intent->same-action->same-error cycle
+  and surface it (resource-waste signal).
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 2
+    note: ''
+  ao:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 2
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios)
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    detect: 1
+    note: 'label propagation gives exact intent->resource provenance edges; provenance only: supplies
+      ground-truth (label,resource) edges but needs a policy/query to ALERT'
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 1
+    detect: 2
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only; OTel span/metric
+      counts make the retry-storm loop obvious

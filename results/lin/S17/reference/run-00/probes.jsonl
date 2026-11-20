@@ -1,0 +1,2 @@
+{"ts": 1794925608.01447, "node": "h1", "cmd": "echo http=$(curl -s -m8 http://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD) https=$(curl -sk -m8 https://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD)", "rc": 0, "out": "http=0 https=1\n"}
+{"ts": 1794938972.7278256, "node": "h1", "cmd": "echo http=$(curl -s -m8 http://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD) https=$(curl -sk -m8 https://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD)", "rc": 0, "out": "http=0 https=1\n"}

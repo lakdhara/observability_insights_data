@@ -1,0 +1,36 @@
+id: C03
+family: config
+title: VLAN + security-zone department isolation
+correlation_difficulty: Medium
+topology: T1
+observability_oracle: Capture intent->each object-creation action (VLANs, zones, policies) as separate
+  correlated actions; observability must show the full object set, not just the last command.
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 0
+    note: ''
+  ao:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 0
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios)
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 0
+    note: label propagation gives exact intent->resource provenance edges
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 0
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only

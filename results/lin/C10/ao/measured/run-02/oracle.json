@@ -1,0 +1,80 @@
+{
+  "id": "C10",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794481044.5889041,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "portal": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us",
+    "RADIUS": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us",
+    "10\\.1\\.0\\.60": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Require us"
+  },
+  "action_matched": {
+    "r4dsec": "/usr/bin/bash bash -c true # AGENT-ACTION[C10]: echo 'client fw { ipaddr = 10.1.0.1 secret = r4dsec }' >> /etc/freeradiu",
+    "10\\.1\\.0\\.60": "/usr/bin/bash bash -c true # AGENT-ACTION[C10]: coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver",
+    "chilli|radclient|portal": "/usr/bin/bash bash -c true # AGENT-ACTION[C10]: coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 20,
+    "exec": 3,
+    "net": 6
+  },
+  "correlation_error": "UnicodeDecodeError('utf-8', b'ive portal in front of internet access.\\\\\\\\nPlan: echo \\'client fw { ipaddr = 10.1.0.1  secret = r4dsec }\\' >> /etc/freeradius/clients.conf; coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver http://portal.lab/login; systemctl restart chilli freeradius\\\\\"}, {\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_c80c3f9d04f84353b0f3\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C10]: echo \\'client fw { ipaddr = 10.1.0.1 secret = r4dsec }\\' >> /etc/freeradius/clients.conf\\\\\", \\\\\"description\\\\\": \\\\\"C10 step 1\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_c80c3f9d04f84353b0f3\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_02201cf50d5945d1a43e\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C10]: coova-chilli --radiusserver1 10.1.0.60 --radiussecret r4dsec --uamserver http://portal.lab/login\\\\\", \\\\\"description\\\\\": \\\\\"C10 step 2\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_02201cf50d5945d1a43e\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}, {\\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_use\\\\\", \\\\\"id\\\\\": \\\\\"toolu_531a2256a32b40b98ab5\\\\\", \\\\\"name\\\\\": \\\\\"Bash\\\\\", \\\\\"input\\\\\": {\\\\\"command\\\\\": \\\\\"true # AGENT-ACTION[C10]: systemctl restart chilli freeradius\\\\\", \\\\\"description\\\\\": \\\\\"C10 step 3\\\\\"}}]}, {\\\\\"role\\\\\": \\\\\"user\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"tool_result\\\\\", \\\\\"tool_use_id\\\\\": \\\\\"toolu_531a2256a32b40b98ab5\\\\\", \\\\\"content\\\\\": \\\\\"ok\\\\\"}]}]}\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1028366,\"tid\":1028366,\"timestamp\":1794481055210128731,\"data\":{\"tid\":1028366,\"message_type\":\"response\",\"body\":\"\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1028366,\"tid\":1028366,\"timestamp\":1794481055211402284,\"data\":{\"tid\":1028366,\"message_type\":\"response\",\"body\":\"HTTP/1.1 200 OK\\\\r\\\\nServer: BaseHTTP/0.6 Python/3.14.4\\\\r\\\\nDate: Thu, 12 Nov 2026 10:57:35 GMT\\\\r\\\\nContent-Type: application/json\\\\r\\\\nContent-Length: 274\\\\r\\\\n\\\\r\\\\n\\xc1\\x8c\\\\u0011\\x9a\\xf7\\\\ny\\x8b\\\\u0012\\xbeA\\xd8\\xe2m*\\x9a\\xb3\\xab#\\xb1\\\\rY\\x94\\xf7@\\x94\\\\tnh\\xa5R|\\x82i\\xbaQ\\xc9^a\\xcfLY\\xec\\xf2\\xd0\\xb3hX\\\\u0019\"}}\\n{\"source\":\"http_parser\",\"comm\":\"ao-netbench-wl\",\"pid\":1028366,\"tid\":1028366,\"timestamp\":1794481055211772204,\"data\":{\"tid\":1028366,\"message_type\":\"response\",\"body\":\"{\\\\\"id\\\\\": \\\\\"msg_eb75340bf1fc451abf02ea77\\\\\", \\\\\"type\\\\\": \\\\\"message\\\\\", \\\\\"role\\\\\": \\\\\"assistant\\\\\", \\\\\"model\\\\\": \\\\\"claude-sonnet-5-5\\\\\", \\\\\"content\\\\\": [{\\\\\"type\\\\\": \\\\\"text\\\\\", \\\\\"text\\\\\": \\\\\"Done: C10 complete.\\\\\"}], \\\\\"stop_reason\\\\\": \\\\\"end_turn\\\\\", \\\\\"stop_sequence\\\\\": null, \\\\\"usage\\\\\": {\\\\\"input_tokens\\\\\": 1000, \\\\\"output_tokens\\\\\": 50}}s\\xfc\\xee\\\\u0011^\\xbdXE\\\\u0005\\xd3\\xc0\\x8e\\xc9\\xf1\\x87\\\\u001c{\\xa71\\xc2\\xb7\\\\u0001\\xb7\\xd83={\\xf8\\xb2\\\\u0005\\\\u0005\\xe7\\xa1\\x99.\\\\u00057G\\xad\\xa3\\xb0\\\\u001b\\\\u00187&\\xc7s\\\\u0011\\xee\\xa7(\\xd5+\\xe2\\x8c\\\\u001d\\xff~\\xf6\\xbeJ\\xdeBYv\\xd2\\xad\\xbe\\xe6g\\xbc\\\\u001f\\\\u001b\\'\\x98\\xa32\\xa9}\\x95\\x9cDh\\xff\\x98\\x88)\\\\b\\xf50\\xeeLc\\xd8\\x97\\xf5\\xcck\\xed \\xb8\\xb8\\xfc$#\\\\r\\x8b+\\xfe\\xd2%\\xd2\\x96\"}}\\n', 2010, 2011, 'invalid start byte')",
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:1",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:1"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": true,
+  "superseded": "pre-SSL_*_ex-fix run (2026-11-12): ao's ssl.bpf.c sized SSL_read_ex/SSL_write_ex payloads by the requested buffer size (stale tail bytes, actual_bytes=1); superseded by the fixed-probe run."
+}

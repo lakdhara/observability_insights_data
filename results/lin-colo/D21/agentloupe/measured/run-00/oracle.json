@@ -1,0 +1,55 @@
+{
+  "id": "D21",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795112720.3711705,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-colo/D21/agentsight/measured/run-02/trace.jsonl",
+  "execution": "colo",
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 152,
+  "edges": [],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false,
+  "detect_debug": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.8,
+      "component": "none",
+      "root_cause": "Every step reported the expected result (staged, applied 192.168.50.1 on eth1, committed to startup config) and the read-back shows 192.168.50.1/24 on eth1; nothing in the log contradicts the success claim."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.55,
+      "component": "net-commit / startup config",
+      "root_cause": "net-commit does an atomic save (mktemp + cp + mv) of /tmp/.stage/lan to /etc/nb/lan.commited.*; the only anomaly is the misspelt name commited, but the evidence never names the file net-boot actually loads, so a wrong target cannot be established and the run looks successful."
+    }
+  },
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.8,
+      "component": "none",
+      "root_cause": "Every step reported the expected result (staged, applied 192.168.50.1 on eth1, committed to startup config) and the read-back shows 192.168.50.1/24 on eth1; nothing in the log contradicts the success claim."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.55,
+      "component": "net-commit / startup config",
+      "root_cause": "net-commit does an atomic save (mktemp + cp + mv) of /tmp/.stage/lan to /etc/nb/lan.commited.*; the only anomaly is the misspelt name commited, but the evidence never names the file net-boot actually loads, so a wrong target cannot be established and the run looks successful."
+    }
+  }
+}

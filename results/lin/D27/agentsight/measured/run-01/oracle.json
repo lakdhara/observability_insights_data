@@ -1,0 +1,44 @@
+{
+  "id": "D27",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979795.741162,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 3,
+    "tool_calls": 2
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "MTU|fragment|MSS|blackhole": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"After the VPN went up, web ",
+    "clamp|1360|mss": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"After the VPN went up, web "
+  },
+  "action_matched": {
+    "ping -s 1472 -M do": "bash -c true # AGENT-ACTION[D27]: ping -s 1472 -M do 10.2.0.50 # size-dependent probe fails",
+    "(maxseg|TCPMSS|mss)": "bash -c true # AGENT-ACTION[D27]: nft add rule inet filter forward tcp flags syn tcp option maxseg size set 1360"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 12,
+    "exec": 2,
+    "net": 0
+  },
+  "passed": true
+}

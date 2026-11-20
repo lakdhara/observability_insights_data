@@ -1,0 +1,52 @@
+{
+  "id": "D22",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979766.7730486,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 5,
+    "tool_calls": 4
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "IPsec|tunnel|SA": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"The HQ-Branch IPsec tunnel ",
+    "PSK|pre-?shared|mismatch": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"The HQ-Branch IPsec tunnel "
+  },
+  "action_matched": {
+    "swanctl --list-sas|ip xfrm state": "bash -c true # AGENT-ACTION[D22]: swanctl --list-sas # diagnose: no SA established",
+    "swanctl --(load|initiate)": "bash -c true # AGENT-ACTION[D22]: swanctl --load-all && swanctl --initiate --child net"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 20,
+    "exec": 4,
+    "net": 0
+  },
+  "passed": true
+}

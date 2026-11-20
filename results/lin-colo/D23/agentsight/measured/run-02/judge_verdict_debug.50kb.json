@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "MTU set and a request succeeded; the large-upload test swallows its result, so it proves nothing, but nothing shows a failure."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.9,
+    "component": "WAN path / large transfers",
+    "root_cause": "The large upload `curl -s -m6 --data-binary @/tmp/p` exits 28 (timeout) -- the agent's command hid it behind `; echo verified` -- so large transfers stall: connectivity is not working for full-size packets."
+  }
+}

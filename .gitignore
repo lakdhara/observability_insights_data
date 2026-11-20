@@ -1,0 +1,20 @@
+# heavy regenerable per-run capture artifacts (oracle.json + stats ARE kept)
+results/**/trace.jsonl
+results/**/correlations.json
+results/**/trace.raw.jsonl
+results/**/pipeline_traces.jsonl
+results/**/*.duckdb
+results/**/otel_json_out/
+results/**/*.log
+results/**/cassette*.jsonl
+results/**/tool_results.jsonl
+results/**/device_before.txt
+results/**/device_after.txt
+results/**/judge_prompt*.txt
+results/**/judge_reply*.txt
+*.log
+cost_ledger.jsonl
+*.pcap
+*.pcapng
+*.duckdb
+*.db

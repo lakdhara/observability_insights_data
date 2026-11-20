@@ -1,0 +1,48 @@
+{
+  "id": "S20",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978510.0116043,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "route|172\\.16": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Split the work: one",
+    "tcp/80|443|tighten": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Split the work: one"
+  },
+  "action_matched": {
+    "172\\.16\\.0\\.0/12": "bash -c true # AGENT-ACTION[S20]: mkdir -p /etc/nb; printf 'ip route replace 172.16.0.0/12 via 10.1.0.254\\nip route repl",
+    "dport": "bash -c true # AGENT-ACTION[S20]: sed -i 's/iifname \"eth1\" oifname \"eth2\" accept/iifname \"eth1\" oifname \"eth2\" tcp dport"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 2,
+    "net": 0
+  },
+  "passed": true
+}

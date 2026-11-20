@@ -1,0 +1,48 @@
+{
+  "id": "S17",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978491.2815335,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "antivirus|AV|signature|malware": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Turn on antivirus u",
+    "EICAR|HTTP": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Turn on antivirus u"
+  },
+  "action_matched": {
+    "(suricata|clamav|eicar)": "bash -c true # AGENT-ACTION[S17]: echo 'alert http any any -> any any (msg:\"EICAR\"; content:\"EICAR-STANDARD-ANTIVIRUS-TE",
+    "local\\.rules|signature|EICAR": "bash -c true # AGENT-ACTION[S17]: echo 'alert http any any -> any any (msg:\"EICAR\"; content:\"EICAR-STANDARD-ANTIVIRUS-TE"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 2,
+    "net": 0
+  },
+  "passed": true
+}

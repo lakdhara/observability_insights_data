@@ -1,0 +1,47 @@
+diff --git a/bpf/process.bpf.c b/bpf/process.bpf.c
+index a4ff6792..73b0cc2a 100644
+--- a/bpf/process.bpf.c
++++ b/bpf/process.bpf.c
+@@ -20,7 +20,7 @@ struct {
+ 	__uint(max_entries, 256 * 1024);
+ } rb SEC(".maps");
+ 
+-const struct command_filter command_filters[MAX_COMMAND_FILTERS] = {0};
++const volatile struct command_filter command_filters[MAX_COMMAND_FILTERS] = {0};
+ 
+ /* Map to store tracked PIDs */
+ struct {
+@@ -45,15 +45,30 @@ struct filter_check_ctx {
+ static int check_filter_callback(__u32 index, void *ctx)
+ {
+ 	struct filter_check_ctx *filter_ctx = (struct filter_check_ctx *)ctx;
+-	const struct command_filter *filter;
++	const volatile struct command_filter *filter;
+ 	__u32 i = index;
++
++	if (i >= MAX_COMMAND_FILTERS)
++		return 1; /* repro patch: bound index for the verifier */
+ 	
+ 	filter = &command_filters[i];
+ 	if (filter->comm[0] == '\0')
+ 		return 0; /* continue loop - empty filter */
+ 
+-	/* Check if command matches the filter string exactly */
+-	if (bpf_strncmp(filter_ctx->comm, TASK_COMM_LEN, filter->comm) == 0) {
++	/* Check if command matches the filter string exactly.
++	 * repro patch: bpf_strncmp() needs a constant s2 address, which an indexed
++	 * rodata array is not, so compare bytes in a bounded loop instead. */
++	bool match = true;
++	for (int j = 0; j < TASK_COMM_LEN; j++) {
++		char a = filter_ctx->comm[j];
++		if (a != filter->comm[j]) {
++			match = false;
++			break;
++		}
++		if (a == '\0')
++			break;
++	}
++	if (match) {
+ 		/* Add this PID to tracked list */
+ 		struct pid_info new_pid_info = {
+ 			.pid = filter_ctx->pid,

@@ -1,0 +1,38 @@
+{
+ "model": "claude-sonnet-5-5",
+ "id": "msg_011CgiKxQVzfPUDp9Z6JZNea",
+ "type": "message",
+ "role": "assistant",
+ "content": [
+  {
+   "type": "thinking",
+   "thinking": "",
+   "signature": "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"
+  },
+  {
+   "type": "text",
+   "text": "```json\n{\n    \"threat_level\": 1,\n    \"threat_type\": \"none\",\n    \"confidence\": 0.85,\n    \"summary\": \"The trace looks like a normal Claude Code (v2.1.112) session startup and routine codebase exploration. It shows no signs of prompt injection, reasoning loops, data exfiltration or resource abuse.\",\n    \"details\": \"Process activity: the 'claude' process (pid 392191) spawns short-lived helpers that a coding agent normally uses: which, rg (ripgrep, bundled in the claude-code vendor directory), grep, id, echo, awk, sed, sh and ls. All have the agent process as parent or belong to a shell snapshot subtree (ppid 392241, 392336). Durations are 0-13 ms, and exit codes are 0 except one rg exit code 2. That code usually means a bad path or a regex or permission error, and it happened once, so it is not a repeated-error loop.\\n\\nFile access: the files opened are /proc/self/statm, /proc/sys/vm/overcommit_memory, ~/.gitconfig, ~/CLAUDE.local.md, ~/.claude/ide and glibc-hwcaps library paths. These are runtime, config and project-memory files that Claude Code reads at startup. No credentials, SSH keys, cloud tokens, browser stores or .env files were touched.\\n\\nNetwork: the only observable HTTP traffic is a GET to api.anthropic.com/api/claude_code/settings, using the expected claude-code user-agent. It has no body, so nothing was uploaded. There is no sensitive file read followed by outbound transfer, and no connection to an unexpected host.\\n\\nLLM/SSL content: one received SSL payload contains text addressed to the model about an 'Artifact tool', doc comments and a 'guide' tool. It reads like tool or system-prompt configuration delivered by the first-party API, not injected content from a file, web page or tool output. It was not followed by any anomalous system activity, so it does not indicate prompt injection.\\n\\nResource usage: 166 syscalls over about 0.01 hours is trivial, and there is no repetition suggesting a loop. Telemetry caveat: the summary reports api_tokens=0 and network_connections=0 even though HTTP/SSL events were captured. The counters are probably undercounting, which is an observability gap and not a threat. The sampled paths are also truncated.\",\n    \"recommendations\": [\n        \"No remediation needed for this trace.\",\n        \"Fix the resource-usage accounting in the trace summary, since it reports zero network connections and API tokens despite observed HTTPS traffic.\",\n        \"Increase path and field truncation limits so full file paths and exec arguments are available for forensics.\",\n        \"Keep monitoring for sensitive-file reads (~/.ssh, cloud credentials, .env) followed by outbound traffic to non-Anthropic hosts.\",\n        \"Baseline the normal helper-process pattern (which, rg, grep, id, awk, sed) so deviations such as curl, nc or base64 pipelines stand out.\",\n        \"Investigate the rg exit code 2 only if it recurs.\"\n    ],\n    \"evidence\": [\n        {\"type\": \"process_activity\", \"description\": \"Short-lived standard utilities (which, rg, grep, id, echo, awk, sed, ls) spawned by the claude process, consistent with environment and codebase discovery.\", \"severity\": \"low\"},\n        {\"type\": \"network\", \"description\": \"A single GET to api.anthropic.com/api/claude_code/settings with the legitimate claude-code user-agent and no request body.\", \"severity\": \"low\"},\n        {\"type\": \"file_access\", \"description\": \"Reads of ~/.gitconfig, ~/CLAUDE.local.md, ~/.claude/ide and /proc entries. These are expected config and runtime files, and no credential stores were accessed.\", \"severity\": \"low\"},\n        {\"type\": \"llm_content\", \"description\": \"The received SSL payload contains tool and system-prompt style instructions from the first-party API, with no subsequent anomalous behavior.\", \"severity\": \"low\"},\n        {\"type\": \"telemetry_gap\", \"description\": \"The summary shows 0 network connections and 0 API tokens despite captured HTTP/SSL events, so metrics are likely undercounted.\", \"severity\": \"low\"},\n        {\"type\": \"error\", \"description\": \"A single rg exit code 2, isolated and not repeated.\", \"severity\": \"low\"}\n    ]\n}\n```"
+  }
+ ],
+ "container": null,
+ "stop_reason": "end_turn",
+ "stop_sequence": null,
+ "stop_details": null,
+ "usage": {
+  "input_tokens": 4292,
+  "cache_creation_input_tokens": 0,
+  "cache_read_input_tokens": 0,
+  "cache_creation": {
+   "ephemeral_5m_input_tokens": 0,
+   "ephemeral_1h_input_tokens": 0
+  },
+  "output_tokens": 1929,
+  "output_tokens_details": {
+   "thinking_tokens": 441
+  },
+  "service_tier": "standard",
+  "inference_geo": "global",
+  "speed": "standard"
+ },
+ "diagnostics": null
+}

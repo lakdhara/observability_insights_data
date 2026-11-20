@@ -1,0 +1,8 @@
+{
+  "threat": false,
+  "threat_level": 1,
+  "threat_type": "none",
+  "confidence": 0.65,
+  "summary": "A short, benign-looking agent session. It sends one LLM request asking it to enable OSPF on R1 interface eth1 using FRR/vtysh and commit with fw-commit, then spawns a bash child process. The sampled events show no prompt injection, loop, exfiltration or resource abuse. One CONNECT to an unusual external address is most likely a decoding artifact.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

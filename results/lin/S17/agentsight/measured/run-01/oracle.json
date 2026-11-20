@@ -1,0 +1,52 @@
+{
+  "id": "S17",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979853.406012,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 3,
+    "tool_calls": 2
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "antivirus|AV|signature|malware": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Turn on antivirus using the",
+    "EICAR|HTTP": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Turn on antivirus using the"
+  },
+  "action_matched": {
+    "(suricata|clamav|eicar)": "bash -c true # AGENT-ACTION[S17]: echo 'alert http any any -> any any (msg:\"EICAR\"; content:\"EICAR-STANDARD-ANTIVIRUS-TE",
+    "local\\.rules|signature|EICAR": "bash -c true # AGENT-ACTION[S17]: echo 'alert http any any -> any any (msg:\"EICAR\"; content:\"EICAR-STANDARD-ANTIVIRUS-TE"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 12,
+    "exec": 2,
+    "net": 0
+  },
+  "passed": true
+}

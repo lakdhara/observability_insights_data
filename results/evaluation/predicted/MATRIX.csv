@@ -1,0 +1,121 @@
+scenario,family,correlation,framework,intent,action,corr,detect_or_diag,note
+C01,config,Easy,AgentSight,2,2,2,0,
+C01,config,Easy,ao,2,2,2,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C01,config,Easy,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C01,config,Easy,Alibaba AgentLoop (OSS),2,2,1,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+C02,config,Hard,AgentSight,2,2,1,0,ring-buffer drop risk under high event volume
+C02,config,Hard,ao,2,2,1,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C02,config,Hard,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C02,config,Hard,Alibaba AgentLoop (OSS),2,2,0,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss
+C03,config,Medium,AgentSight,2,2,2,0,
+C03,config,Medium,ao,2,2,2,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C03,config,Medium,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C03,config,Medium,Alibaba AgentLoop (OSS),2,2,1,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+C04,config,Medium,AgentSight,2,2,2,0,
+C04,config,Medium,ao,2,2,2,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C04,config,Medium,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C04,config,Medium,Alibaba AgentLoop (OSS),2,2,1,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+C05,config,Hard,AgentSight,2,2,0,0,time-window correlation weak across delayed/forked/multi-agent boundary; on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+C05,config,Hard,ao,2,2,1,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+C05,config,Hard,AgentLoupe (re-impl),2,1,2,0,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; on OWv/real router propagation stops at the ssh client (action drops to 1)"
+C05,config,Hard,Alibaba AgentLoop (OSS),2,1,0,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+C06,config,Hard,AgentSight,2,2,1,0,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+C06,config,Hard,ao,2,2,1,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+C06,config,Hard,AgentLoupe (re-impl),2,1,2,0,label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1)
+C06,config,Hard,Alibaba AgentLoop (OSS),2,1,0,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+C07,config,Medium,AgentSight,2,2,2,0,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+C07,config,Medium,ao,2,2,2,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+C07,config,Medium,AgentLoupe (re-impl),2,1,2,0,label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1)
+C07,config,Medium,Alibaba AgentLoop (OSS),2,1,1,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+C08,config,Hard,AgentSight,2,2,1,0,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+C08,config,Hard,ao,2,2,1,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+C08,config,Hard,AgentLoupe (re-impl),2,1,2,0,label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1)
+C08,config,Hard,Alibaba AgentLoop (OSS),2,1,0,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+C09,config,Medium,AgentSight,2,2,2,0,
+C09,config,Medium,ao,2,2,2,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C09,config,Medium,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C09,config,Medium,Alibaba AgentLoop (OSS),2,2,1,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+C10,config,Hard,AgentSight,2,2,1,0,ring-buffer drop risk under high event volume
+C10,config,Hard,ao,2,2,1,0,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+C10,config,Hard,AgentLoupe (re-impl),2,2,2,0,label propagation gives exact intent->resource provenance edges
+C10,config,Hard,Alibaba AgentLoop (OSS),2,2,0,0,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss
+D21,debug,Easy,AgentSight,2,2,2,2,
+D21,debug,Easy,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D21,debug,Easy,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D21,debug,Easy,Alibaba AgentLoop (OSS),2,2,1,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+D22,debug,Hard,AgentSight,2,2,0,1,time-window correlation weak across delayed/forked/multi-agent boundary; on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+D22,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+D22,debug,Hard,AgentLoupe (re-impl),2,1,2,1,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; on OWv/real router propagation stops at the ssh client (action drops to 1); labels tie the agent's writes to the fault but do not diagnose root cause by themselves"
+D22,debug,Hard,Alibaba AgentLoop (OSS),2,1,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+D23,debug,Hard,AgentSight,2,2,0,1,time-window correlation weak across delayed/forked/multi-agent boundary; ring-buffer drop risk under high event volume
+D23,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D23,debug,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; labels tie the agent's writes to the fault but do not diagnose root cause by themselves"
+D23,debug,Hard,Alibaba AgentLoop (OSS),2,2,0,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss; strong on event-volume debug faults (its collector is built for throughput)
+D24,debug,Hard,AgentSight,2,2,1,1,ring-buffer drop risk under high event volume
+D24,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D24,debug,Hard,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D24,debug,Hard,Alibaba AgentLoop (OSS),2,2,0,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss; strong on event-volume debug faults (its collector is built for throughput)
+D25,debug,Medium,AgentSight,2,2,2,2,
+D25,debug,Medium,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D25,debug,Medium,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D25,debug,Medium,Alibaba AgentLoop (OSS),2,2,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+D26,debug,Hard,AgentSight,2,2,1,1,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+D26,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+D26,debug,Hard,AgentLoupe (re-impl),2,1,2,1,label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1); labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D26,debug,Hard,Alibaba AgentLoop (OSS),2,1,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+D27,debug,Hard,AgentSight,2,2,1,1,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+D27,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+D27,debug,Hard,AgentLoupe (re-impl),2,1,2,1,label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1); labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D27,debug,Hard,Alibaba AgentLoop (OSS),2,1,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+D28,debug,Medium,AgentSight,2,2,2,2,ring-buffer drop risk under high event volume
+D28,debug,Medium,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D28,debug,Medium,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D28,debug,Medium,Alibaba AgentLoop (OSS),2,2,1,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss; strong on event-volume debug faults (its collector is built for throughput)
+D29,debug,Medium,AgentSight,2,2,2,2,
+D29,debug,Medium,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D29,debug,Medium,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D29,debug,Medium,Alibaba AgentLoop (OSS),2,2,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+D30,debug,Hard,AgentSight,2,2,1,1,ring-buffer drop risk under high event volume
+D30,debug,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+D30,debug,Hard,AgentLoupe (re-impl),2,2,2,1,label propagation gives exact intent->resource provenance edges; labels tie the agent's writes to the fault but do not diagnose root cause by themselves
+D30,debug,Hard,Alibaba AgentLoop (OSS),2,2,0,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; LoongCollector is a production high-throughput collector -> best resistance to event loss; strong on event-volume debug faults (its collector is built for throughput)
+S11,security,Hard,AgentSight,2,2,1,2,
+S11,security,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); rule-based security_detector may miss semantic prompt-injection
+S11,security,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S11,security,Hard,Alibaba AgentLoop (OSS),2,2,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; audit rules + metrics are weak on semantic/obfuscated single-shot attacks
+S12,security,Medium,AgentSight,2,2,2,2,content visible -> should correctly NOT alert (low FP)
+S12,security,Medium,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+S12,security,Medium,AgentLoupe (re-impl),2,2,2,2,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT; precise provenance -> very low false-positive on the benign control"
+S12,security,Medium,Alibaba AgentLoop (OSS),2,2,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+S13,security,Easy,AgentSight,2,2,2,2,
+S13,security,Easy,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+S13,security,Easy,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S13,security,Easy,Alibaba AgentLoop (OSS),2,2,1,2,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; OTel span/metric counts make the retry-storm loop obvious
+S14,security,Medium,AgentSight,2,2,2,2,
+S14,security,Medium,ao,2,2,2,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); rule-based security_detector may miss semantic prompt-injection
+S14,security,Medium,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S14,security,Medium,Alibaba AgentLoop (OSS),2,2,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; audit rules + metrics are weak on semantic/obfuscated single-shot attacks
+S15,security,Hard,AgentSight,2,2,0,1,time-window correlation weak across delayed/forked/multi-agent boundary
+S15,security,Hard,ao,2,2,1,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); a spawned reverse-shell child is outside the span tree -> edge falls back to kernel+time
+S15,security,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S15,security,Hard,Alibaba AgentLoop (OSS),2,2,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; audit rules + metrics are weak on semantic/obfuscated single-shot attacks
+S16,security,Hard,AgentSight,2,2,0,2,time-window correlation weak across delayed/forked/multi-agent boundary
+S16,security,Hard,ao,2,2,1,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+S16,security,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S16,security,Hard,Alibaba AgentLoop (OSS),2,2,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+S17,security,Medium,AgentSight,2,2,2,2,
+S17,security,Medium,ao,2,2,2,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios)
+S17,security,Medium,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S17,security,Medium,Alibaba AgentLoop (OSS),2,2,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only
+S18,security,Medium,AgentSight,2,2,2,2,on OWv/real router (separate kernel) action drops to 1: sees ssh client only
+S18,security,Medium,ao,2,2,2,2,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); UNIQUE: device-side remote observer in the router VM keeps action=2 on OWv/real router
+S18,security,Medium,AgentLoupe (re-impl),2,1,2,1,"label propagation gives exact intent->resource provenance edges; on OWv/real router propagation stops at the ssh client (action drops to 1); provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S18,security,Medium,Alibaba AgentLoop (OSS),2,1,1,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; separate-kernel device: audit sees only ssh client; OTel sees only the agent's own tool call
+S19,security,Hard,AgentSight,2,2,1,2,
+S19,security,Hard,ao,2,2,1,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); rule-based security_detector may miss semantic prompt-injection
+S19,security,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S19,security,Hard,Alibaba AgentLoop (OSS),2,2,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only; audit rules + metrics are weak on semantic/obfuscated single-shot attacks
+S20,security,Hard,AgentSight,2,2,0,2,time-window correlation weak across delayed/forked/multi-agent boundary
+S20,security,Hard,ao,2,2,2,1,explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix scenarios); per-process spans give clean multi-agent attribution
+S20,security,Hard,AgentLoupe (re-impl),2,2,2,1,"label propagation gives exact intent->resource provenance edges; STRENGTH: follows the label across fork/exec, file write, delayed connect, multi-agent; provenance only: supplies ground-truth (label,resource) edges but needs a policy/query to ALERT"
+S20,security,Hard,Alibaba AgentLoop (OSS),2,2,0,1,OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation id linking a span to its kernel events -> correlation is timestamp-alignment only

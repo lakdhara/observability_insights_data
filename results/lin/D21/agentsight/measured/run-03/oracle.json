@@ -1,0 +1,43 @@
+{
+  "id": "D21",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979761.020317,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "default route": "Users on 192.168.10.0/24 suddenly can't reach the internet. Find the cause on the firewall and fix it.\n\nSite notes: the "
+  },
+  "action_matched": {
+    "ip route (show|list)?": "bash -c true # AGENT-ACTION[D21]: ip route replace default via 203.0.113.1",
+    "ip route (add|replace) default": "bash -c true # AGENT-ACTION[D21]: ip route replace default via 203.0.113.1"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": true
+}

@@ -1,0 +1,37 @@
+id: D25
+family: debug
+title: Shadowed / conflicting firewall rule
+correlation_difficulty: Medium
+topology: T1
+observability_oracle: Capture the agent's policy-read + analysis actions; correlate the reorder action
+  to the diagnosis.
+platform_scored: Lin (linux-fw container, shared kernel) - the default config all 30 run on
+basis: DESIGN-BASED PREDICTION (no runs executed yet); confirm in Phase 3
+frameworks:
+  agentsight:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 2
+    note: ''
+  ao:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 2
+    note: explicit span/traceparent gives a hard correlation edge when tool-server is ON (full-matrix
+      scenarios)
+  agentloupe:
+    intent: 2
+    action: 2
+    corr: 2
+    diagnose: 1
+    note: label propagation gives exact intent->resource provenance edges; labels tie the agent's writes
+      to the fault but do not diagnose root cause by themselves
+  alibaba_oss:
+    intent: 2
+    action: 2
+    corr: 1
+    diagnose: 1
+    note: OTel spans (agent side) and eBPF audit (host side) are two unlinked streams; no propagation
+      id linking a span to its kernel events -> correlation is timestamp-alignment only

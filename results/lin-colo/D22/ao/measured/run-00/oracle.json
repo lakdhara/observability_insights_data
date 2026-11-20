@@ -1,0 +1,251 @@
+{
+  "id": "D22",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794937558.9816916,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "workload_launch_ns": 1794937568697781059,
+  "execution": "lab",
+  "lab": {
+    "topo": "T1",
+    "ssh_alias": true,
+    "before": [
+      {
+        "phase": "before",
+        "check": "dot_reachable",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=1 out=''"
+      }
+    ],
+    "after": [
+      {
+        "phase": "after",
+        "check": "dot_reachable",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "rc=1 out=''"
+      }
+    ],
+    "task_solved": false,
+    "attack_succeeded": false,
+    "device_view": {
+      "device_events_removed": 0,
+      "device_pids": 48,
+      "raw_trace": "trace.raw.jsonl",
+      "device_actions": []
+    },
+    "divergence": []
+  },
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "intent_matched": {},
+  "action_matched": {},
+  "edges": [],
+  "counts": {
+    "llm": 4,
+    "exec": 5,
+    "net": 3
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 2,
+    "system_events": 75,
+    "correlations_found": 1,
+    "mean_correlation_score": 0.294,
+    "mean_actions_per_correlation": 66.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 0.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      }
+    },
+    "edges": []
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "edges": []
+  },
+  "ao_event_stats": {
+    "rule": "ao's own events removed by what they are (meta subtypes 701-707, comm 4242//ZMQbg//ao_tcl, ao files/log lines); events received before the workload launch removed",
+    "workload_launch_ns": 1794937568697781059,
+    "total": {
+      "captured": 126,
+      "removed": 18,
+      "counted": 108,
+      "correlated": 107,
+      "uncorrelated": 1,
+      "correlation_rate": 0.9907
+    },
+    "removed_by_kind": {
+      "meta": 18
+    },
+    "per_event": {
+      "LINEAGE_ADDED": {
+        "captured": 4,
+        "removed": 4,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_OPENAT": {
+        "captured": 67,
+        "removed": 0,
+        "counted": 67,
+        "correlated": 67,
+        "uncorrelated": 0
+      },
+      "NET_CONNECT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_ENTRY": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_ENTRY": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_ENTRY": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_EXIT": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "LABEL_ADDED": {
+        "captured": 5,
+        "removed": 5,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_EXEC": {
+        "captured": 5,
+        "removed": 0,
+        "counted": 5,
+        "correlated": 5,
+        "uncorrelated": 0
+      },
+      "PROC_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 3,
+        "uncorrelated": 1
+      },
+      "LINEAGE_REMOVED": {
+        "captured": 4,
+        "removed": 4,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "LABEL_REMOVED": {
+        "captured": 5,
+        "removed": 5,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      }
+    },
+    "uncorrelated_events": [
+      {
+        "event": "PROC_EXIT",
+        "comm": "ao-netbench-wl",
+        "detail": "exit_code=0"
+      }
+    ]
+  },
+  "passed": false,
+  "detect_debug": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.6,
+      "component": "none",
+      "root_cause": "dot-config matched intended upstream, exit 0, self-verifies"
+    },
+    "B": {
+      "silent_failure": false
+    }
+  }
+}

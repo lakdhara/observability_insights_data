@@ -1,0 +1,52 @@
+{
+  "id": "D26",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979789.9344501,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 5,
+    "tool_calls": 4
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "asymmetric|stateful|handshake|hang": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"TCP sessions to the DMZ ser",
+    "route|symmetry": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"TCP sessions to the DMZ ser"
+  },
+  "action_matched": {
+    "ip route (show|replace)": "bash -c true # AGENT-ACTION[D26]: ip route show table all # diagnose asymmetry",
+    "(conntrack|rp_filter|notrack)": "bash -c true # AGENT-ACTION[D26]: conntrack -L # handshakes complete, data stalls"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 20,
+    "exec": 4,
+    "net": 0
+  },
+  "passed": true
+}

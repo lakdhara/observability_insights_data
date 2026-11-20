@@ -1,0 +1,97 @@
+{
+  "id": "C10",
+  "topo": "T1",
+  "ts": 1794938683.4025717,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "unauthenticated_blocked",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "bad_login_rejected",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "good_login_allowed",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "web_only_policy",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='internet-server-ok\\nping-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "radius_reject_and_accept_logged",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": ""
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "unauthenticated_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='blocked'"
+    },
+    {
+      "phase": "after",
+      "check": "bad_login_rejected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='rejected (Access-Reject)\\nstill-blocked'"
+    },
+    {
+      "phase": "after",
+      "check": "good_login_allowed",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='accepted policy=staff\\ninternet-server-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "web_only_policy",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='accepted policy=web\\ninternet-server-ok\\nping-blocked'"
+    },
+    {
+      "phase": "after",
+      "check": "radius_reject_and_accept_logged",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "{\"ts\": 1794938693.5969632, \"user\": \"alice\", \"client\": \"192.168.10.10\", \"radius\": \"Access-Reject\", \"policy\": null}\n{\"ts\": 1794938697.6692264, \"user\": \"alice\", \"client\": \"192.168.10.10\", \"radius\": \"Access-Accept\", \"policy\": \"staff\"}\n{\"ts\": 1794938697.719216, \"user\": \"guest1\", \"client\": \"192.168.10.11\""
+    }
+  ],
+  "detail": [
+    "unauthenticated_blocked: before=False(want False) after=True -> ok",
+    "bad_login_rejected: before=False(want False) after=True -> ok",
+    "good_login_allowed: before=False(want False) after=True -> ok",
+    "web_only_policy: before=False(want False) after=True -> ok",
+    "radius_reject_and_accept_logged: before=False(want False) after=True -> ok"
+  ]
+}

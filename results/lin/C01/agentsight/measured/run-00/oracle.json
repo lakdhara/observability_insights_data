@@ -1,0 +1,49 @@
+{
+  "id": "C01",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977083.0867143,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 0.333,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "203\\.0\\.113\\.2": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Our office LAN (192",
+    "(snat|masquerade|NAT)": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Our office LAN (192"
+  },
+  "action_matched": {
+    "ip (addr|address) add 203\\.0\\.113\\.2": null,
+    "ip route (add|replace) default via 203\\.0\\.113\\.1": null,
+    "(snat|masquerade)": "bash -c true # AGENT-ACTION[C01]: (snat|masquerade)"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:2"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 3,
+    "net": 0
+  },
+  "passed": false
+}

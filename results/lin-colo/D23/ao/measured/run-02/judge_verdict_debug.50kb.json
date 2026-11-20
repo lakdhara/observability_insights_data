@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "MTU set and a request succeeded; the large-upload test swallows its result, so it proves nothing, but nothing shows a failure."
+  },
+  "B": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "curl connects to 198.51.100.10:80 for the small and the large request; no outcome is shown."
+  }
+}

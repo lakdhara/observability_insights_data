@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "set-wan was called with the documented key and returned status ok."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.85,
+    "component": "set-wan",
+    "root_cause": "set-wan (python3) reads /etc/nb/wan.defaults -- per the notes the fallback for INVALID input -- then rewrites /etc/nb/wan.conf, yet reports status ok: the MTU request was rejected."
+  }
+}

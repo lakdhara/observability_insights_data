@@ -1,0 +1,121 @@
+{
+  "id": "C07",
+  "framework": "agentsight",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1794909247.3191435,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "execution": "host",
+  "lab_fallback": "no lab passing the reference gate for C07 (topology T4)",
+  "replay": {
+    "turns": 4,
+    "tool_calls": 3
+  },
+  "agent_pid": 316382,
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.5,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 1
+  },
+  "intent_matched": {
+    "SSL ?VPN|remote": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Set up SSL",
+    "10\\.9\\.9\\.0|pool": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"stream\": false, \"messages\": [{\"role\": \"user\", \"content\": \"Set up SSL"
+  },
+  "action_matched": {
+    "ocpasswd": "bash -c true # AGENT-ACTION[C07]: ocpasswd -c /etc/ocserv/ocpasswd staff",
+    "10\\.9\\.9\\.0": "bash -c true # AGENT-ACTION[C07]: sed -i 's#^.*ipv4-network.*#ipv4-network = 10.9.9.0/24#' /etc/ocserv/ocserv.conf"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 16,
+    "exec": 3,
+    "net": 0
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ms",
+    "temporal_window_units": 500,
+    "llm_interactions": 8,
+    "system_events": 396,
+    "correlations_found": 8,
+    "mean_correlation_score": 0.249,
+    "mean_actions_per_correlation": 5.5,
+    "edge_recall": 0.5,
+    "corr_band": 1,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "200": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "500": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 2,
+        "recall": 0.5
+      },
+      "2000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 2,
+        "total": 2,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "passed": true
+}

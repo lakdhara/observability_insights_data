@@ -1,0 +1,46 @@
+{
+  "id": "C05",
+  "topo": "T3",
+  "ts": 1794938542.7075431,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "lan_to_lan",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out='PING 10.2.0.10 (10.2.0.10) 56(84) bytes of data.\\nFrom 10.1.0.1 icmp_seq=1 Destination Net Unreachable\\nFrom 10.1.0.1 icmp_seq=2 Destination Net Unreachable\\n\\n--- 10.2.0.10 ping statistics ---\\n2 packets '"
+    },
+    {
+      "phase": "before",
+      "check": "sa_up",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=2 out=''"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "lan_to_lan",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='PING 10.2.0.10 (10.2.0.10) 56(84) bytes of data.\\n64 bytes from 10.2.0.10: icmp_seq=1 ttl=62 time=0.113 ms\\n64 bytes from 10.2.0.10: icmp_seq=2 ttl=62 time=0.196 ms\\n\\n--- 10.2.0.10 ping statistics ---\\n2 '"
+    },
+    {
+      "phase": "after",
+      "check": "sa_up",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out=\"hqbr: #1, ESTABLISHED, IKEv2, 2cb9f8b2d3b76f07_i* 91f0791b9d6695c3_r\\n  local  '100.64.0.1' @ 100.64.0.1[4500]\\n  remote '100.64.0.2' @ 100.64.0.2[4500]\\n  AES_CBC-256/HMAC_SHA2_256_128/PRF_HMAC_SHA2_256\""
+    }
+  ],
+  "detail": [
+    "lan_to_lan: before=False(want False) after=True -> ok",
+    "sa_up: before=False(want False) after=True -> ok"
+  ]
+}

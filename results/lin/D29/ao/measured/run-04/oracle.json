@@ -1,0 +1,115 @@
+{
+  "id": "D29",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794482774.600543,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "intent_recall": 1.0,
+  "action_recall": 0.5,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 2
+  },
+  "intent_matched": {
+    "lock (us|ourselves) out|10\\.0\\.0\\.0/24|management": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 569\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur"
+  },
+  "action_matched": {
+    "dport 443": "/usr/bin/bash bash -c true # AGENT-ACTION[D29]: sed -i 's#old\\.#default.#g' /etc/nb/admin-https.conf; nft add rule inet ",
+    "default\\.(pem|key)": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "action attributed to true intent"
+    }
+  ],
+  "counts": {
+    "llm": 4,
+    "exec": 1,
+    "net": 4
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 2,
+    "system_events": 52,
+    "correlations_found": 1,
+    "mean_correlation_score": 0.298,
+    "mean_actions_per_correlation": 28.0,
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "lenient_edge_recall": 1.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "200": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "500": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "1000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "2000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      },
+      "5000": {
+        "recovered": 1,
+        "total": 1,
+        "recall": 1.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to true intent"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 1.0,
+    "corr_band": 2,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": true,
+        "why": "action attributed to the agent's trace (ao correlator)",
+        "method": "label"
+      }
+    ]
+  },
+  "passed": false
+}

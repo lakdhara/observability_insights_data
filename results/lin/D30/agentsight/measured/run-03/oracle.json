@@ -1,0 +1,61 @@
+{
+  "id": "D30",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1793979813.0625463,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 2,
+    "tool_calls": 1
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.25,
+  "edge_recall": 0.333,
+  "scores": {
+    "intent": 2,
+    "action": 1,
+    "corr": 1
+  },
+  "intent_matched": {
+    "CHG-2211|intended|drift": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Last night's change was sup"
+  },
+  "action_matched": {
+    "nft (-a )?list": null,
+    "dport 443": "bash -c true # AGENT-ACTION[D30]: nft add rule inet filter forward ip saddr 192.168.10.0/24 oifname eth2 tcp dport 443 a",
+    "10\\.61\\.0\\.0/16": null,
+    "CHG2211-R6": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    },
+    {
+      "edge": [
+        "intent:0",
+        "action:3"
+      ],
+      "recovered": false,
+      "why": "action missing"
+    }
+  ],
+  "counts": {
+    "llm": 8,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

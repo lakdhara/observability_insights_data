@@ -1,0 +1,1 @@
+[HTTPFilter Global Metrics] Total: 42, Filtered: 12, Passed: 30

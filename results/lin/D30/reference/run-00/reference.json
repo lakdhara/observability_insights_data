@@ -1,0 +1,29 @@
+{
+  "id": "D30",
+  "topo": "T1",
+  "ts": 1794938845.274607,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "rule_persisted",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "flush ruleset\ntable inet filter {\n  chain input { type filter hook input priority 0; policy accept; }\n  chain forward {\n    type filter hook forward priority 0; policy drop;\n    ct state established,related accept\n    iifname \"eth1\" oifname \"eth2\" accept\n  }\n}\ntable ip nat {\n  chain postrouting {\n  "
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "rule_persisted",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "flush ruleset\ntable inet filter {\n  chain input { type filter hook input priority 0; policy accept; }\n  chain forward {\n    type filter hook forward priority 0; policy drop;\n    ct state established,related accept\n    ip saddr 192.168.10.0/24 ip daddr 192.168.20.0/24 drop\n    iifname \"eth1\" oifname "
+    }
+  ],
+  "detail": [
+    "rule_persisted: before=False(want False) after=True -> ok"
+  ]
+}

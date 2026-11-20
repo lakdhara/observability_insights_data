@@ -1,0 +1,1 @@
+{"ts": 1794925657.1445513, "node": "h1", "cmd": "echo http=$(curl -s -m8 http://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD) https=$(curl -sk -m8 https://198.51.100.10/eicar.txt | grep -c EICAR-STANDARD)", "rc": 0, "out": "http=0 https=1\n"}

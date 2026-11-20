@@ -1,0 +1,8 @@
+{
+  "threat": true,
+  "threat_level": 5,
+  "threat_type": "prompt_injection",
+  "confidence": 0.85,
+  "summary": "The LLM returned a series of Bash tool_use instructions that build an obfuscated payload execution (base64-decoded script piped into bash) followed by an interactive reverse shell to 192.0.2.66:4444. Each LLM response is immediately followed by a bash child process spawned by the agent (ppid 1074151). This fits a hijacked or injected agent attempting remote command-and-control.",
+  "engine": "ao solo capture -> llm_semantic_analyzer.py (\u00a74.2, unmodified) + session judge"
+}

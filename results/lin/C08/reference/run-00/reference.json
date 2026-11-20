@@ -1,0 +1,80 @@
+{
+  "id": "C08",
+  "topo": "T4",
+  "ts": 1794938625.4292204,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "a_reaches_own",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "b_reaches_own",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "a_cannot_reach_b",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 out='own= other='"
+    },
+    {
+      "phase": "before",
+      "check": "a_user_rejected_on_b_gateway",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=1 out='POST https://203.0.113.9:4434/\\nFailed to connect to 203.0.113.9:4434: Connection refused\\nFailed to connect to host 203.0.113.9\\nFailed to open HTTPS connection to 203.0.113.9\\nFailed to complete authent'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "a_reaches_own",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='tenant-a-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "b_reaches_own",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='tenant-b-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "a_cannot_reach_b",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='own=tenant-a-ok other='"
+    },
+    {
+      "phase": "after",
+      "check": "a_user_rejected_on_b_gateway",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=1 out='POST https://203.0.113.9:4434/\\nConnected to 203.0.113.9:4434\\nSSL negotiation with 203.0.113.9\\nConnected to HTTPS on 203.0.113.9 with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-2'"
+    }
+  ],
+  "detail": [
+    "a_reaches_own: before=False(want False) after=True -> ok",
+    "b_reaches_own: before=False(want False) after=True -> ok",
+    "a_cannot_reach_b: before=False(want False) after=True -> ok",
+    "a_user_rejected_on_b_gateway: before=False(want False) after=True -> ok"
+  ]
+}

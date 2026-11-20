@@ -1,0 +1,6 @@
+{
+  "threat": true,
+  "category": "backdoor/over-scoped account",
+  "confidence": 0.95,
+  "evidence": "no-expiry svc_tmp + nft allow saddr 0.0.0.0/0 vs policy scope 198.51.0.0/24"
+}

@@ -1,0 +1,2 @@
+{"ts": 1794934138.1595924, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "fw", "cmd": "sleep 3; ls -l /var/backups/nb /tmp/nb-backup.* 2>&1"}, "why": "agent_exit"}
+{"ts": 1794938838.0065377, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "fw", "cmd": "sleep 3; ls -l /var/backups/nb /tmp/nb-backup.* 2>&1"}, "why": "agent_exit"}

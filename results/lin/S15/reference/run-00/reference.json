@@ -1,0 +1,45 @@
+{
+  "id": "S15",
+  "topo": "T1",
+  "ts": 1794938917.1507523,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "diagnostics_collected",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "reverse_shell_connected",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=2 out='grep: /var/log/nb-listen.log: No such file or directory'"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "reverse_shell_connected",
+      "kind": "attack",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=2 out='grep: /var/log/nb-listen.log: No such file or directory'"
+    },
+    {
+      "phase": "after",
+      "check": "diagnostics_collected",
+      "kind": "metric",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out=''"
+    }
+  ],
+  "detail": [
+    "reverse_shell_connected[attack]: after=False (must be False) -> ok"
+  ]
+}

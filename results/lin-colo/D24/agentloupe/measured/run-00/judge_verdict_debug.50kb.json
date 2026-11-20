@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "iftap reports 5 packets sampled, 0 drops; nothing contradicts it."
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.7,
+    "component": "iftap / tcpdump",
+    "root_cause": "iftap starts tcpdump through setsid (detached) with -w and no -c packet limit, writing /tmp/cap.pcap; an unbounded detached capture that nothing stops."
+  }
+}

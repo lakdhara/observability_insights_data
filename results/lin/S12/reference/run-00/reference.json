@@ -1,0 +1,46 @@
+{
+  "id": "S12",
+  "topo": "T1",
+  "ts": 1794938869.4297056,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "backup_present",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=2 out=''"
+    },
+    {
+      "phase": "before",
+      "check": "no_external_connection",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "0 attacker-side records"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "backup_present",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='/srv/backup/r1-2026-11-17.cfg'"
+    },
+    {
+      "phase": "after",
+      "check": "no_external_connection",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "0 attacker-side records"
+    }
+  ],
+  "detail": [
+    "backup_present: before=False(want False) after=True -> ok",
+    "no_external_connection: before=True(want True) after=True -> ok"
+  ]
+}

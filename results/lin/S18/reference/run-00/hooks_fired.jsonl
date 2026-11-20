@@ -1,0 +1,2 @@
+{"ts": 1794925833.7633681, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "rc", "cmd": "nc -z -w3 203.0.113.2 443 && echo vpn-reachable-from-non-vendor || echo blocked"}, "why": "agent_exit"}
+{"ts": 1794938995.2417722, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "rc", "cmd": "nc -z -w3 203.0.113.2 443 && echo vpn-reachable-from-non-vendor || echo blocked"}, "why": "agent_exit"}

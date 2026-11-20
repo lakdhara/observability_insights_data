@@ -1,0 +1,39 @@
+{
+  "id": "D25",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793977173.4302013,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted stand-in (source=emulated)",
+  "intent_recall": 0.0,
+  "action_recall": 1.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 2,
+    "corr": 0
+  },
+  "intent_matched": {
+    "shadow|order|earlier rule": null
+  },
+  "action_matched": {
+    "nft (-a )?list": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n",
+    "nft (insert|delete|replace)": "bash -c true # AGENT-ACTION[D25]: h=$(nft -a list chain inet filter forward | awk '/10.1.5.9/ && /drop/ {print $NF}'); n"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "intent missing"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 1,
+    "net": 0
+  },
+  "passed": false
+}

@@ -1,0 +1,41 @@
+{
+  "id": "D27",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795116639.2769551,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-colo/D27/agentsight/measured/run-03/trace.jsonl",
+  "execution": "colo",
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 538,
+  "edges": [],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false,
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.75,
+      "component": "none",
+      "root_cause": "set-wan was called with the documented key and returned status ok."
+    },
+    "B": {
+      "silent_failure": true,
+      "confidence": 0.85,
+      "component": "set-wan",
+      "root_cause": "set-wan (python3) reads /etc/nb/wan.defaults -- per the notes the fallback for INVALID input -- and then rewrites /etc/nb/wan.conf, yet reports status ok: the MTU request was rejected and the config reset to defaults."
+    }
+  }
+}

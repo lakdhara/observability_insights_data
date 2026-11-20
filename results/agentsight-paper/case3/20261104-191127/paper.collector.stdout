@@ -1,0 +1,36 @@
+Creating temporary directory...
+Created temporary directory: /tmp/.tmpLBfSQf
+Extracted process binary to: /tmp/.tmpLBfSQf/process
+Extracted sslsniff binary to: /tmp/.tmpLBfSQf/sslsniff
+Trace Monitoring
+============================================================
+✓ SSL monitoring enabled with 1 HTTP filter patterns
+✓ Process monitoring enabled
+✓ Logging to file: /home/admin1/workspace/research_papers/agentsight/results/case3/20261104-191127/paper.trace.log
+============================================================
+Starting flexible trace monitoring with 2 runners and 1 global analyzers...
+Press Ctrl+C to stop
+[2026-11-04T18:11:28Z INFO  agentsight::server::assets] 📁 Extracted frontend assets to: /tmp/agentsight-frontend-e20491a6-408b-4084-883f-25813d27bc89
+🌐 Starting web server on http://127.0.0.1:18080
+   Frontend will be available once the server starts
+[2026-11-04T18:11:28Z INFO  agentsight::server::web] 🚀 Frontend server running on http://127.0.0.1:18080
+[2026-11-04T18:11:28Z INFO  agentsight::server::web] 📦 Embedded 20 assets from frontend/dist:
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - 404/index.html
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - 404.html
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/J5LCuVVfBjQJ6mHJiGRWi/_buildManifest.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/J5LCuVVfBjQJ6mHJiGRWi/_ssgManifest.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/148-51d0e4269fd8d6ea.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/4bd1b696-9c9d6d59b34f4e3c.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/684-6cab8f03cf0ece9a.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/app/_not-found/page-160eb68c1d93cf0d.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/app/layout-fcf62879d3449bae.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    - _next/static/chunks/app/page-6a3e612bfe24ce09.js
+[2026-11-04T18:11:28Z INFO  agentsight::server::web]    ... and 10 more
+[2026-11-04T18:11:28Z INFO  agentsight::framework::runners::common] Executing binary: /tmp/.tmpLBfSQf/sslsniff -c claude
+[2026-11-04T18:11:28Z INFO  agentsight::framework::runners::common] Executing binary: /tmp/.tmpLBfSQf/process -c claude
+[2026-11-04T18:11:38Z WARN  agentsight::framework::runners::common] Skipping non-JSON line 1 from binary: Config: filter_mode=2, min_duration_ms=0, commands=1, pid=0, initial_tracked_pids=2
+
+
+Received SIGINT, shutting down...
+[HTTPFilter Global Metrics] Total: 185, Filtered: 63, Passed: 122
+[SSLFilter Global Metrics] No metrics available

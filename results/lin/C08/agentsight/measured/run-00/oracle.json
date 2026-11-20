@@ -1,0 +1,50 @@
+{
+  "id": "C08",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "emulated",
+  "ts": 1793978372.8202815,
+  "note": "real AgentSight eBPF capture + oracle; workload is a scripted agent trajectory (source=emulated)",
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "tenant|virtual (system|gateway)|vsys": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Two companies share",
+    "4433": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Two companies share",
+    "4434": "{\"model\": \"claude-agentsight-mock\", \"max_tokens\": 64, \"messages\": [{\"role\": \"assistant\", \"content\": \"Two companies share"
+  },
+  "action_matched": {
+    "4433": "bash -c true # AGENT-ACTION[C08]: ip netns exec tenantA ocserv -c /etc/ocserv/a.conf   # 203.0.113.9:4433",
+    "4434": "bash -c true # AGENT-ACTION[C08]: ip netns exec tenantB ocserv -c /etc/ocserv/b.conf   # 203.0.113.9:4434",
+    "netns add tenant": "bash -c true # AGENT-ACTION[C08]: ip netns add tenantA; ip netns add tenantB"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 2,
+    "exec": 3,
+    "net": 0
+  },
+  "passed": true
+}

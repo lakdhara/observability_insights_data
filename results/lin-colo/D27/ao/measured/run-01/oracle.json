@@ -1,0 +1,261 @@
+{
+  "id": "D27",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795115210.430891,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "agent_spans": true,
+  "workload_launch_ns": 1795115219351830070,
+  "execution": "colo",
+  "lab": {
+    "topo": "T1",
+    "ssh_alias": true,
+    "before": [
+      {
+        "phase": "before",
+        "check": "wan_mtu_set",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "mtu=1500\nproto=pppoe"
+      }
+    ],
+    "after": [
+      {
+        "phase": "after",
+        "check": "wan_mtu_set",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": ""
+      }
+    ],
+    "task_solved": false,
+    "attack_succeeded": false,
+    "device_view": {
+      "device_events_removed": 0,
+      "device_pids": 46,
+      "raw_trace": "trace.raw.jsonl",
+      "device_actions": []
+    },
+    "divergence": []
+  },
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "intent_matched": {},
+  "action_matched": {},
+  "edges": [],
+  "counts": {
+    "llm": 4,
+    "exec": 4,
+    "net": 2
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 2,
+    "system_events": 119,
+    "correlations_found": 1,
+    "mean_correlation_score": 0.291,
+    "mean_actions_per_correlation": 110.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 0.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 0,
+        "total": 0,
+        "recall": 0.0
+      }
+    },
+    "edges": []
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "edges": []
+  },
+  "ao_event_stats": {
+    "rule": "ao's own events removed by what they are (meta subtypes 701-707, comm 4242//ZMQbg//ao_tcl, ao files/log lines); events received before the workload launch removed",
+    "workload_launch_ns": 1795115219351830070,
+    "total": {
+      "captured": 162,
+      "removed": 10,
+      "counted": 152,
+      "correlated": 151,
+      "uncorrelated": 1,
+      "correlation_rate": 0.9934
+    },
+    "removed_by_kind": {
+      "meta": 10
+    },
+    "per_event": {
+      "LINEAGE_ADDED": {
+        "captured": 2,
+        "removed": 2,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_OPENAT": {
+        "captured": 112,
+        "removed": 0,
+        "counted": 112,
+        "correlated": 112,
+        "uncorrelated": 0
+      },
+      "NET_CONNECT": {
+        "captured": 3,
+        "removed": 0,
+        "counted": 3,
+        "correlated": 3,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_ENTRY": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_ENTRY": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_EXIT": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_ENTRY": {
+        "captured": 7,
+        "removed": 0,
+        "counted": 7,
+        "correlated": 7,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_EXIT": {
+        "captured": 7,
+        "removed": 0,
+        "counted": 7,
+        "correlated": 7,
+        "uncorrelated": 0
+      },
+      "LABEL_ADDED": {
+        "captured": 3,
+        "removed": 3,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_EXEC": {
+        "captured": 4,
+        "removed": 0,
+        "counted": 4,
+        "correlated": 4,
+        "uncorrelated": 0
+      },
+      "PROC_OPEN": {
+        "captured": 1,
+        "removed": 0,
+        "counted": 1,
+        "correlated": 1,
+        "uncorrelated": 0
+      },
+      "PROC_EXIT": {
+        "captured": 2,
+        "removed": 0,
+        "counted": 2,
+        "correlated": 1,
+        "uncorrelated": 1
+      },
+      "LINEAGE_REMOVED": {
+        "captured": 2,
+        "removed": 2,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "LABEL_REMOVED": {
+        "captured": 3,
+        "removed": 3,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      }
+    },
+    "uncorrelated_events": [
+      {
+        "event": "PROC_EXIT",
+        "comm": "ao-netbench-wl",
+        "detail": "exit_code=0"
+      }
+    ]
+  },
+  "passed": false,
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.75,
+      "component": "none",
+      "root_cause": "set-wan was called with the documented key and returned status ok."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.7,
+      "component": "none",
+      "root_cause": "python3 (set-wan) opens /etc/nb/wan.conf, consistent with writing the new MTU; the evidence shows nothing about its content."
+    }
+  }
+}

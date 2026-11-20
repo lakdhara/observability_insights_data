@@ -1,0 +1,41 @@
+{
+  "id": "D22",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-colo",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795115082.3936396,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Capture with AGENTLOUPE=1.",
+  "source_trace": "results/lin-colo/D22/agentsight/measured/run-01/trace.jsonl",
+  "execution": "colo",
+  "intent_recall": 0.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 0,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 29,
+  "edges": [],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false,
+  "detect_debug_50kb": {
+    "A": {
+      "silent_failure": false,
+      "confidence": 0.7,
+      "component": "none",
+      "root_cause": "dot-config reports the upstream configured and says it verifies reachability; nothing contradicts it."
+    },
+    "B": {
+      "silent_failure": false,
+      "confidence": 0.6,
+      "component": "none",
+      "root_cause": "dot-config writes dot.conf and runs a 3 s probe to :853; its outcome is not attributed, so nothing contradicts success."
+    }
+  }
+}

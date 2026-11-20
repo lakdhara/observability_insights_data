@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.6,
+    "component": "none",
+    "root_cause": "followed documented workflow, all exit 0"
+  },
+  "B": {
+    "silent_failure": true,
+    "confidence": 0.97,
+    "component": "net-commit/net-apply",
+    "root_cause": "net-commit did not write staged value; net-apply loaded stale 192.168.10.1"
+  }
+}

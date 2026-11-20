@@ -1,0 +1,10 @@
+ CLAUDE.md                                 |   8 +
+ README.md                                 |   9 +
+ collector/src/framework/analyzers/mod.rs  |   5 +
+ collector/src/framework/runners/common.rs |   5 +-
+ collector/src/main.rs                     |  57 ++-
+ collector/src/server/web.rs               |  51 ++-
+ frontend/package-lock.json                | 703 ++++++++++++++++++++++++++++++
+ frontend/src/app/page.tsx                 |  40 +-
+ frontend/src/types/event.ts               |   5 +
+ 9 files changed, 863 insertions(+), 20 deletions(-)

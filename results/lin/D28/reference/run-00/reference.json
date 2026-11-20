@@ -1,0 +1,29 @@
+{
+  "id": "D28",
+  "topo": "T1",
+  "ts": 1794938806.8894422,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "portal_resolves",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=2 out=''"
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "portal_resolves",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=0 out='10.1.0.50       portal.lab'"
+    }
+  ],
+  "detail": [
+    "portal_resolves: before=False(want False) after=True -> ok"
+  ]
+}

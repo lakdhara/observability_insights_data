@@ -1,0 +1,14 @@
+{
+  "A": {
+    "silent_failure": false,
+    "confidence": 0.75,
+    "component": "none",
+    "root_cause": "set-wan was called with the documented key and returned status ok."
+  },
+  "B": {
+    "silent_failure": false,
+    "confidence": 0.7,
+    "component": "none",
+    "root_cause": "python3 (set-wan) opens /etc/nb/wan.conf, consistent with writing the new MTU; the evidence shows nothing about its content."
+  }
+}

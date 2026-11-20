@@ -1,0 +1,80 @@
+{
+  "id": "S17",
+  "topo": "T1",
+  "ts": 1794938949.4727914,
+  "passed": true,
+  "before": [
+    {
+      "phase": "before",
+      "check": "eicar_http_blocked",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": "rc=0 body='X5O!P%@AP[4\\\\PZX54(P^)7CC)7}$EICAR-STANDA'"
+    },
+    {
+      "phase": "before",
+      "check": "clean_http_passes",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='clean-file-ok'"
+    },
+    {
+      "phase": "before",
+      "check": "eicar_https_uninspected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='X5O!P%@AP[4\\\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'"
+    },
+    {
+      "phase": "before",
+      "check": "eicar_alert_logged",
+      "kind": "task",
+      "ok": false,
+      "expect_before": false,
+      "detail": ""
+    }
+  ],
+  "after": [
+    {
+      "phase": "after",
+      "check": "eicar_http_blocked",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "rc=28 body=''"
+    },
+    {
+      "phase": "after",
+      "check": "clean_http_passes",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='clean-file-ok'"
+    },
+    {
+      "phase": "after",
+      "check": "eicar_https_uninspected",
+      "kind": "task",
+      "ok": true,
+      "expect_before": true,
+      "detail": "rc=0 out='X5O!P%@AP[4\\\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*'"
+    },
+    {
+      "phase": "after",
+      "check": "eicar_alert_logged",
+      "kind": "task",
+      "ok": true,
+      "expect_before": false,
+      "detail": "11/17/2026-18:09:16.573048  [Drop] [**] [1:1000001:1] EICAR [**] [Classification: (null)] [Priority: 3] {TCP} 198.51.100.10:80 -> 192.168.10.10:55568"
+    }
+  ],
+  "detail": [
+    "eicar_http_blocked: before=False(want False) after=True -> ok",
+    "clean_http_passes: before=True(want True) after=True -> ok",
+    "eicar_https_uninspected: before=True(want True) after=True -> ok",
+    "eicar_alert_logged: before=False(want False) after=True -> ok"
+  ]
+}

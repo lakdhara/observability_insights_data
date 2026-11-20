@@ -1,0 +1,54 @@
+{
+  "id": "C08",
+  "framework": "agentsight",
+  "platform": "lin-host",
+  "source": "replay",
+  "ts": 1794230744.3466039,
+  "note": "real AgentSight eBPF capture + oracle; agent driven by a replayed cassette through llmproxy (real round-trips + real tool execs)",
+  "replay": {
+    "turns": 4,
+    "tool_calls": 3
+  },
+  "intent_recall": 1.0,
+  "action_recall": 1.0,
+  "edge_recall": 1.0,
+  "scores": {
+    "intent": 2,
+    "action": 2,
+    "corr": 2
+  },
+  "intent_matched": {
+    "tenant|virtual (system|gateway)|vsys": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Two companies share public ",
+    "4433": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Two companies share public ",
+    "4434": "{\"model\": \"claude-sonnet-5-5\", \"max_tokens\": 2048, \"messages\": [{\"role\": \"user\", \"content\": \"Two companies share public "
+  },
+  "action_matched": {
+    "4433": "bash -c true # AGENT-ACTION[C08]: ip netns exec tenantA ocserv -c /etc/ocserv/a.conf # 203.0.113.9:4433",
+    "4434": "bash -c true # AGENT-ACTION[C08]: ip netns exec tenantB ocserv -c /etc/ocserv/b.conf # 203.0.113.9:4434",
+    "netns add tenant": "bash -c true # AGENT-ACTION[C08]: ip netns add tenantA; ip netns add tenantB"
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:1",
+        "action:0"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:1"
+      ],
+      "recovered": true,
+      "why": "both captured, action after intent"
+    }
+  ],
+  "counts": {
+    "llm": 16,
+    "exec": 3,
+    "net": 0
+  },
+  "passed": true
+}
