@@ -45,8 +45,7 @@
    "C07": "lin-claude/C07.jsonl",
    "C08": "lin-claude/C08.jsonl",
    "C09": "lin-claude/C09.jsonl",
-   "C10": "lin-claude/C10.jsonl",
-   "S11": "lin-claude/S11.jsonl"
+   "C10": "lin-claude/C10.jsonl"
   },
   "claude_hijacked": {
    "S11": "lin-claude_hijacked/S11.jsonl"
