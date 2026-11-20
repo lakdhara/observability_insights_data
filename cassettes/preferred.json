@@ -50,5 +50,22 @@
   "claude_hijacked": {
    "S11": "lin-claude_hijacked/S11.jsonl"
   }
+ },
+ "wsl": {
+  "claude": {
+   "C01": "wsl-claude/C01.jsonl",
+   "C02": "wsl-claude/C02.jsonl",
+   "C03": "wsl-claude/C03.jsonl",
+   "C04": "wsl-claude/C04.jsonl",
+   "C05": "wsl-claude/C05.jsonl",
+   "C06": "wsl-claude/C06.jsonl",
+   "C07": "wsl-claude/C07.jsonl",
+   "C08": "wsl-claude/C08.jsonl",
+   "C09": "wsl-claude/C09.jsonl",
+   "C10": "wsl-claude/C10.jsonl"
+  },
+  "claude_hijacked": {
+   "S11": "wsl-claude_hijacked/S11.jsonl"
+  }
  }
 }
