@@ -1,9 +1,9 @@
 {
   "rows": [
     [
-      "D23",
+      "D21",
       {
-        "sid": "D23",
+        "sid": "D21",
         "recovered": 0,
         "total": 0,
         "corr_band": 0,
@@ -12,55 +12,7 @@
         "mean_score": null,
         "engine": "multi_signal_correlator.py",
         "source": "replay",
-        "run": "results/lin-colo/D23/agentloupe/measured/run-01",
-        "edges": []
-      }
-    ],
-    [
-      "D26",
-      {
-        "sid": "D26",
-        "recovered": 0,
-        "total": 0,
-        "corr_band": 0,
-        "edge_recall": 0.0,
-        "correlations_found": null,
-        "mean_score": null,
-        "engine": "multi_signal_correlator.py",
-        "source": "replay",
-        "run": "results/lin-colo/D26/agentloupe/measured/run-01",
-        "edges": []
-      }
-    ],
-    [
-      "D27",
-      {
-        "sid": "D27",
-        "recovered": 0,
-        "total": 0,
-        "corr_band": 0,
-        "edge_recall": 0.0,
-        "correlations_found": null,
-        "mean_score": null,
-        "engine": "multi_signal_correlator.py",
-        "source": "replay",
-        "run": "results/lin-colo/D27/agentloupe/measured/run-01",
-        "edges": []
-      }
-    ],
-    [
-      "D30",
-      {
-        "sid": "D30",
-        "recovered": 0,
-        "total": 0,
-        "corr_band": 0,
-        "edge_recall": 0.0,
-        "correlations_found": null,
-        "mean_score": null,
-        "engine": "multi_signal_correlator.py",
-        "source": "replay",
-        "run": "results/lin-colo/D30/agentloupe/measured/run-01",
+        "run": "results/lin-colo/D21/agentloupe/measured/run-02",
         "edges": []
       }
     ]
@@ -73,5 +25,5 @@
   "window_sensitivity_pooled": {},
   "lenient_pooled_recall": null,
   "fully_correlated": 0,
-  "scored": 4
+  "scored": 1
 }
