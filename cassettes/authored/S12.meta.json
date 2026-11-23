@@ -1,7 +1,7 @@
 {
  "test_id": "S12",
  "test_version": 1,
- "test_compatible_version": 1,
+ "test_compatible_version": 2,
  "agent_input_sha": "b4934966fbcf5303",
  "cassette_format": 1,
  "platform": "any",
@@ -29,5 +29,12 @@
   "false_success": false,
   "succeeded": true
  },
- "authored_sha": "c734261f264d6322"
+ "authored_sha": "c734261f264d6322",
+ "compat_history": [
+  {
+   "from": 1,
+   "to": 2,
+   "at": "2026-11-20T16:59:03"
+  }
+ ]
 }
