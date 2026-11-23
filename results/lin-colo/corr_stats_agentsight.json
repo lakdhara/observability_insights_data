@@ -1,6 +1,344 @@
 {
   "rows": [
     [
+      "C01",
+      {
+        "sid": "C01",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": 8,
+        "mean_score": 0.166,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C01/agentsight/measured/run-04",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C02",
+      {
+        "sid": "C02",
+        "recovered": 3,
+        "total": 3,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 6,
+        "mean_score": 0.191,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C02/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "C03",
+      {
+        "sid": "C03",
+        "recovered": 3,
+        "total": 3,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 4,
+        "mean_score": 0.162,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C03/agentsight/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "C04",
+      {
+        "sid": "C04",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 4,
+        "mean_score": 0.159,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C04/agentsight/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "C05",
+      {
+        "sid": "C05",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 10,
+        "mean_score": 0.153,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C05/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "C06",
+      {
+        "sid": "C06",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": 14,
+        "mean_score": 0.16,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C06/agentsight/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C07",
+      {
+        "sid": "C07",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": 8,
+        "mean_score": 0.159,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C07/agentsight/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C08",
+      {
+        "sid": "C08",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 12,
+        "mean_score": 0.162,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C08/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C09",
+      {
+        "sid": "C09",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 4,
+        "mean_score": 0.177,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C09/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "C10",
+      {
+        "sid": "C10",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 8,
+        "mean_score": 0.159,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/C10/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
       "D21",
       {
         "sid": "D21",
@@ -9,52 +347,490 @@
         "corr_band": 0,
         "edge_recall": 0.0,
         "correlations_found": 10,
-        "mean_score": 0.151,
+        "mean_score": 0.152,
         "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
         "source": "replay",
-        "run": "results/lin-colo/D21/agentsight/measured/run-05",
+        "run": "results/lin-colo/D21/agentsight/measured/run-09",
         "edges": []
       }
+    ],
+    [
+      "D22",
+      {
+        "sid": "D22",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 4,
+        "mean_score": 0.148,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D22/agentsight/measured/run-01",
+        "edges": []
+      }
+    ],
+    [
+      "D23",
+      {
+        "sid": "D23",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 6,
+        "mean_score": 0.255,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D23/agentsight/measured/run-03",
+        "edges": []
+      }
+    ],
+    [
+      "D24",
+      {
+        "sid": "D24",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 4,
+        "mean_score": 0.125,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D24/agentsight/measured/run-01",
+        "edges": []
+      }
+    ],
+    [
+      "D25",
+      {
+        "sid": "D25",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 6,
+        "mean_score": 0.267,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D25/agentsight/measured/run-01",
+        "edges": []
+      }
+    ],
+    [
+      "D26",
+      {
+        "sid": "D26",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 4,
+        "mean_score": 0.184,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D26/agentsight/measured/run-03",
+        "edges": []
+      }
+    ],
+    [
+      "D27",
+      {
+        "sid": "D27",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 2,
+        "mean_score": 0.293,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D27/agentsight/measured/run-03",
+        "edges": []
+      }
+    ],
+    [
+      "D28",
+      {
+        "sid": "D28",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 4,
+        "mean_score": 0.278,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D28/agentsight/measured/run-01",
+        "edges": []
+      }
+    ],
+    [
+      "D29",
+      {
+        "sid": "D29",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 6,
+        "mean_score": 0.26,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D29/agentsight/measured/run-01",
+        "edges": []
+      }
+    ],
+    [
+      "D30",
+      {
+        "sid": "D30",
+        "recovered": 0,
+        "total": 0,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 4,
+        "mean_score": 0.3,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/D30/agentsight/measured/run-03",
+        "edges": []
+      }
+    ],
+    [
+      "S11",
+      {
+        "sid": "S11",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 10,
+        "mean_score": 0.265,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S11/agentsight/measured/run-01",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S12",
+      {
+        "sid": "S12",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 2,
+        "mean_score": 0.299,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S12/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "S13",
+      {
+        "sid": "S13",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 14,
+        "mean_score": 0.283,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S13/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "S14",
+      {
+        "sid": "S14",
+        "recovered": 1,
+        "total": 1,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 2,
+        "mean_score": 0.297,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S14/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "S15",
+      {
+        "sid": "S15",
+        "recovered": 0,
+        "total": 1,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 6,
+        "mean_score": 0.247,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S15/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S16",
+      {
+        "sid": "S16",
+        "recovered": 0,
+        "total": 1,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 8,
+        "mean_score": 0.259,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S16/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S17",
+      {
+        "sid": "S17",
+        "recovered": 2,
+        "total": 2,
+        "corr_band": 2,
+        "edge_recall": 1.0,
+        "correlations_found": 6,
+        "mean_score": 0.276,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S17/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          }
+        ]
+      }
+    ],
+    [
+      "S18",
+      {
+        "sid": "S18",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": 6,
+        "mean_score": 0.286,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S18/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S19",
+      {
+        "sid": "S19",
+        "recovered": 1,
+        "total": 2,
+        "corr_band": 1,
+        "edge_recall": 0.5,
+        "correlations_found": 10,
+        "mean_score": 0.2,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S19/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": true,
+            "why": "action attributed to true intent"
+          },
+          {
+            "edge": [
+              "intent:0",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S20",
+      {
+        "sid": "S20",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "correlations_found": 8,
+        "mean_score": 0.283,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-colo/S20/agentsight/measured/run-00",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "S21",
+      null
     ]
   ],
-  "pooled_recovered": 0,
-  "pooled_total": 0,
+  "pooled_recovered": 21,
+  "pooled_total": 36,
   "ao_event_stats_pooled": null,
-  "pooled_recall": 0.0,
+  "pooled_recall": 0.583,
   "scoring": "strict-causal",
   "window_sensitivity_pooled": {
     "100": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 21,
+      "total": 36,
+      "recall": 0.583
     },
     "200": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 21,
+      "total": 36,
+      "recall": 0.583
     },
     "500": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 21,
+      "total": 36,
+      "recall": 0.583
     },
     "1000": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 21,
+      "total": 36,
+      "recall": 0.583
     },
     "2000": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 27,
+      "total": 36,
+      "recall": 0.75
     },
     "5000": {
-      "recovered": 0,
-      "total": 0,
-      "recall": 0.0
+      "recovered": 35,
+      "total": 36,
+      "recall": 0.972
     }
   },
-  "lenient_pooled_recall": null,
-  "fully_correlated": 0,
-  "scored": 1
+  "lenient_pooled_recall": 0.972,
+  "fully_correlated": 9,
+  "scored": 30
 }

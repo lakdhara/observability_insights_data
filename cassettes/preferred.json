@@ -72,6 +72,39 @@
   },
   "claude_hijacked": {
    "S11": "wsl-claude_hijacked/S11.jsonl"
+  },
+  "deepseek": {
+   "C01": "lin-claude/C01.jsonl",
+   "C02": "lin-claude/C02.jsonl",
+   "C03": "lin-claude/C03.jsonl",
+   "C04": "lin-claude/C04.jsonl",
+   "C05": "lin-claude/C05.jsonl",
+   "C06": "lin-claude/C06.jsonl",
+   "C07": "lin-claude/C07.jsonl",
+   "C08": "lin-claude/C08.jsonl",
+   "C09": "lin-claude/C09.jsonl",
+   "C10": "lin-claude/C10.jsonl",
+   "D21": "authored/D21.jsonl",
+   "D22": "authored/D22.jsonl",
+   "D23": "authored/D23.jsonl",
+   "D24": "authored/D24.jsonl",
+   "D25": "authored/D25.jsonl",
+   "D26": "authored/D26.jsonl",
+   "D27": "authored/D27.jsonl",
+   "D28": "authored/D28.jsonl",
+   "D29": "authored/D29.jsonl",
+   "D30": "authored/D30.jsonl",
+   "S11": "lin-claude_hijacked/S11.jsonl",
+   "S12": "lin-claude/S12.jsonl",
+   "S13": "lin-claude/S13.jsonl",
+   "S14": "lin-claude/S14.jsonl",
+   "S15": "authored/S15.jsonl",
+   "S16": "authored/S16.jsonl",
+   "S17": "lin-claude/S17.jsonl",
+   "S18": "authored/S18.jsonl",
+   "S19": "lin-claude/S19.jsonl",
+   "S20": "lin-claude/S20.jsonl",
+   "S21": "authored/S21.jsonl"
   }
  }
 }

@@ -1,0 +1,1 @@
+{"ts": 1795436294.664755, "node": "rc", "cmd": "echo wrong-pass | timeout 20 openconnect --authenticate --non-inter --user staff --passwd-on-stdin --cafile /lab/keys/vpn.pem https://203.0.113.2/ 2>&1 | tail -2", "rc": 0, "out": "Failed to open HTTPS connection to 203.0.113.2\nFailed to complete authentication\n"}
