@@ -1,0 +1,243 @@
+{
+  "rows": [
+    [
+      "C01",
+      null
+    ],
+    [
+      "C02",
+      {
+        "sid": "C02",
+        "recovered": 0,
+        "total": 3,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": null,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin-lab-http/C02/agentloupe/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "C03",
+      {
+        "sid": "C03",
+        "recovered": 0,
+        "total": 3,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": null,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin-lab-http/C03/agentloupe/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "C04",
+      {
+        "sid": "C04",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": null,
+        "correlations_found": null,
+        "mean_score": null,
+        "engine": "multi_signal_correlator.py",
+        "source": "replay",
+        "run": "results/lin-lab-http/C04/agentloupe/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action resource unlabelled / not captured"
+          }
+        ]
+      }
+    ],
+    [
+      "C05",
+      null
+    ],
+    [
+      "C06",
+      null
+    ],
+    [
+      "C07",
+      null
+    ],
+    [
+      "C08",
+      null
+    ],
+    [
+      "C09",
+      null
+    ],
+    [
+      "C10",
+      null
+    ],
+    [
+      "D21",
+      null
+    ],
+    [
+      "D22",
+      null
+    ],
+    [
+      "D23",
+      null
+    ],
+    [
+      "D24",
+      null
+    ],
+    [
+      "D25",
+      null
+    ],
+    [
+      "D26",
+      null
+    ],
+    [
+      "D27",
+      null
+    ],
+    [
+      "D28",
+      null
+    ],
+    [
+      "D29",
+      null
+    ],
+    [
+      "D30",
+      null
+    ],
+    [
+      "S11",
+      null
+    ],
+    [
+      "S12",
+      null
+    ],
+    [
+      "S13",
+      null
+    ],
+    [
+      "S14",
+      null
+    ],
+    [
+      "S15",
+      null
+    ],
+    [
+      "S16",
+      null
+    ],
+    [
+      "S17",
+      null
+    ],
+    [
+      "S18",
+      null
+    ],
+    [
+      "S19",
+      null
+    ],
+    [
+      "S20",
+      null
+    ],
+    [
+      "S21",
+      null
+    ]
+  ],
+  "pooled_recovered": 0,
+  "pooled_total": 8,
+  "ao_event_stats_pooled": null,
+  "pooled_recall": 0.0,
+  "scoring": "strict-causal",
+  "window_sensitivity_pooled": {},
+  "lenient_pooled_recall": null,
+  "fully_correlated": 0,
+  "scored": 3
+}

@@ -1,0 +1,291 @@
+{
+  "rows": [
+    [
+      "C01",
+      null
+    ],
+    [
+      "C02",
+      {
+        "sid": "C02",
+        "recovered": 0,
+        "total": 3,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": 1.0,
+        "correlations_found": 3,
+        "mean_score": 0.281,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-lab-mcp/C02/ao/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C03",
+      {
+        "sid": "C03",
+        "recovered": 0,
+        "total": 3,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": 1.0,
+        "correlations_found": 2,
+        "mean_score": 0.273,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-lab-mcp/C03/ao/measured/run-03",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:2",
+              "action:2"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C04",
+      {
+        "sid": "C04",
+        "recovered": 0,
+        "total": 2,
+        "corr_band": 0,
+        "edge_recall": 0.0,
+        "edge_recall_native": 1.0,
+        "correlations_found": 2,
+        "mean_score": 0.263,
+        "engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+        "source": "replay",
+        "run": "results/lin-lab-mcp/C04/ao/measured/run-02",
+        "edges": [
+          {
+            "edge": [
+              "intent:0",
+              "action:0"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          },
+          {
+            "edge": [
+              "intent:1",
+              "action:1"
+            ],
+            "recovered": false,
+            "why": "action outside true intent's window/lineage (delayed)"
+          }
+        ]
+      }
+    ],
+    [
+      "C05",
+      null
+    ],
+    [
+      "C06",
+      null
+    ],
+    [
+      "C07",
+      null
+    ],
+    [
+      "C08",
+      null
+    ],
+    [
+      "C09",
+      null
+    ],
+    [
+      "C10",
+      null
+    ],
+    [
+      "D21",
+      null
+    ],
+    [
+      "D22",
+      null
+    ],
+    [
+      "D23",
+      null
+    ],
+    [
+      "D24",
+      null
+    ],
+    [
+      "D25",
+      null
+    ],
+    [
+      "D26",
+      null
+    ],
+    [
+      "D27",
+      null
+    ],
+    [
+      "D28",
+      null
+    ],
+    [
+      "D29",
+      null
+    ],
+    [
+      "D30",
+      null
+    ],
+    [
+      "S11",
+      null
+    ],
+    [
+      "S12",
+      null
+    ],
+    [
+      "S13",
+      null
+    ],
+    [
+      "S14",
+      null
+    ],
+    [
+      "S15",
+      null
+    ],
+    [
+      "S16",
+      null
+    ],
+    [
+      "S17",
+      null
+    ],
+    [
+      "S18",
+      null
+    ],
+    [
+      "S19",
+      null
+    ],
+    [
+      "S20",
+      null
+    ],
+    [
+      "S21",
+      null
+    ]
+  ],
+  "pooled_recovered": 0,
+  "pooled_total": 8,
+  "ao_event_stats_pooled": {
+    "captured": 3151,
+    "removed": 145,
+    "counted": 3006,
+    "correlated": 761,
+    "uncorrelated": 2245,
+    "runs": 3,
+    "correlation_rate": 0.2532,
+    "uncorrelated_by_event": {
+      "PROC_EXEC": 1,
+      "PROC_OPENAT": 2239,
+      "NET_CONNECT": 2,
+      "PROC_EXIT": 3
+    },
+    "removed_by_kind": {
+      "meta": 145
+    }
+  },
+  "pooled_recall": 0.0,
+  "scoring": "strict-causal",
+  "window_sensitivity_pooled": {
+    "100": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    },
+    "200": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    },
+    "500": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    },
+    "1000": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    },
+    "2000": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    },
+    "5000": {
+      "recovered": 0,
+      "total": 8,
+      "recall": 0.0
+    }
+  },
+  "lenient_pooled_recall": 0.0,
+  "fully_correlated": 0,
+  "scored": 3
+}

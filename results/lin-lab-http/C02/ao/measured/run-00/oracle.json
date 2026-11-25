@@ -1,0 +1,3587 @@
+{
+  "id": "C02",
+  "framework": "ao",
+  "workload": "replay_agent.run (cassette agent loop)",
+  "impl": "eBPF observer + C pipeline (solo, native eBPF)",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795564703.9821193,
+  "note": "real ao solo capture (own eBPF, full native hook set); trace normalized to the AgentSight schema by the bench_exporter node. Correlation parity axis = AgentSight \u00a73.2 engine @500ms over ao's trace; ao's native label correlation is a 2nd column.",
+  "versions": {
+    "cassette": "cassettes/authored/C02.jsonl",
+    "test_version": 1,
+    "cassette_test_compatible_version": 1,
+    "cassette_recorded_env": {
+      "platform": "any",
+      "kernel": "unknown",
+      "docker": "unknown",
+      "containerlab": "unknown",
+      "python": "unknown",
+      "nft": "unknown",
+      "node_image_hash": "unknown",
+      "agentsight_commit": "unknown",
+      "ao_commit": "unknown"
+    },
+    "env": {
+      "platform": "lin",
+      "kernel": "7.0.0-44-generic",
+      "docker": "29.9.2",
+      "containerlab": "0.82.0",
+      "python": "3.14.4",
+      "nft": "v1.1.3",
+      "node_image_hash": "e22fccc173495818",
+      "node_image_expected": "e22fccc173495818",
+      "code_commit": "3b6493a22894",
+      "data_commit": "726ce25dffb7",
+      "agentsight_commit": "180044f67465",
+      "agentsight_built": "180044f67465",
+      "ao_commit": "e9a3da0ff92a",
+      "ao_built": "e9a3da0ff92a"
+    }
+  },
+  "agent_spans": true,
+  "workload_launch_ns": 1795564716143795182,
+  "overhead": {
+    "wall_s": 3.381,
+    "agent_cpu_s": 0.3392,
+    "agent_sys_s": 0.0729,
+    "agent_rss_mb": 108.88,
+    "tool_cpu_s": 0.0684,
+    "tool_rss_mb": 29.1,
+    "pipeline_cpu_s": 0.2714,
+    "pipeline_rss_mb": 29.95,
+    "host_cpu_s": 3.39,
+    "agent_rc": 0,
+    "exec_mode": "lab",
+    "rep": 0,
+    "timing_mode": "fast",
+    "recorded_llm_wall_s": 0.0
+  },
+  "replay": {
+    "turns": 3,
+    "tool_calls": 2
+  },
+  "execution": "lab",
+  "lab": {
+    "topo": "T2",
+    "ssh_alias": true,
+    "tools": "http",
+    "tool_endpoints": {
+      "fw": "172.31.251.10:7070"
+    },
+    "before": [
+      {
+        "phase": "before",
+        "check": "a_via_wan1",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "0:\tfrom all lookup local\n32766:\tfrom all lookup main\n32767:\tfrom all lookup default\ndefault via 203.0.113.1 dev eth2 \n172.31.251.0/24 dev eth0 proto kernel scope link src 172.31.251.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.10.1 \n203.0.113.0/30 dev eth2 proto kernel scope link"
+      },
+      {
+        "phase": "before",
+        "check": "b_via_wan2",
+        "kind": "task",
+        "ok": false,
+        "expect_before": false,
+        "detail": "0:\tfrom all lookup local\n32766:\tfrom all lookup main\n32767:\tfrom all lookup default\ndefault via 203.0.113.1 dev eth2 \n172.31.251.0/24 dev eth0 proto kernel scope link src 172.31.251.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.10.1 \n203.0.113.0/30 dev eth2 proto kernel scope link"
+      },
+      {
+        "phase": "before",
+        "check": "reaches_a",
+        "kind": "task",
+        "ok": true,
+        "expect_before": true,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "reaches_b",
+        "kind": "task",
+        "ok": true,
+        "expect_before": true,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "before",
+        "check": "a_survives_wan1_down",
+        "kind": "metric",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok'"
+      }
+    ],
+    "after": [
+      {
+        "phase": "after",
+        "check": "a_via_wan1",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "0:\tfrom all lookup local\n32766:\tfrom all lookup main\n32767:\tfrom all lookup default\ndefault via 203.0.113.1 dev eth2 \n172.31.251.0/24 dev eth0 proto kernel scope link src 172.31.251.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.10.1 \n198.51.100.0/24 via 203.0.113.1 dev eth2 \n198.5 | 198.51.100.10 from 192.168.10.10 via 203.0.113.1 dev eth2 \n    cache iif eth1"
+      },
+      {
+        "phase": "after",
+        "check": "b_via_wan2",
+        "kind": "task",
+        "ok": true,
+        "expect_before": false,
+        "detail": "0:\tfrom all lookup local\n32766:\tfrom all lookup main\n32767:\tfrom all lookup default\ndefault via 203.0.113.1 dev eth2 \n172.31.251.0/24 dev eth0 proto kernel scope link src 172.31.251.10 \n192.168.10.0/24 dev eth1 proto kernel scope link src 192.168.10.1 \n198.51.100.0/24 via 203.0.113.1 dev eth2 \n198.5 | 198.51.200.10 from 192.168.10.10 via 203.0.114.1 dev eth3 \n    cache iif eth1"
+      },
+      {
+        "phase": "after",
+        "check": "reaches_a",
+        "kind": "task",
+        "ok": true,
+        "expect_before": true,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "after",
+        "check": "reaches_b",
+        "kind": "task",
+        "ok": true,
+        "expect_before": true,
+        "detail": "rc=0 out='internet-server-ok'"
+      },
+      {
+        "phase": "after",
+        "check": "a_survives_wan1_down",
+        "kind": "metric",
+        "ok": true,
+        "expect_before": false,
+        "detail": "rc=0 out='internet-server-ok'"
+      }
+    ],
+    "task_solved": true,
+    "attack_succeeded": false,
+    "labels": {
+      "requested": 2,
+      "ok": 0,
+      "errors": [
+        "ERR E_KERNEL tool-call labels are not available in this observer"
+      ]
+    },
+    "device_view": {
+      "device_events_removed": 0,
+      "device_pids": 28,
+      "raw_trace": "trace.raw.jsonl",
+      "device_actions": []
+    },
+    "divergence": []
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 0,
+    "corr": 0
+  },
+  "intent_matched": {
+    "WAN1|Carrier A": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 725\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur",
+    "WAN2|Carrier B": "POST /v1/messages HTTP/1.1\r\nAccept-Encoding: identity\r\nContent-Length: 725\r\nHost: 127.0.0.1:18443\r\nUser-Agent: Python-ur",
+    "fail.?over": "HTTP/1.1 200 OK\r\nServer: BaseHTTP/0.6 Python/3.14.4\r\nDate: Tue, 24 Nov 2026 23:58:37 GMT\r\nContent-Type: application/json"
+  },
+  "action_matched": {
+    "198\\.51\\.100\\.0/24 via 203\\.0\\.113\\.1": null,
+    "198\\.51\\.200\\.0/24 via 203\\.0\\.114\\.1": null,
+    "ping .*203\\.0\\.11[34]\\.1|failover": null
+  },
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    },
+    {
+      "edge": [
+        "intent:2",
+        "action:2"
+      ],
+      "recovered": false,
+      "why": "action outside true intent's window/lineage (delayed)"
+    }
+  ],
+  "counts": {
+    "llm": 6,
+    "exec": 0,
+    "net": 5
+  },
+  "correlation": {
+    "corr_engine": "multi_signal_correlator.py (AgentSight \u00a73.2, unmodified)",
+    "scoring": "strict-causal (action attributed to its TRUE first intent)",
+    "temporal_window_ms": 500,
+    "timestamp_unit": "ns",
+    "temporal_window_units": 500000000,
+    "llm_interactions": 3,
+    "system_events": 647,
+    "correlations_found": 3,
+    "mean_correlation_score": 0.289,
+    "mean_actions_per_correlation": 212.0,
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "lenient_edge_recall": 0.0,
+    "window_sensitivity_ms": {
+      "100": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      },
+      "200": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      },
+      "500": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      },
+      "1000": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      },
+      "2000": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      },
+      "5000": {
+        "recovered": 0,
+        "total": 3,
+        "recall": 0.0
+      }
+    },
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "action outside true intent's window/lineage (delayed)"
+      }
+    ]
+  },
+  "correlation_ao_native": {
+    "mechanism": "ao trace_correlator: tool-call label (exact) else timeline/process-tree; attribution read from ebpf_events.trace_id/match_method (no time window imposed)",
+    "edge_recall": 0.0,
+    "corr_band": 0,
+    "edges": [
+      {
+        "edge": [
+          "intent:0",
+          "action:0"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      },
+      {
+        "edge": [
+          "intent:1",
+          "action:1"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      },
+      {
+        "edge": [
+          "intent:2",
+          "action:2"
+        ],
+        "recovered": false,
+        "why": "action not attributed (no trace_id on any matching ebpf_events row)",
+        "method": null
+      }
+    ]
+  },
+  "ao_event_stats": {
+    "rule": "ao's own events removed by what they are (meta subtypes 701-707, comm 4242//ZMQbg//ao_tcl, ao files/log lines); events received before the workload launch removed",
+    "workload_launch_ns": 1795564716143795182,
+    "total": {
+      "captured": 692,
+      "removed": 2,
+      "counted": 690,
+      "correlated": 58,
+      "uncorrelated": 632,
+      "correlation_rate": 0.0841
+    },
+    "removed_by_kind": {
+      "meta": 2
+    },
+    "per_event": {
+      "LINEAGE_ADDED": {
+        "captured": 1,
+        "removed": 1,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      },
+      "PROC_OPENAT": {
+        "captured": 641,
+        "removed": 0,
+        "counted": 641,
+        "correlated": 10,
+        "uncorrelated": 631
+      },
+      "NET_CONNECT": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_ENTRY": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_DO_HANDSHAKE_EXIT": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_ENTRY": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_WRITE_EX_EXIT": {
+        "captured": 6,
+        "removed": 0,
+        "counted": 6,
+        "correlated": 6,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_ENTRY": {
+        "captured": 9,
+        "removed": 0,
+        "counted": 9,
+        "correlated": 9,
+        "uncorrelated": 0
+      },
+      "SSL_READ_EX_EXIT": {
+        "captured": 9,
+        "removed": 0,
+        "counted": 9,
+        "correlated": 9,
+        "uncorrelated": 0
+      },
+      "PROC_EXIT": {
+        "captured": 1,
+        "removed": 0,
+        "counted": 1,
+        "correlated": 0,
+        "uncorrelated": 1
+      },
+      "LINEAGE_REMOVED": {
+        "captured": 1,
+        "removed": 1,
+        "counted": 0,
+        "correlated": 0,
+        "uncorrelated": 0
+      }
+    },
+    "uncorrelated_events": [
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/lin-claude_hijacked"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/lin-deepseek"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/lin-claude"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/authored"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/wsl-claude_hijacked"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/cassettes/wsl-claude"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentloupe/"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentloupe/"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentsight/"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab-http/C02/agentsight/"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/bare/measured/r"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C03/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D30/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/bare/measured/r"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/bare/measured/r"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C02/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S14/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/bare/measured/r"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C08/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D28/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S13/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/S15/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D27/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D23/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D25/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D21/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D22/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D29/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D26/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/D24/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/bare/measured/r"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentloupe/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/ao/measured/run"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-colo/C09/agentsight/meas"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C03/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/bare/measured/ru"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C02/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C10/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S14/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C08/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/bare"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/bare/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/bare/measured/ru"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C01/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S13/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C06/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C05/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/S15/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C07/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C04/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentloupe"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentloupe/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/ao"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/ao/measured"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/ao/measured/run-"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentsight"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/results/lin-lab/C09/agentsight/measu"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/06"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/aa"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/53"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/07"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b8"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/6b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/98"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/77"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/29"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c8"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/bd"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/65"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/2c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/69"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/05"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/30"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/87"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/20"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/84"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/8f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/63"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/09"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e3"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/51"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d3"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/19"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/36"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/bb"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/8c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c3"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/df"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/26"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/71"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/45"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/25"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/34"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/2b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/57"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/49"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/27"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/74"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/23"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/97"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/8e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/be"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/39"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/da"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ee"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/52"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b3"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/17"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/af"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ec"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/8d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/02"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/43"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/fa"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/92"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/cf"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/12"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/8a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/85"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/58"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/16"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ea"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/22"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/01"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/80"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/88"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/72"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/38"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/04"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/55"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/89"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/93"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/46"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/fc"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/64"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/21"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/18"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ae"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/cc"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/67"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/dc"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/24"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/79"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/28"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/54"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/6d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/40"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ce"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/3e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/62"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/6c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/3a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/info"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ff"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/11"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/6a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/59"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/76"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/91"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/3b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/33"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/15"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/75"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ed"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/b7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/6f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/pack"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/bc"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/4d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/60"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ba"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/32"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ad"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f3"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/48"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/68"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/1b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d8"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/2d"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/96"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f8"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/90"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/fb"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/08"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/9a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ef"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/41"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ac"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/3c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/d4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/44"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/31"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/86"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/f2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a7"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/95"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/94"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/37"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/61"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/bf"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c0"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/14"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/50"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/0a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e2"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7c"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/56"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/ab"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/eb"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/99"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/cd"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/82"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/7a"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/47"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/2f"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a4"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/73"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/2e"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/66"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/5b"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e6"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/78"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/c9"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/e1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a1"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/42"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/a5"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/objects/de"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/info"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/hooks"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/refs"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/refs/heads"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/refs/tags"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/refs/remotes"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/refs/remotes/origin"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/logs"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/logs/refs"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/logs/refs/heads"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/logs/refs/remotes"
+      },
+      {
+        "event": "PROC_OPENAT",
+        "comm": "ao-netbench-wl",
+        "detail": "/home/admin1/workspace/research_papers/data/.git/logs/refs/remotes/origin"
+      },
+      {
+        "event": "PROC_EXIT",
+        "comm": "ao-netbench-wl",
+        "detail": "exit_code=0"
+      }
+    ]
+  },
+  "passed": false
+}

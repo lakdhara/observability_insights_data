@@ -1,0 +1,11 @@
+[ao_logging_sink] Initialized sink type=zmq.
+[ao_hooks] Bound llm_wrapper.before_llm_call -> "log_llm_request".
+[ao_hooks] Bound llm_wrapper.after_llm_call -> "log_llm_response".
+[ao_hooks] Bound tools_wrapper.before_tools_exec -> "add_label_function".
+[ao_hooks] Bound tools_wrapper.after_tools_exec -> "log_tool_response".
+[ao_hooks] Bound agent_wrapper.before_agent_run -> "log_agent_run".
+[ao_hooks] Bound agent_wrapper.after_agent_run -> "log_agent_run".
+[ao_hooks] Bound agent_wrapper.before_agent_step -> "log_agent_step_start".
+[ao_hooks] Bound agent_wrapper.after_agent_step -> "log_agent_step_end".
+[ao_hooks] Bound context_wrapper.before_context_update -> "log_context_update_start".
+[ao_hooks] Bound context_wrapper.after_context_update -> "log_context_update_end".

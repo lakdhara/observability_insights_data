@@ -1,0 +1,17 @@
+[ao_logging_sink] Initialized sink type=zmq.
+[ao_hooks] Bound llm_wrapper.before_llm_call -> "log_llm_request".
+[ao_hooks] Bound llm_wrapper.after_llm_call -> "log_llm_response".
+[ao_hooks] Bound tools_wrapper.before_tools_exec -> "add_label_function".
+[ao_hooks] Bound tools_wrapper.after_tools_exec -> "log_tool_response".
+[ao_hooks] Bound agent_wrapper.before_agent_run -> "log_agent_run".
+[ao_hooks] Bound agent_wrapper.after_agent_run -> "log_agent_run".
+[ao_hooks] Bound agent_wrapper.before_agent_step -> "log_agent_step_start".
+[ao_hooks] Bound agent_wrapper.after_agent_step -> "log_agent_step_end".
+[ao_hooks] Bound context_wrapper.before_context_update -> "log_context_update_start".
+[ao_hooks] Bound context_wrapper.after_context_update -> "log_context_update_end".
+ao_mcp_proxy[lab] running: server python3 pid 973404 (labels: unix:/home/admin1/workspace/research_papers/build/ao/run/tcl.sock)
+ao_mcp_proxy[lab]: call run_command id=2 trace=16e2306abe9e13fec7ef038818860ee7 label=tcl:1.1
+ao_mcp_proxy[lab]: done run_command id=2 83.12 ms
+ao_mcp_proxy[lab]: call run_command id=3 trace=16e2306abe9e13fec7ef038818860ee7 label=tcl:1.2
+ao_mcp_proxy[lab]: done run_command id=3 71.97 ms
+ao_mcp_proxy[lab]: stopped (server exit 0): calls=2 labeled=2 unlabeled=0 label_errors=0 overlap=0 cancelled=0

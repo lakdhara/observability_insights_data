@@ -1,0 +1,4 @@
+ao_mcp_proxy[lab] running: server python3 pid 945110 (labels: unix:/home/admin1/workspace/research_papers/build/ao/run/tcl.sock)
+ao_mcp_proxy[lab]: call run_command id=2 unlabeled: no traceparent
+ao_mcp_proxy[lab]: done run_command id=2 93.05 ms
+ao_mcp_proxy[lab]: stopped (server exit 0): calls=1 labeled=0 unlabeled=1 label_errors=0 overlap=0 cancelled=0

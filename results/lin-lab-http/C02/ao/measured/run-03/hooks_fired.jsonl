@@ -1,0 +1,2 @@
+{"ts": 1795566807.4888647, "trigger": "after_agent_exit", "action": "link", "args": {"node": "fw", "ifname": "eth2", "state": "down"}, "why": "agent_exit"}
+{"ts": 1795566812.5742702, "trigger": "after_agent_exit", "action": "probe", "args": {"node": "h1", "cmd": "sleep 5; curl -s -m6 http://198.51.100.10/"}, "why": "agent_exit"}

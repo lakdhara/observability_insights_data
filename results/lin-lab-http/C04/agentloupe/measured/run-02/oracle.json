@@ -1,0 +1,92 @@
+{
+  "id": "C04",
+  "framework": "agentloupe",
+  "impl": "in-kernel (authentic)",
+  "platform": "lin-lab",
+  "reasoning": "authored",
+  "source": "replay",
+  "ts": 1795567105.6597207,
+  "note": "AgentLoupe authentic: correlation scored from the kernel-emitted chain_id (label patch). No userspace label propagation. Captured by ./manage.sh replay --fw agentloupe.",
+  "source_trace": "results/lin-lab-http/C04/agentsight/measured/run-04/trace.jsonl",
+  "execution": "lab",
+  "versions": {
+    "cassette": "cassettes/authored/C04.jsonl",
+    "test_version": 1,
+    "cassette_test_compatible_version": 1,
+    "cassette_recorded_env": {
+      "platform": "any",
+      "kernel": "unknown",
+      "docker": "unknown",
+      "containerlab": "unknown",
+      "python": "unknown",
+      "nft": "unknown",
+      "node_image_hash": "unknown",
+      "agentsight_commit": "unknown",
+      "ao_commit": "unknown"
+    },
+    "env": {
+      "platform": "lin",
+      "kernel": "7.0.0-44-generic",
+      "docker": "29.9.2",
+      "containerlab": "0.82.0",
+      "python": "3.14.4",
+      "nft": "v1.1.3",
+      "node_image_hash": "e22fccc173495818",
+      "node_image_expected": "e22fccc173495818",
+      "code_commit": "3b6493a22894",
+      "data_commit": "726ce25dffb7",
+      "agentsight_commit": "180044f67465",
+      "agentsight_built": "180044f67465",
+      "ao_commit": "e9a3da0ff92a",
+      "ao_built": "e9a3da0ff92a"
+    }
+  },
+  "overhead": {
+    "wall_s": 2.1507,
+    "agent_cpu_s": 0.2916,
+    "agent_sys_s": 0.0639,
+    "agent_rss_mb": 81.27,
+    "tool_cpu_s": 0.05,
+    "tool_rss_mb": 56.61,
+    "pipeline_cpu_s": 0.0,
+    "pipeline_rss_mb": 0.0,
+    "host_cpu_s": 0.52,
+    "agent_rc": 0,
+    "exec_mode": "lab",
+    "rep": 0,
+    "timing_mode": "fast",
+    "recorded_llm_wall_s": 0.0
+  },
+  "intent_recall": 1.0,
+  "action_recall": 0.0,
+  "edge_recall": 0.0,
+  "scores": {
+    "intent": 2,
+    "action": 0,
+    "corr": 0
+  },
+  "agent_chains": [
+    1
+  ],
+  "labelled_events": 5,
+  "edges": [
+    {
+      "edge": [
+        "intent:0",
+        "action:0"
+      ],
+      "recovered": false,
+      "why": "action resource unlabelled / not captured"
+    },
+    {
+      "edge": [
+        "intent:1",
+        "action:1"
+      ],
+      "recovered": false,
+      "why": "action resource unlabelled / not captured"
+    }
+  ],
+  "method": "in-kernel chain_id (minted at SSL, propagated via BPF maps); reads AgentLoupe's own labels, no userspace propagation",
+  "passed": false
+}
